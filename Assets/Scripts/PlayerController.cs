@@ -8,9 +8,9 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance;
     [SerializeField] private float speed = 2;
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private GameObject playerPivot;
     
-    private CharacterController _characterController;
+    public  GameObject playerPivot;
+    public CharacterController characterController;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _characterController = GetComponent<CharacterController>();
+        characterController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         {
             direction.Normalize();
         }
-        _characterController.Move(direction * (speed * Time.deltaTime));
+        characterController.Move(direction * (speed * Time.deltaTime));
 
         // Rotation du joueur
         if (direction == Vector3.zero)

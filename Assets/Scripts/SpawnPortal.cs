@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +13,14 @@ public class SpawnPortal : MonoBehaviour
     private bool _canSpawnPortal;
     
     [SerializeField] private int nbMaxPortal;
-    private int _nbPortal;
-    public List<GameObject> _portals;
-    
+    public int _nbPortal;
+    public List<Portal> _portals;
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -53,15 +59,23 @@ public class SpawnPortal : MonoBehaviour
 
             var portal = Instantiate(portalPrefab, _portalTargetPosition, Quaternion.identity);
             portal.gameObject.SetActive(true);
-            _portals.Add(portal);
+            _portals.Add(portal.GetComponent<Portal>());
+
+            //On link chaque paire de portails entre eux
+            if (_nbPortal != 0 && _nbPortal % 2 == 0)
+            {
+                _portals[_nbPortal - 1].linkPortal = _portals[_nbPortal - 2];
+                _portals[_nbPortal - 2].linkPortal = _portals[_nbPortal - 1];
+            }
         }
     }
 
     public void DeletePortals()
     {
+        // On supprime tous les portails et on vide la mémoire
         foreach (var portal in _portals)
         {
-            Destroy(portal);
+            Destroy(portal.gameObject);
         }
         _nbPortal = 0;
         _portals.Clear();
