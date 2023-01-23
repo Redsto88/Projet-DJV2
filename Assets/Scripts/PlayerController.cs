@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
         
             
-        //Quaternion tr = Quaternion.LookRotation(targetDir);
+        Quaternion tr = Quaternion.LookRotation(transform.forward);
         Quaternion targetRotation = Quaternion.Slerp(transform.rotation, tr, rotationSpeed * Time.deltaTime);
         
         _characterController.Move(direction * (speed * Time.deltaTime));
