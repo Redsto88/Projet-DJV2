@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public int dungeonHeight;
     public RoomData[,] dungeonData;
     public List<RoomData> possibleRooms;
+    private int heightPos = 0;
+    private int widthPos = 0;
 
     void Awake()
     {
@@ -57,5 +59,18 @@ public class GameManager : MonoBehaviour
             k++;
         }
         return null;
+    }
+
+    public void GoToNextRoom(Door.Corner corner)
+    {
+        switch (corner)
+        {
+            case Door.Corner.Up: heightPos++; break;
+            case Door.Corner.Left: widthPos++; break;
+            case Door.Corner.Right: widthPos--; break;
+            case Door.Corner.Down: heightPos--; break;
+        }
+        Instantiate(dungeonData[heightPos,widthPos].roomPrefab, 50 * (Vector3.right * heightPos + Vector3.forward * widthPos), Quaternion.identity);
+        RoomBehaviour.Instance.closeDoor(corner);
     }
 }
