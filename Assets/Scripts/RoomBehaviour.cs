@@ -9,8 +9,9 @@ public class RoomBehaviour : MonoBehaviour
     [SerializeField] private GameObject doorLeft;
     [SerializeField] private GameObject doorRight;
     [SerializeField] private GameObject doorDown;
-    [SerializeField] private Array2D<GameObject> enemyWaves;
-    public int enemiesLeft;
+    [SerializeField] private Array2D<ObjData> enemyWaves;
+    public int enemiesLeft = 0;
+    public int waveNumber = 0;
 
     void Awake()
     {
@@ -22,16 +23,21 @@ public class RoomBehaviour : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.P)) {enemiesLeft = 0;}
+        if (enemiesLeft == 0)
+        {
+            if (waveNumber == enemyWaves.arrays.Count)
+            {
+                if (doorUp != null) doorUp.GetComponent<Door>().isOpen = true;
+                if (doorLeft != null) doorLeft.GetComponent<Door>().isOpen = true;
+                if (doorRight != null) doorRight.GetComponent<Door>().isOpen = true;
+                if (doorDown != null) doorDown.GetComponent<Door>().isOpen = true;
+            }
+            else NextEnemyWave();
+        }
     }
 
     public IEnumerator useDoor(Door.Corner corner)
@@ -52,5 +58,16 @@ public class RoomBehaviour : MonoBehaviour
             case Door.Corner.Down: Debug.Log(doorUp.transform.position - Vector3.right * 2); PlayerController.Instance.transform.position = doorUp.transform.position - Vector3.right * 4; break;
         }
         PlayerController.Instance.characterController.enabled = true;
+    }
+
+    void NextEnemyWave()
+    {
+        var wave = enemyWaves.arrays[waveNumber];
+        enemiesLeft = wave.cells.Count;
+        foreach (ObjData obj in wave.cells)
+        {
+            Instantiate(obj.prefab,obj.position,obj.rotation);
+        }
+        waveNumber++;
     }
 }

@@ -13,7 +13,7 @@ public class Door : MonoBehaviour
     }
     [SerializeField] private Corner corner;
     private bool isNear;
-    public bool isOpen;
+    public bool isOpen = false;
     // Start is called before the first frame update
     void Start()
     {

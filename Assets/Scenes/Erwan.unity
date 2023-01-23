@@ -156,6 +156,7 @@ MonoBehaviour:
   speed: 12
   rotationSpeed: 1
   playerPivot: {fileID: 1020600392}
+  characterController: {fileID: 0}
 --- !u!4 &28963369
 Transform:
   m_ObjectHideFlags: 0

@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+public class ObjData
+{
+    public Vector3 position;
+    public Quaternion rotation;
+    public GameObject prefab;
+}
+
+[System.Serializable]
 public class Array<T>
 {
     public List<T> cells = new List<T>();
