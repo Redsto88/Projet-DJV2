@@ -75,10 +75,16 @@ public class SpawnPortal : MonoBehaviour
         // On supprime tous les portails et on vide la mémoire
         foreach (var portal in _portals)
         {
-            Destroy(portal.gameObject);
+            StartCoroutine(DestroyPortalCoroutine(portal.gameObject));
         }
         _nbPortal = 0;
         _portals.Clear();
+    }
+
+    IEnumerator DestroyPortalCoroutine(GameObject gameObject)
+    {
+        yield return new WaitForSeconds(0.2f);
+        Destroy(gameObject);
     }
     
 }

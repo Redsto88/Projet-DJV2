@@ -10,20 +10,31 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == PlayerController.Instance.characterController && !linkPortal.IsUnityNull())
+        if (!linkPortal.IsUnityNull())
         {
-           Teleport();
+           Teleport(other);
         }
     }
 
-    private void Teleport()
+    private void Teleport(Collider collider)
     {
-        print("PortalPosition = " + transform.position + "; LinkedPortalPosition = " + linkPortal.transform.position);
+        print("teleport");
+        
         linkPortal.GetComponent<BoxCollider>().enabled = false;
+
+       /* if (collider == PlayerController.Instance.characterController)
+        {
+            PlayerController.Instance.transform.position = linkPortal.transform.position;
+            PlayerController.Instance.playerPivot.transform.rotation = linkPortal.transform.rotation;
+        }
+        else
+        {
+            collider.transform.position = linkPortal.transform.position;
+            collider.transform.rotation = linkPortal.transform.rotation;
+        }*/
         
-        PlayerController.Instance.transform.position = linkPortal.transform.position;
-        PlayerController.Instance.playerPivot.transform.rotation = linkPortal.transform.rotation;
-        
+        collider.transform.position = linkPortal.transform.position;
+
         PlayerController.Instance.gameObject.GetComponent<SpawnPortal>().DeletePortals();
     }
 }

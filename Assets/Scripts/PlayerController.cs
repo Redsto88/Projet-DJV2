@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         // Déplacement du joueur
         Vector3 direction = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
         if (direction.magnitude > 1)
@@ -50,5 +51,8 @@ public class PlayerController : MonoBehaviour
         Quaternion tr = Quaternion.LookRotation(direction);
         playerPivot.transform.rotation = Quaternion.Slerp(playerPivot.transform.rotation, tr, rotationSpeed * Time.deltaTime);
         
+        //Hauteur du joueur
+        var transformPosition = transform.position;
+        transformPosition.y = 0;
     }
 }
