@@ -12,16 +12,16 @@ public class Portal : MonoBehaviour
     {
         if (!linkPortal.IsUnityNull())
         {
-           Teleport(other);
+           StartCoroutine(Teleport(other));
         }
     }
 
-    private void Teleport(Collider collider)
+    private IEnumerator Teleport(Collider collider)
     {
-        print("teleport");
+        print("teleport from " + transform.position + " to " + linkPortal.transform.position);
         
-        linkPortal.GetComponent<BoxCollider>().enabled = false;
-
+        //linkPortal.GetComponent<BoxCollider>().enabled = false;
+        PlayerController.Instance.gameObject.GetComponent<SpawnPortal>().DisablePortals();
        /* if (collider == PlayerController.Instance.characterController)
         {
             PlayerController.Instance.transform.position = linkPortal.transform.position;
@@ -32,8 +32,10 @@ public class Portal : MonoBehaviour
             collider.transform.position = linkPortal.transform.position;
             collider.transform.rotation = linkPortal.transform.rotation;
         }*/
-        
-        collider.transform.position = linkPortal.transform.position;
+        PlayerController.Instance.characterController.enabled = false;
+        collider.gameObject.transform.position = linkPortal.transform.position;
+        yield return new WaitForEndOfFrame();
+        PlayerController.Instance.characterController.enabled = true;
 
         PlayerController.Instance.gameObject.GetComponent<SpawnPortal>().DeletePortals();
     }

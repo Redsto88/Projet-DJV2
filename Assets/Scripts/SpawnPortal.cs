@@ -81,6 +81,14 @@ public class SpawnPortal : MonoBehaviour
         _portals.Clear();
     }
 
+    public void DisablePortals()
+    {
+        foreach (var portal in _portals)
+        {
+            portal.gameObject.GetComponent<Collider>().enabled = false;
+        }
+    }
+
     IEnumerator DestroyPortalCoroutine(GameObject gameObject)
     {
         yield return new WaitForSeconds(0.2f);

@@ -73,4 +73,21 @@ public class GameManager : MonoBehaviour
         Instantiate(dungeonData[heightPos,widthPos].roomPrefab, 50 * (Vector3.right * heightPos + Vector3.forward * widthPos), Quaternion.identity);
         RoomBehaviour.Instance.closeDoor(corner);
     }
+
+    public bool HasNextRoom(Door.Corner corner)
+    {
+        switch (corner)
+        {
+            case Door.Corner.Up: if (heightPos+1 < dungeonHeight) return dungeonData[heightPos+1, widthPos].hasDownDoor; break;
+            case Door.Corner.Left: if (widthPos+1 < dungeonWidth) return dungeonData[heightPos, widthPos+1].hasRightDoor; break;
+            case Door.Corner.Right: if (widthPos > 0) return dungeonData[heightPos, widthPos-1].hasLeftDoor; break;
+            case Door.Corner.Down: if (heightPos > 0) return dungeonData[heightPos-1, widthPos].hasUpDoor; break;
+        }
+        return false;
+    }
+
+    public RoomData GetCurrentRoomData()
+    {
+        return dungeonData[heightPos,widthPos];
+    }
 }

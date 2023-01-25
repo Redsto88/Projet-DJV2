@@ -27,14 +27,14 @@ public class RoomBehaviour : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P)) {enemiesLeft = 0;}
-        if (enemiesLeft == 0)
+        if (enemiesLeft == 0) //TODO use CountEnemyDeath when an enemy dies
         {
-            if (waveNumber == enemyWaves.arrays.Count)
+            if (waveNumber == enemyWaves.arrays.Count || GameManager.Instance.GetCurrentRoomData().isDiscovered)
             {
-                if (doorUp != null) doorUp.GetComponent<Door>().isOpen = true;
-                if (doorLeft != null) doorLeft.GetComponent<Door>().isOpen = true;
-                if (doorRight != null) doorRight.GetComponent<Door>().isOpen = true;
-                if (doorDown != null) doorDown.GetComponent<Door>().isOpen = true;
+                if (doorUp != null && GameManager.Instance.HasNextRoom(Door.Corner.Up)) doorUp.GetComponent<Door>().isOpen = true;
+                if (doorLeft != null && GameManager.Instance.HasNextRoom(Door.Corner.Left)) doorLeft.GetComponent<Door>().isOpen = true;
+                if (doorRight != null && GameManager.Instance.HasNextRoom(Door.Corner.Right)) doorRight.GetComponent<Door>().isOpen = true;
+                if (doorDown != null && GameManager.Instance.HasNextRoom(Door.Corner.Down)) doorDown.GetComponent<Door>().isOpen = true;
             }
             else NextEnemyWave();
         }
@@ -62,12 +62,28 @@ public class RoomBehaviour : MonoBehaviour
 
     void NextEnemyWave()
     {
+        GameManager.Instance.GetCurrentRoomData().isDiscovered = true;
         var wave = enemyWaves.arrays[waveNumber];
         enemiesLeft = wave.cells.Count;
         foreach (ObjData obj in wave.cells)
         {
-            Instantiate(obj.prefab,obj.position,obj.rotation);
+            Instantiate(obj.prefab, obj.position + transform.position, obj.rotation);
         }
         waveNumber++;
+    }
+    
+    void CountEnemyDeath()
+    {
+        if (enemiesLeft == 0)
+        {
+            if (waveNumber == enemyWaves.arrays.Count || GameManager.Instance.GetCurrentRoomData().isDiscovered)
+            {
+                if (doorUp != null && GameManager.Instance.HasNextRoom(Door.Corner.Up)) doorUp.GetComponent<Door>().isOpen = true;
+                if (doorLeft != null && GameManager.Instance.HasNextRoom(Door.Corner.Left)) doorLeft.GetComponent<Door>().isOpen = true;
+                if (doorRight != null && GameManager.Instance.HasNextRoom(Door.Corner.Right)) doorRight.GetComponent<Door>().isOpen = true;
+                if (doorDown != null && GameManager.Instance.HasNextRoom(Door.Corner.Down)) doorDown.GetComponent<Door>().isOpen = true;
+            }
+            else NextEnemyWave();
+        }
     }
 }
