@@ -22,11 +22,13 @@ public class Portal : MonoBehaviour
 
     IEnumerator OrientationCoroutine()
     {
+        TimeManager.Instance.DoSlowMotion();
         while (Input.GetButton("Portal"))
         {
             transform.LookAt(aim.transform.position);
             yield return null;
         }
+        TimeManager.Instance.StopSlowMotion();
     }
 
     private void OnTriggerEnter(Collider other)
