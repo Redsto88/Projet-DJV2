@@ -8,17 +8,13 @@ using UnityEngine.AI;
 public class Portal : MonoBehaviour
 {
     public Portal linkPortal;
-<<<<<<< Updated upstream
     public GameObject aim;
 
-=======
-    [SerializeField] private GameObject aim;
     public Transform transitionFwd;
     public Transform transitionBwd;
     private Transform _destinationTransition;
     private Vector3 _velocity;
-    
->>>>>>> Stashed changes
+
     private void OnEnable()
     {
         StartCoroutine(OrientationCoroutine());
@@ -40,17 +36,8 @@ public class Portal : MonoBehaviour
            StartCoroutine(Teleport(other));
         }
     }
-
-<<<<<<< Updated upstream
-    private void OnTriggerStay(Collider other)
-    {
-        print("portal trigger stay");
-    }
-
-    private IEnumerator Teleport(Collider collider)
-=======
+    
     private IEnumerator Teleport(Collider col)
->>>>>>> Stashed changes
     {
         linkPortal.GetComponent<BoxCollider>().enabled = false;
 
