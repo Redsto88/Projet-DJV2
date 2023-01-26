@@ -7,6 +7,24 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     public Portal linkPortal;
+    [SerializeField] private GameObject aim;
+
+    private void OnEnable()
+    {
+        print("portal enable");
+        StartCoroutine(OrientationCoroutine());
+    }
+
+    IEnumerator OrientationCoroutine()
+    {
+        print("coroutine orientation");
+        while (Input.GetButton("Portal"))
+        {
+            print("look at");
+            transform.LookAt(aim.transform.position);
+            yield return null;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,25 +36,30 @@ public class Portal : MonoBehaviour
 
     private IEnumerator Teleport(Collider collider)
     {
-        print("teleport from " + transform.position + " to " + linkPortal.transform.position);
-        
-        //linkPortal.GetComponent<BoxCollider>().enabled = false;
-        PlayerController.Instance.gameObject.GetComponent<SpawnPortal>().DisablePortals();
-       /* if (collider == PlayerController.Instance.characterController)
+        linkPortal.GetComponent<BoxCollider>().enabled = false;
+       
+       if (collider == PlayerController.Instance.characterController)
         {
-            PlayerController.Instance.transform.position = linkPortal.transform.position;
+            PlayerController.Instance.playerPivot.transform.rotation = linkPortal.transform.rotation;
+        }
+        
+        PlayerController.Instance.characterController.enabled = false;
+        collider.gameObject.transform.position = linkPortal.transform.position;
+        
+        if (collider == PlayerController.Instance.characterController)
+        {
             PlayerController.Instance.playerPivot.transform.rotation = linkPortal.transform.rotation;
         }
         else
         {
-            collider.transform.position = linkPortal.transform.position;
-            collider.transform.rotation = linkPortal.transform.rotation;
-        }*/
-        PlayerController.Instance.characterController.enabled = false;
-        collider.gameObject.transform.position = linkPortal.transform.position;
+            collider.gameObject.transform.rotation = linkPortal.transform.rotation;
+        }
+        
         yield return new WaitForEndOfFrame();
         PlayerController.Instance.characterController.enabled = true;
 
         PlayerController.Instance.gameObject.GetComponent<SpawnPortal>().DeletePortals();
     }
+
+    
 }
