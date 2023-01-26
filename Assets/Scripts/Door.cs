@@ -11,6 +11,7 @@ public class Door : MonoBehaviour
         Right,
         Down
     }
+    [SerializeField] private GameObject openClose;
     [SerializeField] private Corner corner;
     private bool isNear;
     public bool isOpen = false;
@@ -23,6 +24,7 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        openClose.SetActive(isOpen);
         if (isNear && isOpen)
         {
             if (Input.GetKeyDown(KeyCode.Space)) //TODO Show interaction button

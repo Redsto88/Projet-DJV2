@@ -8,6 +8,13 @@ public class GameManager : MonoBehaviour
     public int dungeonWidth;
     public int dungeonHeight;
     public RoomData[,] dungeonData;
+    public enum RoomState
+    {
+        NotSeen,
+        Seen,
+        Cleared
+    }
+    public RoomState[,] roomState;
     public List<RoomData> possibleRooms;
     private int heightPos = 0;
     private int widthPos = 0;
@@ -29,7 +36,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         dungeonData = new RoomData[dungeonHeight,dungeonWidth];
+        roomState = new RoomState[dungeonHeight,dungeonWidth];
         GenerateDungeon();
+        Instantiate(dungeonData[0,0].roomPrefab);
     }
 
     // Update is called once per frame
@@ -45,6 +54,7 @@ public class GameManager : MonoBehaviour
             for (int j = 0; j < dungeonWidth; j++)
             {
                 dungeonData[i,j] = GetRandomRoom(); //TODO prendre en compte les portes ?
+                roomState[i,j] = RoomState.NotSeen;
             }
         }
     }
@@ -89,5 +99,20 @@ public class GameManager : MonoBehaviour
     public RoomData GetCurrentRoomData()
     {
         return dungeonData[heightPos,widthPos];
+    }
+
+    public bool isCurrentRoomClear()
+    {
+        return roomState[heightPos,widthPos] == RoomState.Cleared;
+    }
+
+    public void seenRoom()
+    {
+        roomState[heightPos,widthPos] = RoomState.Seen;
+    }
+
+    public void clearedRoom()
+    {
+        roomState[heightPos,widthPos] = RoomState.Cleared;
     }
 }
