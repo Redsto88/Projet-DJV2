@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class SpawnPortal : MonoBehaviour
@@ -11,10 +12,10 @@ public class SpawnPortal : MonoBehaviour
 
     private Vector3 _portalTargetPosition;
     private bool _canSpawnPortal;
-    
+
     [SerializeField] private int nbMaxPortal;
-    public int _nbPortal;
-    public List<Portal> _portals;
+    private int _nbPortal;
+    private List<Portal> _portals = new List<Portal>();
 
     private void Start()
     {
@@ -26,7 +27,6 @@ public class SpawnPortal : MonoBehaviour
     {
         var ray = camera.ScreenPointToRay(Input.mousePosition);
         
-        //var plane = new Plane(Vector3.up, Vector3.zero);
         if (Physics.Raycast(ray, out var x))
         {
             _portalTargetPosition = x.point;
@@ -50,6 +50,7 @@ public class SpawnPortal : MonoBehaviour
             }
         }
     }
+    
 
     public void CreatePortal()
     {
@@ -58,6 +59,7 @@ public class SpawnPortal : MonoBehaviour
             _nbPortal += 1;
 
             var portal = Instantiate(portalPrefab, _portalTargetPosition, Quaternion.identity);
+            portal.GetComponent<Portal>().aim = portalAim;
             portal.gameObject.SetActive(true);
             _portals.Add(portal.GetComponent<Portal>());
 
@@ -69,6 +71,7 @@ public class SpawnPortal : MonoBehaviour
             }
         }
     }
+    
 
     public void DeletePortals()
     {
@@ -89,10 +92,10 @@ public class SpawnPortal : MonoBehaviour
         }
     }
 
-    IEnumerator DestroyPortalCoroutine(GameObject gameObject)
+    IEnumerator DestroyPortalCoroutine(GameObject go)
     {
         yield return new WaitForSeconds(0.2f);
-        Destroy(gameObject);
+        Destroy(go);
     }
     
 }

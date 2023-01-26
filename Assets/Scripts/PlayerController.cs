@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     
     public  GameObject playerPivot;
     public CharacterController characterController;
+    public bool portalFlag;
 
     private void Awake()
     {
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
+
+        portalFlag = false;
     }
 
     // Start is called before the first frame update
@@ -34,22 +37,24 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        // Déplacement du joueur
-        Vector3 direction = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
-        if (direction.magnitude > 1)
+        if (!portalFlag)
         {
-            direction.Normalize();
-        }
-        characterController.Move(direction * (speed * Time.deltaTime));
+            // Déplacement du joueur
+            Vector3 direction = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
+            if (direction.magnitude > 1)
+            {
+                direction.Normalize();
+            }
+            characterController.Move(direction * (speed * Time.deltaTime));
 
-        // Rotation du joueur
-        if (direction == Vector3.zero)
-        {
-            direction = playerPivot.transform.forward;
+            // Rotation du joueur
+            if (direction == Vector3.zero)
+            {
+                direction = playerPivot.transform.forward;
+            }
+            Quaternion tr = Quaternion.LookRotation(direction);
+            playerPivot.transform.rotation = Quaternion.Slerp(playerPivot.transform.rotation, tr, rotationSpeed * Time.deltaTime);
         }
-        Quaternion tr = Quaternion.LookRotation(direction);
-        playerPivot.transform.rotation = Quaternion.Slerp(playerPivot.transform.rotation, tr, rotationSpeed * Time.deltaTime);
         
         //Hauteur du joueur
         var transformPosition = transform.position;
