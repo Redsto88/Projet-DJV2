@@ -11,16 +11,13 @@ public class Portal : MonoBehaviour
 
     private void OnEnable()
     {
-        print("portal enable");
         StartCoroutine(OrientationCoroutine());
     }
 
     IEnumerator OrientationCoroutine()
     {
-        print("coroutine orientation");
         while (Input.GetButton("Portal"))
         {
-            print("look at");
             transform.LookAt(aim.transform.position);
             yield return null;
         }
@@ -28,6 +25,7 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print("portal trigger");
         if (!linkPortal.IsUnityNull())
         {
            StartCoroutine(Teleport(other));
@@ -36,27 +34,26 @@ public class Portal : MonoBehaviour
 
     private IEnumerator Teleport(Collider collider)
     {
+        print("Teleport");
         linkPortal.GetComponent<BoxCollider>().enabled = false;
-       
-       if (collider == PlayerController.Instance.characterController)
-        {
-            PlayerController.Instance.playerPivot.transform.rotation = linkPortal.transform.rotation;
-        }
-        
-        PlayerController.Instance.characterController.enabled = false;
-        collider.gameObject.transform.position = linkPortal.transform.position;
-        
+
         if (collider == PlayerController.Instance.characterController)
         {
+            print("collider = player");
+            collider.enabled = false;
+            collider.gameObject.transform.position = linkPortal.transform.position;
             PlayerController.Instance.playerPivot.transform.rotation = linkPortal.transform.rotation;
+            yield return new WaitForEndOfFrame();
+            collider.enabled = true;
         }
         else
         {
+            print("collider = other");
+            collider.gameObject.transform.position = linkPortal.transform.position;
             collider.gameObject.transform.rotation = linkPortal.transform.rotation;
+            yield return new WaitForEndOfFrame();
         }
         
-        yield return new WaitForEndOfFrame();
-        PlayerController.Instance.characterController.enabled = true;
 
         PlayerController.Instance.gameObject.GetComponent<SpawnPortal>().DeletePortals();
     }
