@@ -7,7 +7,7 @@ using UnityEngine;
 public class SpawnPortal : MonoBehaviour
 {
     [SerializeField] private new Camera camera;
-   [SerializeField] private GameObject portalAim;
+    [SerializeField] private GameObject portalAim;
     [SerializeField] private GameObject portalPrefab;
 
     private Vector3 _portalTargetPosition;

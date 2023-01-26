@@ -5,16 +5,19 @@ using UnityEngine.AI;
 
 public class BasicEnemyBehaviour : MonoBehaviour
 {
-    private NavMeshAgent _navMeshAgent;
+    public NavMeshAgent navMeshAgent;
     private Transform _target;
+
+    public bool portalFlag;
     
    // public float speed;
    // public float minDist;
     // Start is called before the first frame update
     void Start()
     {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
         _target = PlayerController.Instance.transform;
+        portalFlag = false;
     }
 
     // Update is called once per frame
@@ -31,13 +34,17 @@ public class BasicEnemyBehaviour : MonoBehaviour
         transform.LookAt(PlayerController.Instance.transform);
         transform.rotation = Quaternion.RotateTowards(rot, transform.rotation, 180);*/
 
-        if ((transform.position - _target.position).magnitude > _navMeshAgent.stoppingDistance)
+        print(portalFlag);
+        if (!portalFlag)
         {
-            _navMeshAgent.destination = _target.position;
-        }
-        else
-        {
-            _navMeshAgent.destination = transform.position;
+            if ((transform.position - _target.position).magnitude > navMeshAgent.stoppingDistance)
+            {
+                navMeshAgent.destination = _target.position;
+            }
+            else
+            {
+                navMeshAgent.destination = transform.position;
+            }
         }
     }
 }
