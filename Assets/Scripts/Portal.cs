@@ -7,7 +7,7 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     public Portal linkPortal;
-    [SerializeField] private GameObject aim;
+    public GameObject aim;
 
     private void OnEnable()
     {
@@ -30,6 +30,11 @@ public class Portal : MonoBehaviour
         {
            StartCoroutine(Teleport(other));
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        print("portal trigger stay");
     }
 
     private IEnumerator Teleport(Collider collider)

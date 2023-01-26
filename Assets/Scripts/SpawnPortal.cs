@@ -59,6 +59,7 @@ public class SpawnPortal : MonoBehaviour
             _nbPortal += 1;
 
             var portal = Instantiate(portalPrefab, _portalTargetPosition, Quaternion.identity);
+            portal.GetComponent<Portal>().aim = portalAim;
             portal.gameObject.SetActive(true);
             _portals.Add(portal.GetComponent<Portal>());
 
