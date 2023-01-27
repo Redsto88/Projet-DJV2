@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
     }
     public RoomState[,] roomState;
     public List<RoomData> possibleRooms;
-    private int heightPos = 0;
-    private int widthPos = 0;
+    public int heightPos = 0;
+    public int widthPos = 0;
 
     void Awake()
     {
@@ -39,12 +39,16 @@ public class GameManager : MonoBehaviour
         roomState = new RoomState[dungeonHeight,dungeonWidth];
         GenerateDungeon();
         Instantiate(dungeonData[0,0].roomPrefab);
+        MapManager.Instance.GoesOnTile(0,0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            TPToRoom(0,0);
+        }
     }
 
     void GenerateDungeon()
@@ -55,6 +59,7 @@ public class GameManager : MonoBehaviour
             {
                 dungeonData[i,j] = GetRandomRoom(); //TODO prendre en compte les portes ?
                 roomState[i,j] = RoomState.NotSeen;
+                MapManager.Instance.PlaceTile(dungeonData[i,j], i, j);
             }
         }
     }
@@ -73,6 +78,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToNextRoom(Door.Corner corner)
     {
+        MapManager.Instance.LeavesTile(heightPos, widthPos);
         switch (corner)
         {
             case Door.Corner.Up: heightPos++; break;
@@ -80,8 +86,19 @@ public class GameManager : MonoBehaviour
             case Door.Corner.Right: widthPos--; break;
             case Door.Corner.Down: heightPos--; break;
         }
+        MapManager.Instance.GoesOnTile(heightPos, widthPos);
         Instantiate(dungeonData[heightPos,widthPos].roomPrefab, 50 * (Vector3.right * heightPos + Vector3.forward * widthPos), Quaternion.identity);
         RoomBehaviour.Instance.closeDoor(corner);
+    }
+
+    public void TPToRoom(int h, int w)
+    {
+        MapManager.Instance.LeavesTile(heightPos, widthPos);
+        Instantiate(dungeonData[heightPos,widthPos].roomPrefab,50 * (Vector3.right * h + Vector3.forward * w), Quaternion.identity);
+        PlayerController.Instance.transform.position = 50 * (Vector3.right * h + Vector3.forward * w);
+        heightPos = h;
+        widthPos = w;
+        MapManager.Instance.GoesOnTile(heightPos, widthPos);
     }
 
     public bool HasNextRoom(Door.Corner corner)
@@ -109,10 +126,12 @@ public class GameManager : MonoBehaviour
     public void seenRoom()
     {
         roomState[heightPos,widthPos] = RoomState.Seen;
+        MapManager.Instance.TileSeen(heightPos,widthPos);
     }
 
     public void clearedRoom()
     {
         roomState[heightPos,widthPos] = RoomState.Cleared;
+        MapManager.Instance.TileCleared(heightPos,widthPos);
     }
 }
