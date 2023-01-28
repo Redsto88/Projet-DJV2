@@ -5,6 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Room", menuName = "Game/Room")]
 public class RoomData : ScriptableObject
 {
+    public enum RoomType
+    {
+        Empty,
+        Fight,
+        Treasure,
+        Boss
+    }
     public GameObject roomPrefab;
     public bool isDiscovered;
     public bool isDestroyed;
@@ -12,4 +19,5 @@ public class RoomData : ScriptableObject
     public bool hasLeftDoor;
     public bool hasRightDoor;
     public bool hasDownDoor;
+    public RoomType mapType;
 }
