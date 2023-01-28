@@ -1,12 +1,14 @@
 fileFormatVersion: 2
-guid: 2be945659479a8f4f915b2615748504d
+guid: 18c95200678fe4244a9a7e68a6e99338
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable:
+  internalIDToNameTable: []
+  externalObjects:
   - first:
-      74: 6093225430303232669
-    second: Armature|ArmatureAction.002
-  externalObjects: {}
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "M_Ep\xE9e_02"
+    second: {fileID: 2100000, guid: ca4e3460d82af3f43a4ea004b331cb15, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -92,15 +94,15 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: Bone
+    rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: e150c94549c41204f9dc64518354fa1c, type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 2
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
