@@ -6,51 +6,19 @@ using UnityEngine;
 
 public class SpawnPortal : MonoBehaviour
 {
-    [SerializeField] private new Camera camera;
-    [SerializeField] private GameObject portalAim;
+    [SerializeField] private PortalCursor portalCursor;
     [SerializeField] private GameObject portalPrefab;
-
-    private Vector3 _portalTargetPosition;
+    
     private bool _canSpawnPortal;
 
     [SerializeField] private int nbMaxPortal;
     private int _nbPortal;
     private List<Portal> _portals = new List<Portal>();
 
-    private void Start()
+    private void Update()
     {
-        Cursor.lockState = CursorLockMode.Confined;
+        _canSpawnPortal = portalCursor.canSpawnPortal;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        var ray = camera.ScreenPointToRay(Input.mousePosition);
-        
-        if (Physics.Raycast(ray, out var x))
-        {
-            _portalTargetPosition = x.point;
-
-            if (x.collider.gameObject.layer == 3)
-            {
-                _canSpawnPortal = true;
-                portalAim.transform.position = _portalTargetPosition;
-                if (!portalAim.activeSelf)
-                {
-                    portalAim.SetActive(true);
-                }
-            }
-            else
-            {
-                _canSpawnPortal = false;
-                if(portalAim.activeSelf)
-                {
-                    portalAim.SetActive(false);
-                }
-            }
-        }
-    }
-    
 
     public void CreatePortal()
     {
@@ -58,8 +26,8 @@ public class SpawnPortal : MonoBehaviour
         {
             _nbPortal += 1;
 
-            var portal = Instantiate(portalPrefab, _portalTargetPosition, Quaternion.identity);
-            portal.GetComponent<Portal>().aim = portalAim;
+            var portal = Instantiate(portalPrefab, portalCursor.transform.position, Quaternion.identity);
+            portal.GetComponent<Portal>().portalCursor = portalCursor;
             portal.gameObject.SetActive(true);
             _portals.Add(portal.GetComponent<Portal>());
 

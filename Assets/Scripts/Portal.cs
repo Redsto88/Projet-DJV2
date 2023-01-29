@@ -8,7 +8,7 @@ using UnityEngine.AI;
 public class Portal : MonoBehaviour
 {
     public Portal linkPortal;
-    public GameObject aim;
+    public PortalCursor portalCursor;
 
     public Transform transitionFwd;
     public Transform transitionBwd;
@@ -23,12 +23,14 @@ public class Portal : MonoBehaviour
     IEnumerator OrientationCoroutine()
     {
         TimeManager.Instance.DoSlowMotion();
+        portalCursor.cursorSpeed *= 5;
         while (Input.GetButton("Portal"))
         {
-            transform.LookAt(aim.transform.position);
+            transform.LookAt(portalCursor.transform.position);
             yield return null;
         }
         TimeManager.Instance.StopSlowMotion();
+        portalCursor.cursorSpeed /= 5;
     }
 
     private void OnTriggerEnter(Collider other)

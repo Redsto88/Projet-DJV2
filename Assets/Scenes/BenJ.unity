@@ -2411,8 +2411,9 @@ GameObject:
   - component: {fileID: 1573601048}
   - component: {fileID: 1573601047}
   - component: {fileID: 1573601050}
+  - component: {fileID: 1573601051}
   m_Layer: 2
-  m_Name: Aim
+  m_Name: PortalCursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2425,8 +2426,8 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573601045}
-  m_Enabled: 1
-  m_CastShadows: 1
+  m_Enabled: 0
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -2496,6 +2497,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1573601051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573601045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354cf18c1e121ee47b1e9eb733de727f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 1693849506}
+  canSpawnPortal: 0
+  usingMouseInput: 0
+  cursorSpeed: 700
 --- !u!1 &1593953149
 GameObject:
   m_ObjectHideFlags: 0
@@ -3469,8 +3486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec46882b9b643b42a5923facd92fcf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1693849506}
-  portalAim: {fileID: 1573601045}
+  portalCursor: {fileID: 1573601051}
   portalPrefab: {fileID: 1421880744}
   nbMaxPortal: 2
 --- !u!114 &2111107667
@@ -3504,6 +3520,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7994966034361884177, guid: 7ea57d45f3cb0174a8226e732d88799b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7994966034395795617, guid: 7ea57d45f3cb0174a8226e732d88799b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3552,9 +3572,17 @@ PrefabInstance:
       propertyPath: aim
       value: 
       objectReference: {fileID: 1573601045}
+    - target: {fileID: 7994966034395795618, guid: 7ea57d45f3cb0174a8226e732d88799b, type: 3}
+      propertyPath: portalCursor
+      value: 
+      objectReference: {fileID: 1573601051}
     - target: {fileID: 7994966034395795619, guid: 7ea57d45f3cb0174a8226e732d88799b, type: 3}
       propertyPath: m_Name
       value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7994966035239744395, guid: 7ea57d45f3cb0174a8226e732d88799b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ea57d45f3cb0174a8226e732d88799b, type: 3}
