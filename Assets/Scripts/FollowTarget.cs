@@ -10,10 +10,12 @@ public class FollowTarget : MonoBehaviour
     
     protected void Update()
     {
-        transform.position = Vector3.SmoothDamp(
-            transform.position,
-            target.position,
-            ref _currentVelocity,
-            0.2f);
+        if(target != null){
+            transform.position = Vector3.SmoothDamp(
+                transform.position,
+                target.position,
+                ref _currentVelocity,
+                0.2f);
+        }
     }
 }

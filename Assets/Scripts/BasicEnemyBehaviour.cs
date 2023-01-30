@@ -34,7 +34,7 @@ public class BasicEnemyBehaviour : MonoBehaviour
         transform.LookAt(PlayerController.Instance.transform);
         transform.rotation = Quaternion.RotateTowards(rot, transform.rotation, 180);*/
 
-        if (!portalFlag)
+        if (!portalFlag && _target != null)
         {
             if ((transform.position - _target.position).magnitude > navMeshAgent.stoppingDistance)
             {

@@ -6,6 +6,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
 {
     [SerializeField] private float healthMax;
     private float _health;
+
+    [SerializeField] private UIHealthBar healthBar;
     
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public void ApplyDamaged(float damage)
     {
         _health -= damage;
-
+        healthBar.SetHealth(_health);
         if (_health <= 0)
         {
             Destroy(gameObject);

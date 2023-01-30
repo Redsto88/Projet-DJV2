@@ -30,8 +30,9 @@ public class GameManager : MonoBehaviour
             
             DontDestroyOnLoad(this.gameObject);
             Instance = this;
+            MapManager.Instance.Init();
         }
-        MapManager.Instance.Init();
+        
     }
 
     // Start is called before the first frame update
