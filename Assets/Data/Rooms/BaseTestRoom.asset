@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: BaseTestRoom
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 203449618973855635, guid: b506eaff5c23fb444a43875d1240316d, type: 3}
-  isDiscovered: 1
+  isDiscovered: 0
   isDestroyed: 0
   hasUpDoor: 1
   hasLeftDoor: 1
   hasRightDoor: 1
   hasDownDoor: 1
+  mapType: 0

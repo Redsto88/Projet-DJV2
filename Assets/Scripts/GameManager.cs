@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public int dungeonWidth;
-    public int dungeonHeight;
+    public int dungeonWidth = 3;
+    public int dungeonHeight = 3;
     public RoomData[,] dungeonData;
     public enum RoomState
     {
@@ -27,9 +27,11 @@ public class GameManager : MonoBehaviour
         }
         else 
         {
-            Instance = this;
+            
             DontDestroyOnLoad(this.gameObject);
+            Instance = this;
         }
+        MapManager.Instance.Init();
     }
 
     // Start is called before the first frame update

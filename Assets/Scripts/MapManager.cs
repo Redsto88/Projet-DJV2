@@ -21,8 +21,12 @@ public class MapManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
-            mapTiles = new MapTile[GameManager.Instance.dungeonHeight,GameManager.Instance.dungeonWidth];
         }
+    }
+
+    public void Init()
+    {
+         mapTiles = new MapTile[GameManager.Instance.dungeonHeight,GameManager.Instance.dungeonWidth];
     }
 
     // Update is called once per frame
