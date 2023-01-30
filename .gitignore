@@ -172,5 +172,3 @@ sysinfo.txt
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/unity,visualstudiocode,rider
-ProjectSettings/ProjectVersion.txt
-Packages/packages-lock.json
