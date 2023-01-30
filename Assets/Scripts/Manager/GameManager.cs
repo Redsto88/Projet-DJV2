@@ -15,7 +15,13 @@ public class GameManager : MonoBehaviour
         Cleared
     }
     public RoomState[,] roomState;
-    public List<RoomData> possibleRooms;
+    [System.Serializable]
+    public class WeightedRoom
+    {
+        public RoomData roomData;
+        public int weight = 1;
+    };
+    public List<WeightedRoom> possibleRooms;
     public int heightPos = 0;
     public int widthPos = 0;
 
@@ -30,7 +36,7 @@ public class GameManager : MonoBehaviour
             
             DontDestroyOnLoad(this.gameObject);
             Instance = this;
-            MapManager.Instance.Init();
+            MapManager.Instance?.Init();
         }
         
     }
@@ -70,11 +76,19 @@ public class GameManager : MonoBehaviour
     RoomData GetRandomRoom()
     {
         int k = 0;
-        int index = Random.Range(0,possibleRooms.Count);
-        foreach(RoomData r in possibleRooms)
+        int total = 0;
+        foreach(WeightedRoom r in possibleRooms)
         {
-            if (k == index) return r;
-            k++;
+            total += r.weight;
+        }
+        int index = Random.Range(0,total);
+        foreach(WeightedRoom r in possibleRooms)
+        {
+            for (int j = 0; j < r.weight; j++)
+            {
+                if (k == index) return r.roomData;
+                k++;
+            }
         }
         return null;
     }
@@ -121,6 +135,11 @@ public class GameManager : MonoBehaviour
     public RoomData GetCurrentRoomData()
     {
         return dungeonData[heightPos,widthPos];
+    }
+
+    public RoomData GetRoomData(int h, int w)
+    {
+        return dungeonData[h,w];
     }
 
     public bool isCurrentRoomClear()

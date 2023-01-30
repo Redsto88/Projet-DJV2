@@ -168,7 +168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28963367}
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -221,6 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab26b06d77e643f49964cdee215afde7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPortal: {fileID: 0}
+  actualWeapon: {fileID: 0}
 --- !u!1 &34505600
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,10 +697,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de06c9b955e76934c97daf9a0ee82b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dungeonWidth: 3
-  dungeonHeight: 3
+  dungeonWidth: 5
+  dungeonHeight: 5
   possibleRooms:
-  - {fileID: 11400000, guid: bf03d996c8372254aa0d21ab2a88f555, type: 2}
+  - roomData: {fileID: 11400000, guid: 7d5e92933fb884340a0d08f2e9ac6bdc, type: 2}
+    weight: 4
+  - roomData: {fileID: 11400000, guid: 3c5c3daa3edd9d745973d745dd4f01d3, type: 2}
+    weight: 1
+  - roomData: {fileID: 11400000, guid: 7d5e92933fb884340a0d08f2e9ac6bdc, type: 2}
+    weight: 1
+  - roomData: {fileID: 11400000, guid: 1e07683aa1dead647ad635f5f3d68da3, type: 2}
+    weight: 1
+  - roomData: {fileID: 11400000, guid: bb476088d6509fa4fa975c136b5a04ee, type: 2}
+    weight: 1
+  - roomData: {fileID: 11400000, guid: f17a594dea8f82d49b0263385c505799, type: 2}
+    weight: 1
+  - roomData: {fileID: 11400000, guid: 38d315b7fddb2e4498d5c423d90fd3d8, type: 2}
+    weight: 1
+  - roomData: {fileID: 11400000, guid: c09f1b7c89fcbe545bfc45fd5ed8b99f, type: 2}
+    weight: 2
+  - roomData: {fileID: 11400000, guid: a113d057407d36247bdeef2e477499cd, type: 2}
+    weight: 2
+  - roomData: {fileID: 11400000, guid: f2765c030a0f5094f88787d8bdadd25a, type: 2}
+    weight: 2
+  - roomData: {fileID: 11400000, guid: 82335c5ada82cfe48ba3731aa1901764, type: 2}
+    weight: 2
   heightPos: 0
   widthPos: 0
 --- !u!4 &615360663
@@ -1120,7 +1143,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 63
 --- !u!114 &1395812610
 MonoBehaviour:
   m_ObjectHideFlags: 0
