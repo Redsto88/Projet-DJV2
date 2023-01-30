@@ -57,7 +57,6 @@ public class PlayerController : MonoBehaviour
         }
         
         //Hauteur du joueur
-        var transformPosition = transform.position;
-        transformPosition.y = 0;
+        transform.position = new Vector3(transform.position.x,0,transform.position.z);
     }
 }

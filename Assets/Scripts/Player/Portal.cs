@@ -14,7 +14,9 @@ public class Portal : MonoBehaviour
     public Transform transitionBwd;
     private Transform _destinationTransition;
     private Vector3 _velocity;
+    private bool _isSpawned;
 
+    public bool IsSpawned => _isSpawned;
     private void OnEnable()
     {
         StartCoroutine(OrientationCoroutine());
@@ -22,6 +24,7 @@ public class Portal : MonoBehaviour
 
     IEnumerator OrientationCoroutine()
     {
+        _isSpawned = false;
         TimeManager.Instance.DoSlowMotion();
         portalCursor.cursorSpeed *= 5;
         while (Input.GetButton("Portal"))
@@ -31,6 +34,7 @@ public class Portal : MonoBehaviour
         }
         TimeManager.Instance.StopSlowMotion();
         portalCursor.cursorSpeed /= 5;
+        _isSpawned = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,53 +47,59 @@ public class Portal : MonoBehaviour
     
     private IEnumerator Teleport(Collider col)
     {
-        linkPortal.GetComponent<BoxCollider>().enabled = false;
-
-        //Cas du joueur
-        if (col == PlayerController.Instance.characterController)
+        if (_isSpawned && linkPortal.IsSpawned) // On vérifie que les deux portails sont bien placés (plus dans le bullet time)
         {
-            //On cherche le sens d'orientation 
-            if (Vector3.Dot(PlayerController.Instance.playerPivot.transform.forward, transform.forward) > 0)
-            {
-                _destinationTransition = linkPortal.transitionBwd; //On rentre par le côté "vert" du portail (Arrière), on doit ressortir du côté vert
-            }
-            else
-            {
-                _destinationTransition = linkPortal.transitionFwd; //Idem mais pour l'avant
-            }
-            
-            //On désactive le character controller pour se téléporter. IL ne pourra pas prendre de dégats pendant ce temps
-            col.enabled = false;
-            PlayerController.Instance.portalFlag = true;
-                
-            //Téléportation
-            col.gameObject.transform.position = linkPortal.transform.position;
-            PlayerController.Instance.playerPivot.transform.LookAt(_destinationTransition.position);
-            yield return new WaitForEndOfFrame();
+            linkPortal.GetComponent<BoxCollider>().enabled = false;
 
-            //Animation portail
-            /*foreach (var VARIABLE in  GetComponentsInChildren<Renderer>())
+            //Cas du joueur
+            if (col == PlayerController.Instance.characterController)
             {
-                VARIABLE.enabled = false;
+                //On cherche le sens d'orientation 
+                if (Vector3.Dot(PlayerController.Instance.playerPivot.transform.forward, transform.forward) > 0)
+                {
+                    _destinationTransition =
+                        linkPortal
+                            .transitionBwd; //On rentre par le côté "vert" du portail (Arrière), on doit ressortir du côté vert
+                }
+                else
+                {
+                    _destinationTransition = linkPortal.transitionFwd; //Idem mais pour l'avant
+                }
+
+                //On désactive le character controller pour se téléporter. IL ne pourra pas prendre de dégats pendant ce temps
+                col.enabled = false;
+                PlayerController.Instance.portalFlag = true;
+
+                //Téléportation
+                col.gameObject.transform.position = linkPortal.transform.position;
+                PlayerController.Instance.playerPivot.transform.LookAt(_destinationTransition.position);
+                yield return new WaitForEndOfFrame();
+
+                //Animation portail
+                /*foreach (var VARIABLE in  GetComponentsInChildren<Renderer>())
+                {
+                    VARIABLE.enabled = false;
+                }
+                foreach (var VARIABLE in  linkPortal.GetComponentsInChildren<Renderer>())
+                {
+                    VARIABLE.enabled = false;
+                }*/
+
+                //Transition
+                while ((PlayerController.Instance.transform.position - _destinationTransition.position).magnitude > 0.1)
+                {
+                    PlayerController.Instance.transform.position = Vector3.SmoothDamp(
+                        PlayerController.Instance.transform.position,
+                        _destinationTransition.position, ref _velocity, 0.2f);
+                    yield return null;
+                }
+
+                //On rend le controle au joueur
+                col.enabled = true;
+                PlayerController.Instance.portalFlag = false;
             }
-            foreach (var VARIABLE in  linkPortal.GetComponentsInChildren<Renderer>())
-            {
-                VARIABLE.enabled = false;
-            }*/
-            
-            //Transition
-            while ((PlayerController.Instance.transform.position - _destinationTransition.position).magnitude > 0.1)
-            {
-                PlayerController.Instance.transform.position = Vector3.SmoothDamp(PlayerController.Instance.transform.position, 
-                    _destinationTransition.position, ref _velocity, 0.2f);
-                yield return null;
-            }
-            
-            //On rend le controle au joueur
-            col.enabled = true;
-            PlayerController.Instance.portalFlag = false;
         }
-        
+
         //Cas d'un ennemi
         else if (col.TryGetComponent(out BasicEnemyBehaviour enemy))
         {

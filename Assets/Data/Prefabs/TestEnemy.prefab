@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 843527467}
   - component: {fileID: 5426563294728307528}
   - component: {fileID: 843527468}
-  - component: {fileID: 2388690364442819210}
+  - component: {fileID: 1102175421}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: Untagged
@@ -591,7 +591,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!54 &2388690364442819210
+--- !u!54 &1102175421
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

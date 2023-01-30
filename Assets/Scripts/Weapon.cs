@@ -16,19 +16,9 @@ public class Weapon : MonoBehaviour
         _collider.enabled = false;
     }
 
-    public void EnableColisions()
+    public void OnTriggerEnter(Collider col)
     {
-        _collider.enabled = true;
-    }
-    
-    public void DisableColisions()
-    {
-        _collider.enabled = false;
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (TryGetComponent(out IDamageable damageable))
+        if (col.TryGetComponent(out IDamageable damageable))
         {
             damageable.ApplyDamaged(damage);
         }

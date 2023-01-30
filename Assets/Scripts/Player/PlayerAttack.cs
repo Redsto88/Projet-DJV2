@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private SpawnPortal _spawnPortal;
+    [SerializeField] private SpawnPortal spawnPortal;
+    private Animator _animator;
     
+    [SerializeField] private Weapon actualWeapon;
+    private Collider _weaponCollider;
+
     // Start is called before the first frame update
     void Start()
     {
-        _spawnPortal = GetComponent<SpawnPortal>();
+        _animator = GetComponent<Animator>();
+        _weaponCollider = actualWeapon.GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -18,11 +23,27 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetButtonDown("Portal"))
         {
-            _spawnPortal.CreatePortal();
+            spawnPortal.CreatePortal();
         }
         else if(Input.GetButtonDown("DeletePortals"))
         {
-            _spawnPortal.DeletePortals();
+            spawnPortal.DeletePortals();
         }
+        else if (Input.GetButtonDown("Weapon"))
+        {
+            _animator.CrossFade("Attaque_01", 0.1f);
+        }
+    }
+    
+    public void OpenWeaponCollisions()
+    {
+        print("open collider");
+        _weaponCollider.enabled = true;
+    }
+    
+    public void CloseWeaponCollisions()
+    {
+        print("close collider");
+        _weaponCollider.enabled = false;
     }
 }
