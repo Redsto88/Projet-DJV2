@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkPortal: {fileID: 0}
-  aim: {fileID: 0}
+  portalCursor: {fileID: 0}
   transitionFwd: {fileID: 7994966034891549075}
   transitionBwd: {fileID: 7994966033893542513}
 --- !u!65 &7994966034395795616

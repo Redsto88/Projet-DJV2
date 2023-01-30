@@ -39,25 +39,35 @@ public class PortalCursor : MonoBehaviour
         }
         
         var ray = camera.ScreenPointToRay(_cursorPos);
+
+        var layerInt = LayerMask.GetMask("Default");
         
-        if (Physics.Raycast(ray, out var x))
+        if (Physics.Raycast(ray, out var x, Mathf.Infinity, ~layerInt, QueryTriggerInteraction.UseGlobal))
         {
-            if (x.collider.gameObject.layer == 3)
-            {
+            // if (x.collider.gameObject.layer == 3)
+            // {
                 canSpawnPortal = true;
                 transform.position = x.point;
                 if (!_renderer.enabled)
                 {
                     _renderer.enabled = true;
                 }
-            }
-            else
+            // }
+            // else
+            // {
+            //     canSpawnPortal = false;
+            //     if(_renderer.enabled)
+            //     {
+            //         _renderer.enabled = false;
+            //     }
+            // }
+        }
+        else 
+        {
+            canSpawnPortal = false;
+            if(_renderer.enabled)
             {
-                canSpawnPortal = false;
-                if(_renderer.enabled)
-                {
-                    _renderer.enabled = false;
-                }
+                _renderer.enabled = false;
             }
         }
     }

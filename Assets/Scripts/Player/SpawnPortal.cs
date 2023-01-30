@@ -25,7 +25,6 @@ public class SpawnPortal : MonoBehaviour
         if (_canSpawnPortal && _nbPortal < nbMaxPortal)
         {
             _nbPortal += 1;
-
             var portal = Instantiate(portalPrefab, portalCursor.transform.position, Quaternion.identity);
             portal.GetComponent<Portal>().portalCursor = portalCursor;
             portal.gameObject.SetActive(true);
