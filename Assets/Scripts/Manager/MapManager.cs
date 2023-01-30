@@ -75,5 +75,9 @@ public class MapManager : MonoBehaviour
     {
         mapTiles[h,w].notPresentMask.SetActive(false);
         mapTiles[h,w].grayed.SetActive(false);
+        if (GameManager.Instance.GetCurrentRoomData().hasUpDoor && h+1 < GameManager.Instance.dungeonHeight) TileSeen(h+1,w);
+        if (GameManager.Instance.GetCurrentRoomData().hasLeftDoor && w+1 < GameManager.Instance.dungeonWidth) TileSeen(h,w+1);
+        if (GameManager.Instance.GetCurrentRoomData().hasDownDoor && h > 0) TileSeen(h-1,w);
+        if (GameManager.Instance.GetCurrentRoomData().hasRightDoor && w > 0) TileSeen(h,w-1);
     }
 }
