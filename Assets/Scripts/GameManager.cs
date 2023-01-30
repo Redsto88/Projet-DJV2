@@ -94,8 +94,10 @@ public class GameManager : MonoBehaviour
     public void TPToRoom(int h, int w)
     {
         MapManager.Instance.LeavesTile(heightPos, widthPos);
+        PlayerController.Instance.characterController.enabled = false;
         Instantiate(dungeonData[heightPos,widthPos].roomPrefab,50 * (Vector3.right * h + Vector3.forward * w), Quaternion.identity);
         PlayerController.Instance.transform.position = 50 * (Vector3.right * h + Vector3.forward * w);
+        PlayerController.Instance.characterController.enabled = true;
         heightPos = h;
         widthPos = w;
         MapManager.Instance.GoesOnTile(heightPos, widthPos);

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MapManager : MonoBehaviour
 {
     public static MapManager Instance;
-    [SerializeField] private Image[] images;
+    [SerializeField] private Sprite[] sprites;
     [SerializeField] private MapTile mapTilePrefab;
     [SerializeField] private Transform content;
     private MapTile[,] mapTiles;
@@ -21,13 +21,8 @@ public class MapManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
+            mapTiles = new MapTile[GameManager.Instance.dungeonHeight,GameManager.Instance.dungeonWidth];
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        mapTiles = new MapTile[GameManager.Instance.dungeonHeight,GameManager.Instance.dungeonWidth];
     }
 
     // Update is called once per frame
@@ -51,7 +46,7 @@ public class MapManager : MonoBehaviour
         tile.GetComponent<MapTile>().leftDoorIcn.SetActive(roomData.hasLeftDoor);
         tile.GetComponent<MapTile>().rightDoorIcn.SetActive(roomData.hasRightDoor);
         tile.GetComponent<MapTile>().downDoorIcn.SetActive(roomData.hasDownDoor);
-        tile.icon = images[(int)roomData.mapType];
+        tile.icon.sprite = sprites[(int)roomData.mapType];
         mapTiles[h,w] = tile;
         tile.gameObject.SetActive(false);
     }

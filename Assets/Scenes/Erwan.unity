@@ -206,8 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec46882b9b643b42a5923facd92fcf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 471157421}
-  portalAim: {fileID: 1643829615}
+  portalCursor: {fileID: 1643829619}
   portalPrefab: {fileID: 1868667284}
   nbMaxPortal: 2
 --- !u!114 &28963372
@@ -1390,6 +1389,7 @@ GameObject:
   - component: {fileID: 1643829618}
   - component: {fileID: 1643829617}
   - component: {fileID: 1643829616}
+  - component: {fileID: 1643829619}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1462,6 +1462,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1643829619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643829615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354cf18c1e121ee47b1e9eb733de727f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 471157421}
+  canSpawnPortal: 1
+  usingMouseInput: 1
+  cursorSpeed: 10
 --- !u!1 &1657376519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,7 +1763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkPortal: {fileID: 0}
-  aim: {fileID: 0}
+  portalCursor: {fileID: 0}
   transitionFwd: {fileID: 0}
   transitionBwd: {fileID: 0}
 --- !u!4 &1868667287
