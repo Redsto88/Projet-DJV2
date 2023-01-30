@@ -33,7 +33,6 @@ public class PortalCursor : MonoBehaviour
         }
         else
         {
-            print("X = " + Input.GetAxis("GamepadCursorHorizontal") + "; Y = " + Input.GetAxis("GamepadCursorVertical") + "cursor =Pos = (" + _cursorPos.x + ";" + _cursorPos.y +")");
             _cursorPos += new Vector2(Input.GetAxis("GamepadCursorHorizontal"), Input.GetAxis("GamepadCursorVertical")) * (cursorSpeed * Time.deltaTime);
             _cursorPos.x = Mathf.Clamp(_cursorPos.x, 0, Screen.width - 1);
             _cursorPos.y = Mathf.Clamp(_cursorPos.y, 0, Screen.height - 1);
