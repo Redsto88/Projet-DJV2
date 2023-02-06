@@ -40,9 +40,9 @@ public class PortalCursor : MonoBehaviour
         
         var ray = camera.ScreenPointToRay(_cursorPos);
 
-        var layerInt = LayerMask.GetMask("Default");
+        var layerInt = LayerMask.GetMask("Ground");
         
-        if (Physics.Raycast(ray, out var x, Mathf.Infinity, ~layerInt, QueryTriggerInteraction.UseGlobal))
+        if (Physics.Raycast(ray, out var x, Mathf.Infinity, layerInt, QueryTriggerInteraction.UseGlobal))
         {
             // if (x.collider.gameObject.layer == 3)
             // {
