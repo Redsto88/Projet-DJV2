@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
         MapManager.Instance.GoesOnTile(heightPos, widthPos);
         Instantiate(dungeonData[heightPos,widthPos].roomPrefab, 50 * (Vector3.right * heightPos + Vector3.forward * widthPos), Quaternion.identity);
         RoomBehaviour.Instance.closeDoor(corner);
+        PlayerController.Instance.GetComponent<SpawnPortal>().DeletePortals();
     }
 
     public void TPToRoom(int h, int w)
@@ -119,6 +120,7 @@ public class GameManager : MonoBehaviour
         heightPos = h;
         widthPos = w;
         MapManager.Instance.GoesOnTile(heightPos, widthPos);
+        PlayerController.Instance.GetComponent<SpawnPortal>().DeletePortals();
     }
 
     public bool HasNextRoom(Door.Corner corner)

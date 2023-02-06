@@ -593,6 +593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 12
   rotationSpeed: 10
+  highControl: {fileID: 0}
   playerPivot: {fileID: 1448104966}
   characterController: {fileID: 0}
   portalFlag: 1
@@ -663,7 +664,7 @@ MonoBehaviour:
   dungeonHeight: 5
   possibleRooms:
   - roomData: {fileID: 11400000, guid: 7d5e92933fb884340a0d08f2e9ac6bdc, type: 2}
-    weight: 400
+    weight: 4
   - roomData: {fileID: 11400000, guid: 3c5c3daa3edd9d745973d745dd4f01d3, type: 2}
     weight: 1
   - roomData: {fileID: 11400000, guid: 7d5e92933fb884340a0d08f2e9ac6bdc, type: 2}
@@ -1284,6 +1285,7 @@ MonoBehaviour:
   - {fileID: 0}
   mapTilePrefab: {fileID: 6754249677033874157, guid: 138cc3789ce880042ba14820de8c3cd6, type: 3}
   content: {fileID: 1972927963}
+  isInit: 0
 --- !u!1 &1448104966
 GameObject:
   m_ObjectHideFlags: 0
