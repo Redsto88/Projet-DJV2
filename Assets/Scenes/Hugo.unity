@@ -110,7 +110,7 @@ NavMeshSettings:
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
-    ledgeDropHeight: 0
+    ledgeDropHeight: 4
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: d645f1aa57aeb194497f51870ea8d6ee, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &94159516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,6 +1045,7 @@ MonoBehaviour:
   - {fileID: 0}
   mapTilePrefab: {fileID: 6754249677033874157, guid: 138cc3789ce880042ba14820de8c3cd6, type: 3}
   content: {fileID: 2091232090}
+  isInit: 0
 --- !u!114 &867266028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1284,6 +1285,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdf84cceff691746a2f175c5fb37fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &946119664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 946119665}
+  m_Layer: 0
+  m_Name: HighTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &946119665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946119664}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1599363371}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1090521798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,6 +1627,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 139303937820451111, guid: 4e2608b7cbe1d6d44a637a2b5ba1f930, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 139303938419873635, guid: 4e2608b7cbe1d6d44a637a2b5ba1f930, type: 3}
       propertyPath: m_Name
       value: DistanceEnemy
@@ -1643,6 +1679,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 139303938575180910, guid: 4e2608b7cbe1d6d44a637a2b5ba1f930, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139303939191986226, guid: 4e2608b7cbe1d6d44a637a2b5ba1f930, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139303939517145748, guid: 4e2608b7cbe1d6d44a637a2b5ba1f930, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139303939614569782, guid: 4e2608b7cbe1d6d44a637a2b5ba1f930, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139303939636944868, guid: 4e2608b7cbe1d6d44a637a2b5ba1f930, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e2608b7cbe1d6d44a637a2b5ba1f930, type: 3}
 --- !u!1 &1329835250
@@ -1678,7 +1734,15 @@ MonoBehaviour:
   dungeonHeight: 3
   possibleRooms:
   - roomData: {fileID: 11400000, guid: bf03d996c8372254aa0d21ab2a88f555, type: 2}
+    weight: 0
+  - roomData: {fileID: 11400000, guid: 7d5e92933fb884340a0d08f2e9ac6bdc, type: 2}
     weight: 1
+  - roomData: {fileID: 11400000, guid: 1e07683aa1dead647ad635f5f3d68da3, type: 2}
+    weight: 0
+  - roomData: {fileID: 11400000, guid: c09f1b7c89fcbe545bfc45fd5ed8b99f, type: 2}
+    weight: 0
+  - roomData: {fileID: 11400000, guid: 3c5c3daa3edd9d745973d745dd4f01d3, type: 2}
+    weight: 0
   heightPos: 0
   widthPos: 0
 --- !u!4 &1329835252
@@ -2126,6 +2190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 12
   rotationSpeed: 10
+  highControl: {fileID: 946119665}
   playerPivot: {fileID: 473655652}
   characterController: {fileID: 0}
   portalFlag: 1
@@ -2161,6 +2226,7 @@ Transform:
   m_Children:
   - {fileID: 473655653}
   - {fileID: 1542051165}
+  - {fileID: 946119665}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}

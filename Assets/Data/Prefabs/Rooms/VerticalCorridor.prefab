@@ -398,6 +398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5078089252920304638}
   - component: {fileID: 5078089252920304637}
+  - component: {fileID: -4513380978773750489}
   m_Layer: 0
   m_Name: VerticalCorridor
   m_TagString: Untagged
@@ -448,6 +449,18 @@ MonoBehaviour:
     arrays: []
   enemiesLeft: 0
   waveNumber: 0
+--- !u!114 &-4513380978773750489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5078089252920304636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66603541f131e6b4fa08ce4f7813141c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5078089253434807614
 GameObject:
   m_ObjectHideFlags: 0

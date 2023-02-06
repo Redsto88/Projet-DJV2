@@ -689,6 +689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2633496616393849288}
   - component: {fileID: 6963635561360292404}
+  - component: {fileID: -2220951126716863006}
   m_Layer: 0
   m_Name: LeftToDownCorner
   m_TagString: Untagged
@@ -742,6 +743,18 @@ MonoBehaviour:
     arrays: []
   enemiesLeft: 0
   waveNumber: 0
+--- !u!114 &-2220951126716863006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5994708428287925540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66603541f131e6b4fa08ce4f7813141c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6911888581491891999
 GameObject:
   m_ObjectHideFlags: 0

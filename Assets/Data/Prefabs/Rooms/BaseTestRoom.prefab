@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 203449618973855634}
   - component: {fileID: 203449618973855633}
+  - component: {fileID: 4268009622289759817}
   m_Layer: 0
   m_Name: BaseTestRoom
   m_TagString: Untagged
@@ -78,6 +79,18 @@ MonoBehaviour:
         prefab: {fileID: 5426563294728307534, guid: 1ea8ead484b6f7c4da5b3747aff3e4ba, type: 3}
   enemiesLeft: 0
   waveNumber: 0
+--- !u!114 &4268009622289759817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203449618973855635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66603541f131e6b4fa08ce4f7813141c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &203449619087325629
 GameObject:
   m_ObjectHideFlags: 0
