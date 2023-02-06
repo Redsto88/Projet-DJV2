@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public int heightPos = 0;
     public int widthPos = 0;
 
-    void Awake()
+    public void Awake()
     {
         if (Instance != null)
         {
@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MapManager.Instance.Init();
         dungeonData = new RoomData[dungeonHeight,dungeonWidth];
         roomState = new RoomState[dungeonHeight,dungeonWidth];
         GenerateDungeon();

@@ -15,7 +15,7 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
     private float _health;
 
     public NavMeshAgent navMeshAgent;
-    private Transform _target;
+    protected Transform _target;
 
     public bool portalFlag;
     

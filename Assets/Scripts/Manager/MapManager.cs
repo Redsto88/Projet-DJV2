@@ -11,6 +11,8 @@ public class MapManager : MonoBehaviour
     [SerializeField] private Transform content;
     private MapTile[,] mapTiles;
 
+    public bool isInit = false;
+
     void Awake()
     {
         if (Instance != null)
@@ -22,12 +24,13 @@ public class MapManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
-        Init();
     }
 
     public void Init()
     {
-         mapTiles = new MapTile[GameManager.Instance.dungeonHeight,GameManager.Instance.dungeonWidth];
+        if (isInit) return;
+        isInit = true;
+        mapTiles = new MapTile[GameManager.Instance.dungeonHeight,GameManager.Instance.dungeonWidth];
     }
 
     // Update is called once per frame

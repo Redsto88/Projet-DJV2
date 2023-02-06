@@ -177,6 +177,8 @@ GameObject:
   - component: {fileID: 139303938419873645}
   - component: {fileID: 139303938419873634}
   - component: {fileID: 139303938419873644}
+  - component: {fileID: 3919774247982754536}
+  - component: {fileID: 2753780492782313462}
   m_Layer: 0
   m_Name: DistanceEnemy
   m_TagString: Untagged
@@ -226,12 +228,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  healthMax: 30
+  navMeshAgent: {fileID: 0}
+  portalFlag: 0
+  curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _bulletPrefab: {fileID: 1745482746895930636, guid: facd67d633fb9724faa1706556d43cc9, type: 3}
   _cooldown: 2
   _cooldownTimer: 0
   healthMax: 30
-  navMeshAgent: {fileID: 0}
-  portalFlag: 0
 --- !u!195 &139303938419873644
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -254,6 +263,35 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!54 &3919774247982754536
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139303938419873635}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &2753780492782313462
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139303938419873635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2, y: 0.8, z: 2}
+  m_Center: {x: 0, y: 0.54, z: 0}
 --- !u!1 &139303938575180910
 GameObject:
   m_ObjectHideFlags: 0

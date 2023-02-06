@@ -24,6 +24,7 @@ public class Portal : MonoBehaviour
 
     IEnumerator OrientationCoroutine()
     {
+        print(portalCursor);
         _isSpawned = false;
         TimeManager.Instance.DoSlowMotion();
         portalCursor.cursorSpeed *= 5;
@@ -98,71 +99,70 @@ public class Portal : MonoBehaviour
                 col.enabled = true;
                 PlayerController.Instance.portalFlag = false;
             }
-    
 
-        //Cas d'un ennemi
-        else if (col.TryGetComponent(out BasicEnemyBehaviour enemy))
-        {
-            //On cherche le sens d'orientation 
-            if (Vector3.Dot(col.transform.forward, transform.forward) > 0)
+            //Cas d'un ennemi
+            else if (col.TryGetComponent(out BasicEnemyBehaviour enemy))
             {
-                _destinationTransition = linkPortal.transitionBwd; //On rentre par le côté "vert" du portail (Arrière), on doit ressortir du côté vert
+                //On cherche le sens d'orientation 
+                if (Vector3.Dot(col.transform.forward, transform.forward) > 0)
+                {
+                    _destinationTransition = linkPortal.transitionBwd; //On rentre par le côté "vert" du portail (Arrière), on doit ressortir du côté vert
+                }
+                else
+                {
+                    _destinationTransition = linkPortal.transitionFwd; //Idem mais pour l'avant
+                }
+                
+                NavMeshAgent agent = enemy.navMeshAgent;
+                float stopDistance = agent.stoppingDistance;
+                
+                //On désactive l'agent pour la téléportation
+                enemy.portalFlag = true;
+                agent.enabled = false;
+
+                //Téléportation
+                col.gameObject.transform.position = linkPortal.transform.position;
+                col.transform.LookAt(_destinationTransition.position);
+                yield return new WaitForEndOfFrame();
+
+                //Animation portail
+                foreach (var VARIABLE in  GetComponentsInChildren<Renderer>())
+                {
+                    VARIABLE.enabled = false;
+                }
+                foreach (var VARIABLE in  linkPortal.GetComponentsInChildren<Renderer>())
+                {
+                    VARIABLE.enabled = false;
+                }
+
+                //Transition
+                while ((enemy.transform.position - _destinationTransition.position).magnitude > 0.1)
+                {
+                    enemy.transform.position = Vector3.SmoothDamp(enemy.transform.position, 
+                        _destinationTransition.position, ref _velocity, 0.2f);
+                    yield return null;
+                }
+                
+                //On réactive l'agent
+                agent.enabled = true;
+                
+                //On remet l'ennemi en marche vers le joueur
+                agent.stoppingDistance = stopDistance;
+                enemy.portalFlag = false;
+            }
+            else if(col.TryGetComponent<Bullet>(out Bullet bullet))
+            {
+                col.gameObject.transform.position += linkPortal.transform.position - transform.position;
+                col.gameObject.transform.rotation = linkPortal.transform.rotation;
+                yield return new WaitForEndOfFrame();
             }
             else
             {
-                _destinationTransition = linkPortal.transitionFwd; //Idem mais pour l'avant
+                col.gameObject.transform.position = linkPortal.transform.position;
+                col.gameObject.transform.rotation = linkPortal.transform.rotation;
+                yield return new WaitForEndOfFrame();
             }
-            
-            NavMeshAgent agent = enemy.navMeshAgent;
-            float stopDistance = agent.stoppingDistance;
-            
-            //On désactive l'agent pour la téléportation
-            enemy.portalFlag = true;
-            agent.enabled = false;
-
-            //Téléportation
-            col.gameObject.transform.position = linkPortal.transform.position;
-            col.transform.LookAt(_destinationTransition.position);
-            yield return new WaitForEndOfFrame();
-
-            //Animation portail
-            foreach (var VARIABLE in  GetComponentsInChildren<Renderer>())
-            {
-                VARIABLE.enabled = false;
-            }
-            foreach (var VARIABLE in  linkPortal.GetComponentsInChildren<Renderer>())
-            {
-                VARIABLE.enabled = false;
-            }
-
-            //Transition
-            while ((enemy.transform.position - _destinationTransition.position).magnitude > 0.1)
-            {
-                enemy.transform.position = Vector3.SmoothDamp(enemy.transform.position, 
-                    _destinationTransition.position, ref _velocity, 0.2f);
-                yield return null;
-            }
-            
-            //On réactive l'agent
-            agent.enabled = true;
-            
-            //On remet l'ennemi en marche vers le joueur
-            agent.stoppingDistance = stopDistance;
-            enemy.portalFlag = false;
-        }
-        else if(col.TryGetComponent<Bullet>(out Bullet bullet))
-        {
-            col.gameObject.transform.position += linkPortal.transform.position - transform.position;
-            col.gameObject.transform.rotation = linkPortal.transform.rotation;
-            yield return new WaitForEndOfFrame();
-        }
-        else
-        {
-            col.gameObject.transform.position = linkPortal.transform.position;
-            col.gameObject.transform.rotation = linkPortal.transform.rotation;
-            yield return new WaitForEndOfFrame();
-        }
-        PlayerController.Instance.gameObject.GetComponent<SpawnPortal>().DeletePortals();
+            PlayerController.Instance.gameObject.GetComponent<SpawnPortal>().DeletePortals();
         }
     }
 

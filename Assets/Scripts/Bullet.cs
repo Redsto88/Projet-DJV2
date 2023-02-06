@@ -7,7 +7,9 @@ public class Bullet : MonoBehaviour
 
     public Transform target;
     
-    public Vector3 destination;
+    private Vector3 destination;
+
+    [SerializeField] private float speed = 10f;
 
     void Start()
     {
@@ -21,7 +23,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        transform.position += transform.forward * Time.deltaTime * 5f;   
+        transform.position += transform.forward * Time.deltaTime * speed;   
     }
 
     void OnCollisionEnter(Collision other)
