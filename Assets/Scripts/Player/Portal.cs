@@ -24,6 +24,7 @@ public class Portal : MonoBehaviour
 
     IEnumerator OrientationCoroutine()
     {
+        print(portalCursor);
         _isSpawned = false;
         TimeManager.Instance.DoSlowMotion();
         portalCursor.cursorSpeed *= 5;
@@ -98,7 +99,7 @@ public class Portal : MonoBehaviour
                 col.enabled = true;
                 PlayerController.Instance.portalFlag = false;
             }
-            
+
             //Cas d'un ennemi
             else if (col.TryGetComponent(out BasicEnemyBehaviour enemy))
             {
