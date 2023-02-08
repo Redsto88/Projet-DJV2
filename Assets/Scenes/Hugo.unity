@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &41449672
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1195588170783362593, guid: 9f72d499c8adb084c976a0fca29fa54a, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195588170783362593, guid: 9f72d499c8adb084c976a0fca29fa54a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195588170783362593, guid: 9f72d499c8adb084c976a0fca29fa54a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195588170783362593, guid: 9f72d499c8adb084c976a0fca29fa54a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195588170783362593, guid: 9f72d499c8adb084c976a0fca29fa54a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195588170783362593, guid: 9f72d499c8adb084c976a0fca29fa54a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195588170783362593, guid: 9f72d499c8adb084c976a0fca29fa54a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195588170783362593, guid: 9f72d499c8adb084c976a0fca29fa54a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195588170783362593, guid: 9f72d499c8adb084c976a0fca29fa54a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195588170783362593, guid: 9f72d499c8adb084c976a0fca29fa54a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195588170783362593, guid: 9f72d499c8adb084c976a0fca29fa54a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195588170783362599, guid: 9f72d499c8adb084c976a0fca29fa54a, type: 3}
+      propertyPath: m_Name
+      value: "Ga\xEFard"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9f72d499c8adb084c976a0fca29fa54a, type: 3}
 --- !u!1 &94159516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,6 +1762,10 @@ PrefabInstance:
     - target: {fileID: 139303938419873635, guid: 4e2608b7cbe1d6d44a637a2b5ba1f930, type: 3}
       propertyPath: m_Name
       value: DistanceEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 139303938419873635, guid: 4e2608b7cbe1d6d44a637a2b5ba1f930, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 139303938419873645, guid: 4e2608b7cbe1d6d44a637a2b5ba1f930, type: 3}
       propertyPath: m_RootOrder
