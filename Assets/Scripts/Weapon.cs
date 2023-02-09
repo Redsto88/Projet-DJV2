@@ -18,6 +18,7 @@ public class Weapon : MonoBehaviour
 
     public void OnTriggerEnter(Collider col)
     {
+        print(col);
         if (col.TryGetComponent(out IDamageable damageable))
         {
             damageable.ApplyDamaged(damage);

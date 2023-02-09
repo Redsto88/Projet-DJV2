@@ -64,10 +64,8 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.DrawRay(highControl.position, highControl.up * -2, Color.red);
                 _isGrounded = false;
-                print("Distance to ground = " + hit.distance);
             }
             
-            print(_isGrounded);
             if (_isGrounded)
             {
                 _yVel = 0;

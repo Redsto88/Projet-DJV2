@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7c5efd97707608c4aa6a7ebbace0ba23
+guid: e150c94549c41204f9dc64518354fa1c
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Ailes
+    second: {fileID: 2100000, guid: c3f9c88ea5098a14ab11c1eb22caca42, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Heros
-    second: {fileID: 2100000, guid: 57f7e22eb40bf1c4e8a96b0ed3568f84, type: 2}
+    second: {fileID: 2100000, guid: ebd85a95fb1c0144a81e964aa7b1f389, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Yeux
+    second: {fileID: 2100000, guid: 5ec0112203bff504086fb626df6c8a76, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -29,7 +39,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -96,7 +106,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: Bone
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
