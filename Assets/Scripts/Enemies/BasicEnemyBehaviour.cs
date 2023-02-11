@@ -14,9 +14,7 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
     [Header("Stats")] 
     [SerializeField] private float healthMax = 30;
     private float _health;
-    [SerializeField] private float damage = 5f;
     
-
     public NavMeshAgent navMeshAgent;
     protected Transform _target;
 
@@ -24,9 +22,6 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
 
     public bool portalFlag;
     public bool attackFlag;
-
-
-    public float Damage => damage;
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +50,7 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-        if (!portalFlag && !_target.IsUnityNull())
+        if (!portalFlag && !_target.IsUnityNull() && !attackFlag)
         {
             if ((transform.position - _target.position).magnitude > navMeshAgent.stoppingDistance)
             {
@@ -83,7 +78,6 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
     // IDamageable
     public void ApplyDamaged(float damage)
     {
-        print("ennemi : apply damage");
         StartCoroutine(ColorCoroutine());
         _health -= damage;
 

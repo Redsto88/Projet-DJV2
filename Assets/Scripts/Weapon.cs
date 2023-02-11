@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        _collider = GetComponent<BoxCollider>();
+        _collider = GetComponent<Collider>();
         _collider.enabled = false;
     }
 
@@ -23,5 +23,7 @@ public class Weapon : MonoBehaviour
         {
             damageable.ApplyDamaged(damage);
         }
+        
+        
     }
 }
