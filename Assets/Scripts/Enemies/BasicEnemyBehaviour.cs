@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,17 +11,23 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
     private List<Color> _initMaterialsColor = new List<Color>();
     [SerializeField] private AnimationCurve curve;
     
-    [Header("Stats")] [SerializeField] 
-    private float healthMax = 30;
+    [Header("Stats")] 
+    [SerializeField] private float healthMax = 30;
     private float _health;
+    [SerializeField] private float damage = 5f;
+    
 
     public NavMeshAgent navMeshAgent;
     protected Transform _target;
 
+    private Animator _animator;
+
     public bool portalFlag;
-    
-   // public float speed;
-   // public float minDist;
+    public bool attackFlag;
+
+
+    public float Damage => damage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +45,11 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
         
         navMeshAgent = GetComponent<NavMeshAgent>();
         _target = PlayerController.Instance.transform;
+
+        _animator = GetComponentInChildren<Animator>();
+        
         portalFlag = false;
+        attackFlag = false;
     }
 
     // Update is called once per frame
@@ -53,11 +64,22 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
             else
             {
                 navMeshAgent.destination = transform.position;
+                Attack();
             }
         }
     }
-    
-    
+
+    private void Attack()
+    {
+        print("attack");
+        if (!attackFlag)
+        {
+            attackFlag = true;
+            _animator.CrossFade("Attack_01", 0.1f);
+        }
+    }
+
+
     // IDamageable
     public void ApplyDamaged(float damage)
     {

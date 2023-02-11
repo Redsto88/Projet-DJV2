@@ -1,19 +1,15 @@
 fileFormatVersion: 2
-guid: d447124f4a644c24e9f03fa599e46d85
+guid: 9b1bfd0abf461b543a74c27391bbb91b
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable: []
-  externalObjects:
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_Ennemi
-    second: {fileID: 2100000, guid: 7dca322752807b642a295066d5ee05cc, type: 2}
+      74: 2264077025236624520
+    second: Armature.001|Armature.001Action
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_Ennemi_02_Grass
-    second: {fileID: 2100000, guid: 876f1d06864139b4aad283a598b48398, type: 2}
+      74: -5784005261616917065
+    second: Armature.001|Armature.001Action.001
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -103,11 +99,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: d447124f4a644c24e9f03fa599e46d85, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
