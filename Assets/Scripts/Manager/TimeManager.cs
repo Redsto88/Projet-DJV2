@@ -31,6 +31,7 @@ public class TimeManager : MonoBehaviour
     {
         StartCoroutine(StopSlowMotionCoroutine());
         Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f;
     }
 
     IEnumerator StopSlowMotionCoroutine()
@@ -38,8 +39,8 @@ public class TimeManager : MonoBehaviour
         while (1 - Time.timeScale > 0.01)
         {
             Time.timeScale += (1f / slowdownEndTransitionLength) * Time.unscaledDeltaTime;
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
             yield return null;
         }
-        
     }
 }

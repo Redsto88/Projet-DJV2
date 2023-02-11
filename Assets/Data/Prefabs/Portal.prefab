@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7994966033893542513}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TransitionBwd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7994966034335454194}
   - component: {fileID: 7994966034335454192}
   - component: {fileID: 7994966034335454193}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FaceBwd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 7994966034361884178}
   - component: {fileID: 7994966034361884183}
   - component: {fileID: 7994966034361884176}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 7994966034395795617}
   - component: {fileID: 7994966034395795618}
   - component: {fileID: 7994966034395795616}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 7994966034740653833}
   - component: {fileID: 7994966034740653839}
   - component: {fileID: 7994966034740653832}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FaceFwd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7994966034891549075}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TransitionFwd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 7994966035239744372}
   - component: {fileID: 7994966035239744393}
   - component: {fileID: 7994966035239744394}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

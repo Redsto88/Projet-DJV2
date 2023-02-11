@@ -12,9 +12,9 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
     [SerializeField] private AnimationCurve curve;
     
     [Header("Stats")] 
-    [SerializeField] private float healthMax = 30;
-    private float _health;
-    
+    [SerializeField] protected float healthMax = 30;
+    protected float _health;
+
     public NavMeshAgent navMeshAgent;
     protected Transform _target;
     
@@ -25,7 +25,7 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
     private static readonly int IsWalking = Animator.StringToHash("isWalking");
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         Renderer[] renderer = GetComponentsInChildren<Renderer>();
         foreach (var render in renderer)

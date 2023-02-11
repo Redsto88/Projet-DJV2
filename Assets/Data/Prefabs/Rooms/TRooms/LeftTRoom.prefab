@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2309512165113742237}
   - component: {fileID: 3036592294006105135}
   - component: {fileID: 1973133883427607178}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 7980696025983092072}
   - component: {fileID: 7218105548593724951}
   - component: {fileID: 3464538124429751102}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 2956673607109730490}
   - component: {fileID: 9169191481537963780}
   - component: {fileID: 454014474737861121}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 2392949800788682798}
   - component: {fileID: 8500005680254791240}
   - component: {fileID: 1325490170348934323}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -858,7 +858,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8148184303548049396}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -900,7 +900,7 @@ GameObject:
   - component: {fileID: 2067978075306041148}
   - component: {fileID: 5569008026390347279}
   - component: {fileID: 5118977198031844609}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 8643270289545368062}
   - component: {fileID: 1804387480369248030}
   - component: {fileID: 1948403134935427370}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1094,7 +1094,7 @@ GameObject:
   - component: {fileID: 8047368960756447885}
   - component: {fileID: 2883810820331228074}
   - component: {fileID: 8760518748707365070}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1191,7 +1191,7 @@ GameObject:
   - component: {fileID: 1306688899216843624}
   - component: {fileID: 7544398527601563095}
   - component: {fileID: 2980508850128899105}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

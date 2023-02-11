@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9161371296308533279}
   - component: {fileID: 5114589137124921831}
   - component: {fileID: 338455421139232056}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 798094618899084371}
   - component: {fileID: 5420400922720905883}
   - component: {fileID: 7706178621594735009}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 4670486567691750722}
   - component: {fileID: 6224809795089846066}
   - component: {fileID: 8255951722555924403}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 2769199407183713215}
   - component: {fileID: 9054630023425384830}
   - component: {fileID: 7168125822727200498}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -868,7 +868,7 @@ GameObject:
   - component: {fileID: 7343445826828232183}
   - component: {fileID: 5872383280373291372}
   - component: {fileID: 697042482872186989}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -965,7 +965,7 @@ GameObject:
   - component: {fileID: 871677380702189690}
   - component: {fileID: 513916016274772246}
   - component: {fileID: 7490652799416056706}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1062,7 +1062,7 @@ GameObject:
   - component: {fileID: 7731440116493288632}
   - component: {fileID: 8572144306639260581}
   - component: {fileID: 4297630673121232122}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1159,7 +1159,7 @@ GameObject:
   - component: {fileID: 7337132075286080040}
   - component: {fileID: 8218643722987948568}
   - component: {fileID: 2483170370170124025}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

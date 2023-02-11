@@ -72,7 +72,8 @@ public class RoomBehaviour : MonoBehaviour
         enemiesLeft = wave.cells.Count;
         foreach (ObjData obj in wave.cells)
         {
-            Instantiate(obj.prefab, obj.position + transform.position, obj.rotation);
+            var o = Instantiate(obj.prefab, obj.position + transform.position, obj.rotation);
+            o.transform.SetParent(transform);
         }
         waveNumber++;
     }

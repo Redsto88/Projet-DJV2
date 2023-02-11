@@ -13,11 +13,9 @@ public class Gaïard : BasicEnemyBehaviour
     [SerializeField] private float attackFrequency;
     private float rotationDir = 1;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {   
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        _target = PlayerController.Instance.transform;
-        portalFlag = false;
+        base.Start();
         StartCoroutine(changeDirection());
         StartCoroutine(leafAttack());
     }
