@@ -91,6 +91,7 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
 
         if (_health <= 0)
         {
+            RoomBehaviour.Instance.CountEnemyDeath();
             Destroy(gameObject);
         }
     }

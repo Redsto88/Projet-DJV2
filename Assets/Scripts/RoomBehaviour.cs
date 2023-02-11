@@ -78,7 +78,7 @@ public class RoomBehaviour : MonoBehaviour
         waveNumber++;
     }
     
-    void CountEnemyDeath()
+    public void CountEnemyDeath()
     {
         enemiesLeft--;
         if (enemiesLeft <= 0)

@@ -38,7 +38,7 @@ public class MapManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            content.GetComponent<RectTransform>().anchoredPosition = -15 * new Vector3(GameManager.Instance.heightPos, GameManager.Instance.widthPos, 0);
+            content.GetComponent<RectTransform>().anchoredPosition = -60 * new Vector3(GameManager.Instance.heightPos, GameManager.Instance.widthPos, 0);
             transform.GetChild(0).gameObject.SetActive(!transform.GetChild(0).gameObject.activeSelf);
         }
     }
@@ -47,7 +47,7 @@ public class MapManager : MonoBehaviour
     {
         var tile = Instantiate(mapTilePrefab);
         tile.transform.SetParent(content);
-        tile.GetComponent<RectTransform>().anchoredPosition = 15 * new Vector3(h,w,0);
+        tile.GetComponent<RectTransform>().anchoredPosition = 60 * new Vector3(h,w,0);
         tile.transform.localRotation = Quaternion.identity;
         tile.GetComponent<RectTransform>().localScale = 0.1f * Vector3.one;
         tile.GetComponent<MapTile>().upDoorIcn.SetActive(roomData.hasUpDoor);
