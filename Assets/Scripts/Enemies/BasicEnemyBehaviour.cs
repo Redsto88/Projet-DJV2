@@ -17,11 +17,12 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
     
     public NavMeshAgent navMeshAgent;
     protected Transform _target;
-
-    private Animator _animator;
-
+    
     public bool portalFlag;
     public bool attackFlag;
+    
+    private Animator _animator;
+    private static readonly int IsWalking = Animator.StringToHash("isWalking");
 
     // Start is called before the first frame update
     void Start()
@@ -50,10 +51,11 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-        if (!portalFlag && !_target.IsUnityNull() && !attackFlag)
+        if (!_target.IsUnityNull() && navMeshAgent.path.status == NavMeshPathStatus.PathComplete && !portalFlag && !attackFlag)
         {
             if ((transform.position - _target.position).magnitude > navMeshAgent.stoppingDistance)
             {
+                _animator.SetBool(IsWalking, true);
                 navMeshAgent.destination = _target.position;
             }
             else
@@ -61,6 +63,12 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
                 navMeshAgent.destination = transform.position;
                 Attack();
             }
+        }
+        
+        else if (_target.IsUnityNull() || navMeshAgent.path.status != NavMeshPathStatus.PathComplete)
+        {
+            _animator.SetBool(IsWalking, false);
+            navMeshAgent.destination = transform.position;
         }
     }
 
