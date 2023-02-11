@@ -13,7 +13,9 @@ public class Door : MonoBehaviour
     }
     [SerializeField] private GameObject openClose;
     [SerializeField] private Corner corner;
-    private bool isNear;
+    [SerializeField] private Animator bariereAnimator;
+    private bool _isNear;
+    private bool _doorAnim = false;
     public bool isOpen = false;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +27,13 @@ public class Door : MonoBehaviour
     void Update()
     {
         openClose.SetActive(isOpen);
-        if (isNear && isOpen)
+        print(isOpen);
+        if (isOpen && !_doorAnim)
+        {
+            _doorAnim = true;
+            bariereAnimator.CrossFade("Open", 0.01f);
+        }
+        if (_isNear && isOpen)
         {
             if (Input.GetKeyDown(KeyCode.Space)) //TODO Show interaction button
             {
@@ -38,7 +46,7 @@ public class Door : MonoBehaviour
     {
         if (col.gameObject.GetComponent<PlayerController>() == PlayerController.Instance) //TODO optim ?
         {
-            isNear = true;
+            _isNear = true;
         }
     }
 
@@ -46,7 +54,7 @@ public class Door : MonoBehaviour
     {
         if (col.gameObject.GetComponent<PlayerController>() == PlayerController.Instance) //TODO optim ?
         {
-            isNear = false;
+            _isNear = false;
         }
     }
 }
