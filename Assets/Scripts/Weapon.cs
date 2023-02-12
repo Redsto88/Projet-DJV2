@@ -8,6 +8,9 @@ public class Weapon : MonoBehaviour
     [Header("Stats")] 
     public float damage;
 
+    [Header("Particules")]
+    public ParticleSystem trail;
+    
     private Collider _collider;
 
     private void Start()

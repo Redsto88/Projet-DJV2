@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -39,11 +40,23 @@ public class PlayerAttack : MonoBehaviour
     {
         print("open collider");
         _weaponCollider.enabled = true;
+
+        if (!actualWeapon.trail.IsUnityNull())
+        {
+            actualWeapon.trail.Play();
+        }
+
     }
     
     public void CloseWeaponCollisions()
     {
         print("close collider");
         _weaponCollider.enabled = false;
+        
+        if(!actualWeapon.trail.IsUnityNull())
+        {
+            actualWeapon.trail.Stop();
+        }
+        
     }
 }

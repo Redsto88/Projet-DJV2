@@ -10,6 +10,8 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
     private List<Material> _materials = new List<Material>();
     private List<Color> _initMaterialsColor = new List<Color>();
     [SerializeField] private AnimationCurve curve;
+
+    public bool isTest = false;
     
     [Header("Stats")] 
     [SerializeField] protected float healthMax = 30;
@@ -91,7 +93,11 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
 
         if (_health <= 0)
         {
-            RoomBehaviour.Instance.CountEnemyDeath();
+            if (RoomBehaviour.Instance != null)
+            {
+                RoomBehaviour.Instance.CountEnemyDeath();
+            }
+            
             Destroy(gameObject);
         }
     }
