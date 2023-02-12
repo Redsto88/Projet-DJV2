@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour
     {
         _collider = GetComponent<Collider>();
         _collider.enabled = false;
+        trail.Pause();
     }
 
     public void OnTriggerEnter(Collider col)
