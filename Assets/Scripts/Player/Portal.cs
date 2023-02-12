@@ -30,7 +30,7 @@ public class Portal : MonoBehaviour
         portalCursor.cursorSpeed *= 5;
         while (Input.GetButton("Portal"))
         {
-            transform.LookAt(portalCursor.transform.position);
+            transform.LookAt(new Vector3(portalCursor.transform.position.x, transform.position.y, portalCursor.transform.position.z));
             yield return null;
         }
         TimeManager.Instance.StopSlowMotion();
