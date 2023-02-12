@@ -40,12 +40,19 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public void ApplyDamaged(float damage)
     {
         _health -= damage;
+        if(_health > healthMax)
+            _health = healthMax;
         healthBar.SetHealth(_health);
         if (_health <= 0)
         {
             Destroy(gameObject);
             //TODO fin de partie : défaite
         }
+    }
+
+    public bool IsFullHealth()
+    {
+        return _health == healthMax;
     }
 
     public float GetHealth()
