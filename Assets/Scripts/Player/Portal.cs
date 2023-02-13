@@ -159,16 +159,18 @@ public class Portal : MonoBehaviour
                     enemy.portalFlag = false;
                 }
             }
-            else if(col.TryGetComponent<Bullet>(out Bullet bullet))
+            
+            //Cas d'une bullet
+            else if(col.TryGetComponent<AProjectile>(out AProjectile projectile))
             {
-                col.gameObject.transform.position += linkPortal.transform.position - transform.position;
-                col.gameObject.transform.rotation = linkPortal.transform.rotation;
+                projectile.gameObject.transform.position += linkPortal.transform.position - transform.position;
+                projectile.gameObject.transform.rotation = linkPortal.transform.rotation;
                 yield return new WaitForEndOfFrame();
             }
             else
             {
-                col.gameObject.transform.position = linkPortal.transform.position;
-                col.gameObject.transform.rotation = linkPortal.transform.rotation;
+                projectile.gameObject.transform.position = linkPortal.transform.position;
+                projectile.gameObject.transform.rotation = linkPortal.transform.rotation;
                 yield return new WaitForEndOfFrame();
             }
             PlayerController.Instance.gameObject.GetComponent<SpawnPortal>().DeletePortals();

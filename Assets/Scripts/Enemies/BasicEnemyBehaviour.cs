@@ -53,12 +53,26 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-        if (!_target.IsUnityNull() && navMeshAgent.path.status == NavMeshPathStatus.PathComplete && !portalFlag && !attackFlag)
+        print(navMeshAgent.path.status);
+        for (int i = 0; i < navMeshAgent.path.corners.Length - 1; i++)
+            Debug.DrawLine(navMeshAgent.path.corners[i], navMeshAgent.path.corners[i + 1], Color.red);
+        
+        if (!_target.IsUnityNull())
         {
             if ((transform.position - _target.position).magnitude > navMeshAgent.stoppingDistance)
             {
-                _animator.SetBool(IsWalking, true);
-                navMeshAgent.destination = _target.position;
+                if (navMeshAgent.path.status == NavMeshPathStatus.PathComplete && !portalFlag && !attackFlag)
+                {
+                    print("avance");
+                    _animator.SetBool(IsWalking, true);
+                    navMeshAgent.destination = _target.position;
+                }
+                else
+                {
+                    print("idle");
+                    _animator.SetBool(IsWalking, false);
+                    navMeshAgent.destination = transform.position;
+                }
             }
             else
             {
@@ -76,7 +90,6 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
 
     private void Attack()
     {
-        print("attack");
         if (!attackFlag)
         {
             attackFlag = true;
