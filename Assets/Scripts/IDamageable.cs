@@ -1,11 +1,39 @@
 using UnityEngine;
 
-public interface IDamageable
+public abstract class IDamageable : MonoBehaviour
 { 
-    void ApplyDamaged(float damage);
+    [SerializeField] protected float _health;
+    [SerializeField] protected float healthMax; 
 
-    float GetHealth();
+    void Start()
+    {
+        _health = healthMax;
+    }
+
+    public virtual void ApplyDamaged(float damage)
+    {
+        _health -= damage;
+        if(_health > healthMax)
+            _health = healthMax;
+        if (_health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public float GetHealth()
+    {
+        return _health;
+    }
     
-    float GetHealthMax();
+    public float GetHealthMax()
+    {
+        return healthMax;
+    }
+
+    public bool IsFullHealth()
+    {
+        return _health == healthMax;
+    }
 }
 

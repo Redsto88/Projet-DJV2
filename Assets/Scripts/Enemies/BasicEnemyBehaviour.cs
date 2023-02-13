@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
+public class BasicEnemyBehaviour : IDamageable
 {
     private List<Material> _materials = new List<Material>();
     private List<Color> _initMaterialsColor = new List<Color>();
@@ -13,9 +13,7 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
 
     public bool isTest = false;
     
-    [Header("Stats")] 
-    [SerializeField] protected float healthMax = 30;
-    protected float _health;
+    [Header("Stats")]
 
     public NavMeshAgent navMeshAgent;
     protected Transform _target;
@@ -99,32 +97,11 @@ public class BasicEnemyBehaviour : MonoBehaviour, IDamageable
 
 
     // IDamageable
-    public void ApplyDamaged(float damage)
+    public override void ApplyDamaged(float damage)
     {
         StartCoroutine(ColorCoroutine());
-        _health -= damage;
-
-        if (_health <= 0)
-        {
-            if (RoomBehaviour.Instance != null)
-            {
-                RoomBehaviour.Instance.CountEnemyDeath();
-            }
-            
-            Destroy(gameObject);
-        }
+        base.ApplyDamaged(damage);
     }
-
-    public float GetHealth()
-    {
-        return _health;
-    }
-
-    public float GetHealthMax()
-    {
-        return healthMax;
-    }
-
 
     IEnumerator ColorCoroutine()
     {
