@@ -129,7 +129,7 @@ public class Portal : MonoBehaviour
                     agent.enabled = false;
 
                     //Téléportation
-                    col.gameObject.transform.position = linkPortal.transform.position;
+                    col.gameObject.transform.position = linkPortal.transform.position + new Vector3(0, 0.5f, 0);
                     col.transform.LookAt(_destinationTransition.position);
                     yield return new WaitForEndOfFrame();
 
@@ -164,7 +164,13 @@ public class Portal : MonoBehaviour
             else if(col.TryGetComponent<AProjectile>(out AProjectile projectile))
             {
                 projectile.gameObject.transform.position += linkPortal.transform.position - transform.position;
-                projectile.gameObject.transform.rotation = linkPortal.transform.rotation;
+                if(Vector3.Dot(col.transform.forward, transform.forward) > 0){
+                    projectile.gameObject.transform.rotation = Quaternion.Euler(0, linkPortal.transform.rotation.eulerAngles.y + 180, 0);
+                }
+                else
+                {
+                    projectile.gameObject.transform.rotation = linkPortal.transform.rotation;
+                }
                 yield return new WaitForEndOfFrame();
             }
             else

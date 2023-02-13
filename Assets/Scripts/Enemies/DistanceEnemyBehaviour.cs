@@ -27,6 +27,12 @@ public class DistanceEnemyBehaviour : BasicEnemyBehaviour
             else
             {
                 navMeshAgent.destination = transform.position;
+                //rotate to target
+                Vector3 targetDir = _target.position - transform.position;
+                float step = 5 * Time.deltaTime;
+                Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
+                transform.rotation = Quaternion.LookRotation(newDir);
+                
             }
             if(_cooldownTimer >= _cooldown)
             {

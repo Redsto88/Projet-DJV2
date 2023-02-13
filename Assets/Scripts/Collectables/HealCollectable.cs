@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealCollectable : ICollectable
+public class HealCollectable : ACollectable
 {
 
     [SerializeField] private float healAmount = 15f;

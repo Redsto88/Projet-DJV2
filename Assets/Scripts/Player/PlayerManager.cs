@@ -11,6 +11,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     [SerializeField] private UIHealthBar healthBar;
 
+    public int keyCount = 0;
+
     private void Awake()
     {
         if (Instance != null)
