@@ -2311,7 +2311,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 44641eadc24ee7040aa7bf2df352523f, type: 3}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: c99604c5ca64cbd468f24662774e9180, type: 3}
   mapTilePrefab: {fileID: 6754249677033874157, guid: 138cc3789ce880042ba14820de8c3cd6, type: 3}
   content: {fileID: 1972927963}
   isInit: 0
