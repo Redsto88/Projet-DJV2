@@ -63,15 +63,32 @@ public class GameManager : MonoBehaviour
 
     void GenerateDungeon()
     {
-        for (int i = 0; i < dungeonHeight; i++)
-        {
-            for (int j = 0; j < dungeonWidth; j++)
-            {
-                dungeonData[i,j] = GetRandomRoom(); //TODO prendre en compte les portes ?
-                roomState[i,j] = RoomState.NotSeen;
-                MapManager.Instance.PlaceTile(dungeonData[i,j], i, j);
-            }
-        }
+        // for (int i = 0; i < dungeonHeight; i++)
+        // {
+        //     for (int j = 0; j < dungeonWidth; j++)
+        //     {
+        //         dungeonData[i,j] = GetRandomRoom(); //TODO prendre en compte les portes ?
+        //         roomState[i,j] = RoomState.NotSeen;
+        //         MapManager.Instance.PlaceTile(dungeonData[i,j], i, j);
+        //     }
+        // }
+        dungeonData[0,0] = possibleRooms[11].roomData;
+        dungeonData[1,0] = possibleRooms[12].roomData;
+        dungeonData[2,0] = possibleRooms[13].roomData;
+        dungeonData[3,0] = possibleRooms[14].roomData;
+        dungeonData[4,0] = possibleRooms[15].roomData;
+        dungeonData[4,1] = possibleRooms[17].roomData;
+        dungeonData[5,0] = possibleRooms[16].roomData;
+        roomState[0,0] = RoomState.Seen; roomState[1,0] = RoomState.NotSeen;
+        roomState[2,0] = RoomState.NotSeen; roomState[3,0] = RoomState.NotSeen;
+        roomState[4,0] = RoomState.NotSeen; roomState[4,1] = RoomState.NotSeen; roomState[5,0] = RoomState.NotSeen;
+        MapManager.Instance.PlaceTile(dungeonData[0,0], 0, 0);
+        MapManager.Instance.PlaceTile(dungeonData[1,0], 1, 0);
+        MapManager.Instance.PlaceTile(dungeonData[2,0], 2, 0);
+        MapManager.Instance.PlaceTile(dungeonData[3,0], 3, 0);
+        MapManager.Instance.PlaceTile(dungeonData[4,0], 4, 0);
+        MapManager.Instance.PlaceTile(dungeonData[4,1], 4, 1);
+        MapManager.Instance.PlaceTile(dungeonData[5,0], 5, 0);
     }
 
     RoomData GetRandomRoom()

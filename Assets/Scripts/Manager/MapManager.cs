@@ -38,11 +38,16 @@ public class MapManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             // content.GetComponent<RectTransform>().anchoredPosition = - new Vector2(GameManager.Instance.heightPos * content.GetComponent<RectTransform>().lossyScale.x * 3.75f, GameManager.Instance.widthPos * content.GetComponent<RectTransform>().lossyScale.y * 3.75f);
             content.GetComponent<RectTransform>().anchoredPosition = - 0.007f * new Vector2(GameManager.Instance.heightPos * content.GetComponent<RectTransform>().rect.height, GameManager.Instance.widthPos * content.GetComponent<RectTransform>().rect.width);
             EnterOrExitMenu();
+            foreach (MapTile m in mapTiles)
+            {
+                m.GetComponent<RectTransform>().offsetMin = Vector2.zero;
+                m.GetComponent<RectTransform>().offsetMax = Vector2.zero;
+            }
         }
     }
 
@@ -53,6 +58,8 @@ public class MapManager : MonoBehaviour
         tile.GetComponent<RectTransform>().anchorMin = new Vector2(0.4975f,0.4975f) + 0.007f * new Vector2(h, w);
         tile.GetComponent<RectTransform>().anchorMax = new Vector2(0.5025f,0.5025f) + 0.007f * new Vector2(h, w);
         tile.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        tile.GetComponent<RectTransform>().offsetMin = Vector2.zero;
+        tile.GetComponent<RectTransform>().offsetMax = Vector2.zero;
         tile.transform.localRotation = Quaternion.identity;
         tile.transform.localScale = Vector3.one;
         tile.GetComponent<MapTile>().upDoorIcn.SetActive(roomData.hasUpDoor);
