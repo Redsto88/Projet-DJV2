@@ -40,8 +40,8 @@ public class MapManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            // content.GetComponent<RectTransform>().offsetMin = new Vector2(0.475f,0.475f) + 0.05f * new Vector2(GameManager.Instance.heightPos, GameManager.Instance.widthPos);
-            // content.GetComponent<RectTransform>().offsetMax = new Vector2(0.525f,0.525f) + 0.05f * new Vector2(GameManager.Instance.heightPos, GameManager.Instance.widthPos);
+            // content.GetComponent<RectTransform>().anchoredPosition = - new Vector2(GameManager.Instance.heightPos * content.GetComponent<RectTransform>().lossyScale.x * 3.75f, GameManager.Instance.widthPos * content.GetComponent<RectTransform>().lossyScale.y * 3.75f);
+            content.GetComponent<RectTransform>().anchoredPosition = - 0.007f * new Vector2(GameManager.Instance.heightPos * content.GetComponent<RectTransform>().rect.height, GameManager.Instance.widthPos * content.GetComponent<RectTransform>().rect.width);
             EnterOrExitMenu();
         }
     }
