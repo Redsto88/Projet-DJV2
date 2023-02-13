@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe5c1187e22e5b418ca81120f3d120b, type: 3}
+  m_Name: AttackTutorial
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 8695088214496809366, guid: 3ccac1c15e94cb7458d4bb7a5480b1e9, type: 3}
+  isDiscovered: 0
+  isDestroyed: 0
+  hasUpDoor: 1
+  hasLeftDoor: 0
+  hasRightDoor: 0
+  hasDownDoor: 1
+  mapType: 1
