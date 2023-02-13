@@ -659,7 +659,7 @@ MonoBehaviour:
   - roomData: {fileID: 11400000, guid: 82335c5ada82cfe48ba3731aa1901764, type: 2}
     weight: 2
   - roomData: {fileID: 11400000, guid: 2c0494ae1cd91324a9fac55476978cd8, type: 2}
-    weight: 500
+    weight: 4000
   heightPos: 0
   widthPos: 0
 --- !u!4 &469644716
@@ -1452,6 +1452,7 @@ MonoBehaviour:
   mapTilePrefab: {fileID: 6754249677033874157, guid: 138cc3789ce880042ba14820de8c3cd6, type: 3}
   content: {fileID: 31535003}
   isInit: 0
+  paused: 0
 --- !u!114 &1808685089
 MonoBehaviour:
   m_ObjectHideFlags: 0
