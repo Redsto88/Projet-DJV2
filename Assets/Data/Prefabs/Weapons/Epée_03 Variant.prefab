@@ -7,10 +7,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11761470252486177, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11761470252486177, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 11761470252486177, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 284430302883497067, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 284430302883497067, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 284430302883497067, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: InitialModule.startSizeZ.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 284430302883497067, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 284430302883497067, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: InitialModule.startSizeY.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 284430302883497067, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: InitialModule.startSizeZ.minScalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 702567725814955807, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 98ef1269aca7233419968b8211124aae, type: 2}
+      objectReference: {fileID: 2100000, guid: 07ac6d413fcf82945b6b9730e2c641d9, type: 2}
     - target: {fileID: 1351354697288851146, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
       propertyPath: m_Name
       value: "Ep\xE9e_03 Variant"
@@ -75,6 +111,34 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -5495902117074765545, guid: b9ba0a8f2144bc742b45369e83d4b528, type: 3}
+    - target: {fileID: 4012648203210952883, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012648203210952883, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012648203210952883, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012648203210952883, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: TrailModule.widthOverTrail.maxCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634199703792200008, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634199703792200008, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634199703792200008, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01023
+      objectReference: {fileID: 0}
     - target: {fileID: 7923100273935108689, guid: 28af29d2b5923b14ebacbc27756e0fe8, type: 3}
       propertyPath: m_Size.x
       value: 0.003
