@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MapManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MapManager : MonoBehaviour
     private MapTile[,] mapTiles;
 
     public bool isInit = false;
+    public bool paused = false;
 
     void Awake()
     {
@@ -38,8 +40,9 @@ public class MapManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            content.GetComponent<RectTransform>().anchoredPosition = -60 * new Vector3(GameManager.Instance.heightPos, GameManager.Instance.widthPos, 0);
-            transform.GetChild(0).gameObject.SetActive(!transform.GetChild(0).gameObject.activeSelf);
+            // content.GetComponent<RectTransform>().offsetMin = new Vector2(0.475f,0.475f) + 0.05f * new Vector2(GameManager.Instance.heightPos, GameManager.Instance.widthPos);
+            // content.GetComponent<RectTransform>().offsetMax = new Vector2(0.525f,0.525f) + 0.05f * new Vector2(GameManager.Instance.heightPos, GameManager.Instance.widthPos);
+            EnterOrExitMenu();
         }
     }
 
@@ -47,9 +50,11 @@ public class MapManager : MonoBehaviour
     {
         var tile = Instantiate(mapTilePrefab);
         tile.transform.SetParent(content);
-        tile.GetComponent<RectTransform>().anchoredPosition = 60 * new Vector3(h,w,0);
+        tile.GetComponent<RectTransform>().anchorMin = new Vector2(0.4975f,0.4975f) + 0.007f * new Vector2(h, w);
+        tile.GetComponent<RectTransform>().anchorMax = new Vector2(0.5025f,0.5025f) + 0.007f * new Vector2(h, w);
+        tile.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         tile.transform.localRotation = Quaternion.identity;
-        tile.GetComponent<RectTransform>().localScale = 0.1f * Vector3.one;
+        tile.transform.localScale = Vector3.one;
         tile.GetComponent<MapTile>().upDoorIcn.SetActive(roomData.hasUpDoor);
         tile.GetComponent<MapTile>().leftDoorIcn.SetActive(roomData.hasLeftDoor);
         tile.GetComponent<MapTile>().rightDoorIcn.SetActive(roomData.hasRightDoor);
@@ -83,5 +88,24 @@ public class MapManager : MonoBehaviour
         if (GameManager.Instance.GetCurrentRoomData().hasLeftDoor && w+1 < GameManager.Instance.dungeonWidth && GameManager.Instance.GetRoomData(h,w+1).hasRightDoor) TileSeen(h,w+1);
         if (GameManager.Instance.GetCurrentRoomData().hasDownDoor && h > 0 && GameManager.Instance.GetRoomData(h-1,w).hasUpDoor) TileSeen(h-1,w);
         if (GameManager.Instance.GetCurrentRoomData().hasRightDoor && w > 0 && GameManager.Instance.GetRoomData(h,w-1).hasLeftDoor) TileSeen(h,w-1);
+    }
+
+    public void EnterOrExitMenu()
+    {
+        paused = !paused;
+        if (paused) TimeManager.Instance.Pause();
+        else TimeManager.Instance.Unpause();
+        transform.GetChild(0).gameObject.SetActive(paused);
+    }
+
+    public void GoToMainMenu()
+    {
+        EnterOrExitMenu();
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void ShowOptions()
+    {
+
     }
 }

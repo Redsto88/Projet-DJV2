@@ -43,4 +43,16 @@ public class TimeManager : MonoBehaviour
             yield return null;
         }
     }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        Time.fixedDeltaTime = 0;
+    }
+
+    public void Unpause()
+    {
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f;
+    }
 }
