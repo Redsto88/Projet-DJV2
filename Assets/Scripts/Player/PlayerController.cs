@@ -55,7 +55,10 @@ public class PlayerController : MonoBehaviour
 
             // Gravité
             RaycastHit hit;
-            if (Physics.Raycast(highControl.position, highControl.up * -1, out hit, _highCheck+ 0.0001f))
+            
+            var layerInt = LayerMask.GetMask("Ground");
+            
+            if (Physics.Raycast(highControl.position, highControl.up * -1, out hit, _highCheck+ 0.0001f, layerInt))
             {
                 Debug.DrawRay(highControl.position, highControl.up * (-1 * hit.distance), Color.green);
                 _isGrounded = true;

@@ -21,6 +21,7 @@ public class PortalCursor : MonoBehaviour
         Cursor.visible = false;
 
         _renderer = GetComponent<Renderer>();
+        _renderer.material.color = Color.cyan;
         _cursorPos = new Vector2(Screen.width / 2, Screen.height / 2);
     }
 
@@ -42,15 +43,17 @@ public class PortalCursor : MonoBehaviour
 
         var layerInt = LayerMask.GetMask("Ground");
         
+        
+        //TODO optimiser ça
         if (Physics.Raycast(ray, out var x, Mathf.Infinity, layerInt, QueryTriggerInteraction.UseGlobal))
         {
             // if (x.collider.gameObject.layer == 3)
             // {
                 canSpawnPortal = true;
                 transform.position = x.point;
-                if (!_renderer.enabled)
+                if (_renderer.material.color != Color.green)
                 {
-                    _renderer.enabled = true;
+                    _renderer.material.color = Color.green;
                 }
             // }
             // else
@@ -62,12 +65,13 @@ public class PortalCursor : MonoBehaviour
             //     }
             // }
         }
-        else 
+        else if (Physics.Raycast(ray, out var y, Mathf.Infinity, ~layerInt, QueryTriggerInteraction.UseGlobal))
         {
             canSpawnPortal = false;
-            if(_renderer.enabled)
+            transform.position = y.point;
+            if(_renderer.material.color != Color.red)
             {
-                _renderer.enabled = false;
+                _renderer.material.color = Color.red;
             }
         }
     }
