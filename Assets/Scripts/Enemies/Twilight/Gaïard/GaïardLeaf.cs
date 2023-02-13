@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GaïardLeaf : MonoBehaviour
+public class GaïardLeaf : AProjectile
 {
     public bool go = false;
     public float shotSpeed;

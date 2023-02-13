@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -26,7 +27,7 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        openClose.SetActive(isOpen);
+        //openClose.SetActive(isOpen);
         print(isOpen);
         if (isOpen && !_doorAnim)
         {
@@ -35,7 +36,7 @@ public class Door : MonoBehaviour
         }
         if (_isNear && isOpen)
         {
-            if (Input.GetKeyDown(KeyCode.Space)) //TODO Show interaction button
+            if (Input.GetButton("Interaction")) //TODO Show interaction button
             {
                 StartCoroutine(RoomBehaviour.Instance.useDoor(corner));
             }
@@ -47,6 +48,7 @@ public class Door : MonoBehaviour
         if (col.gameObject.GetComponent<PlayerController>() == PlayerController.Instance) //TODO optim ?
         {
             _isNear = true;
+            PlayerController.Instance.GetComponentInChildren<UITexts>().ToggleInteractionText();
         }
     }
 
@@ -55,6 +57,7 @@ public class Door : MonoBehaviour
         if (col.gameObject.GetComponent<PlayerController>() == PlayerController.Instance) //TODO optim ?
         {
             _isNear = false;
+            PlayerController.Instance.GetComponentInChildren<UITexts>().ToggleInteractionText();
         }
     }
 }
