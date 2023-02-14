@@ -402,11 +402,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 0
-<<<<<<< Updated upstream
+
   healthMax: 300
-=======
-  healthMax: 100
->>>>>>> Stashed changes
+
   healthBar: {fileID: 5498758815292042116}
   keyCount: 0
 --- !u!1 &5498758815223860999
