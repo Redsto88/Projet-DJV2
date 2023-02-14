@@ -29,6 +29,9 @@
         },
         {
             "m_Id": "100a6b5fb98247778f9b08901f2013ec"
+        },
+        {
+            "m_Id": "926026fe9dd9403b8be928efbf645d4b"
         }
     ],
     "m_Keywords": [],
@@ -137,6 +140,9 @@
         },
         {
             "m_Id": "663c735460b145c8848add595cb011c1"
+        },
+        {
+            "m_Id": "db23823764b04066a3b7408f65bc7ee3"
         }
     ],
     "m_GroupDatas": [],
@@ -446,6 +452,20 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "e4eceab9804141089435e97908e52457"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "db23823764b04066a3b7408f65bc7ee3"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "5fa82beaef49445da10a6c54e3cf8cfd"
                 },
                 "m_SlotId": 0
             }
@@ -1078,6 +1098,9 @@
         },
         {
             "m_Id": "e8049f0d32564d1d82de8766a248a216"
+        },
+        {
+            "m_Id": "926026fe9dd9403b8be928efbf645d4b"
         },
         {
             "m_Id": "20ac94ef229a48b2a5ea6b47c4aeaa6b"
@@ -1751,7 +1774,7 @@
     },
     "m_Name": "Subtract",
     "m_DrawState": {
-        "m_Expanded": false,
+        "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
             "x": -227.20001220703126,
@@ -1963,6 +1986,21 @@
     "m_ShaderOutputName": "Out",
     "m_StageCapability": 3,
     "m_BareResource": false
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "69ff223f32ee4db1a6ae24af6f7efc73",
+    "m_Id": 0,
+    "m_DisplayName": "Roughness Control",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {
@@ -2304,6 +2342,33 @@
     "m_TextureType": 0,
     "m_NormalMapSpace": 0,
     "m_EnableGlobalMipBias": true
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "926026fe9dd9403b8be928efbf645d4b",
+    "m_Guid": {
+        "m_GuidSerialized": "1d0ece6b-db12-4c09-9310-cc764b8e5aa9"
+    },
+    "m_Name": "Roughness Control",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Roughness Control",
+    "m_DefaultReferenceName": "_Roughness_Control",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 1.0,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
 }
 
 {
@@ -3178,6 +3243,41 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "db23823764b04066a3b7408f65bc7ee3",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -295.20001220703127,
+            "y": 354.4000244140625,
+            "width": 174.40000915527345,
+            "height": 33.599945068359378
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "69ff223f32ee4db1a6ae24af6f7efc73"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "926026fe9dd9403b8be928efbf645d4b"
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "dbd6eeb5d6574d01bd4d4f7072817492",
     "m_Id": 0,
@@ -3668,7 +3768,7 @@
         "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
         "m_Guid": ""
     },
-    "m_DefaultType": 0
+    "m_DefaultType": 3
 }
 
 {

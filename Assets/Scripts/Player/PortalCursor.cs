@@ -9,6 +9,9 @@ public class PortalCursor : MonoBehaviour
     public bool canSpawnPortal;
     public bool usingMouseInput;
 
+    [SerializeField] private Material enableMaterial;
+    [SerializeField] private Material disableMaterial;
+    
     [Header("For Gamepad Controls Only")] 
     public float cursorSpeed = 10;
     
@@ -51,9 +54,9 @@ public class PortalCursor : MonoBehaviour
             // {
                 canSpawnPortal = true;
                 transform.position = x.point;
-                if (_renderer.material.color != Color.green)
+                if (_renderer.material != enableMaterial)
                 {
-                    _renderer.material.color = Color.green;
+                    _renderer.material = enableMaterial;
                 }
             // }
             // else
@@ -69,9 +72,9 @@ public class PortalCursor : MonoBehaviour
         {
             canSpawnPortal = false;
             transform.position = y.point;
-            if(_renderer.material.color != Color.red)
+            if(_renderer.material != disableMaterial)
             {
-                _renderer.material.color = Color.red;
+                _renderer.material = disableMaterial;
             }
         }
     }
