@@ -8,8 +8,8 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: f53f5fc499d31e44b9deee84d28a9ee8, type: 3}
-  rootGameObjectId: 
-  rootGameObjectName: 
+  rootGameObjectId: RootsDoor
+  rootGameObjectName: RootsDoor
   streamSettings:
     normals: 1
     tangents: 1
@@ -29,9 +29,9 @@ ScriptedImporter:
     importCurves: 1
     createCurveRenderers: 0
   abcStartTime: 0.041666666666666664
-  abcEndTime: 9.583333333333332
+  abcEndTime: 4.791666666666667
   startTime: 0.041666666666666664
-  endTime: 9.583333333333332
+  endTime: 4.791666666666667
   importWarning: 
   firstImport: 0
   isHDF5: 0

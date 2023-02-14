@@ -18,7 +18,7 @@ public class RespawnAfterFall : MonoBehaviour
                 PlayerController.Instance.characterController.enabled = false;
                 damageable.ApplyDamaged(10);
                 PlayerController.Instance.transform.position = respawnTransform.position;
-                PlayerController.Instance.transform.rotation = respawnTransform.rotation;
+                PlayerController.Instance.playerPivot.transform.rotation = respawnTransform.rotation;
                 PlayerController.Instance.characterController.enabled = true;
             }
         }
