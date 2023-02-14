@@ -144,10 +144,10 @@ public class GameManager : MonoBehaviour
     {
         switch (corner)
         {
-            case Door.Corner.Up: if (heightPos+1 < dungeonHeight) return dungeonData[heightPos+1, widthPos].hasDownDoor; break;
-            case Door.Corner.Left: if (widthPos+1 < dungeonWidth) return dungeonData[heightPos, widthPos+1].hasRightDoor; break;
-            case Door.Corner.Right: if (widthPos > 0) return dungeonData[heightPos, widthPos-1].hasLeftDoor; break;
-            case Door.Corner.Down: if (heightPos > 0) return dungeonData[heightPos-1, widthPos].hasUpDoor; break;
+            case Door.Corner.Up: if (heightPos+1 < dungeonHeight) return dungeonData[heightPos+1, widthPos] != null && dungeonData[heightPos+1, widthPos].hasDownDoor; break;
+            case Door.Corner.Left: if (widthPos+1 < dungeonWidth) return dungeonData[heightPos, widthPos+1] != null && dungeonData[heightPos, widthPos+1].hasRightDoor; break;
+            case Door.Corner.Right: if (widthPos > 0) return dungeonData[heightPos, widthPos-1] != null && dungeonData[heightPos, widthPos-1].hasLeftDoor; break;
+            case Door.Corner.Down: if (heightPos > 0) return dungeonData[heightPos-1, widthPos] != null && dungeonData[heightPos-1, widthPos].hasUpDoor; break;
         }
         return false;
     }

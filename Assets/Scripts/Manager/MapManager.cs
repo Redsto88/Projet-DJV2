@@ -43,11 +43,11 @@ public class MapManager : MonoBehaviour
             // content.GetComponent<RectTransform>().anchoredPosition = - new Vector2(GameManager.Instance.heightPos * content.GetComponent<RectTransform>().lossyScale.x * 3.75f, GameManager.Instance.widthPos * content.GetComponent<RectTransform>().lossyScale.y * 3.75f);
             content.GetComponent<RectTransform>().anchoredPosition = - 0.007f * new Vector2(GameManager.Instance.heightPos * content.GetComponent<RectTransform>().rect.height, GameManager.Instance.widthPos * content.GetComponent<RectTransform>().rect.width);
             EnterOrExitMenu();
-            foreach (MapTile m in mapTiles)
-            {
-                m.GetComponent<RectTransform>().offsetMin = Vector2.zero;
-                m.GetComponent<RectTransform>().offsetMax = Vector2.zero;
-            }
+            // foreach (MapTile m in mapTiles)
+            // {
+            //     m.GetComponent<RectTransform>().offsetMin = Vector2.zero;
+            //     m.GetComponent<RectTransform>().offsetMax = Vector2.zero;
+            // }
         }
     }
 
@@ -91,10 +91,10 @@ public class MapManager : MonoBehaviour
     {
         mapTiles[h,w].notPresentMask.SetActive(false);
         mapTiles[h,w].grayed.SetActive(false);
-        if (GameManager.Instance.GetCurrentRoomData().hasUpDoor && h+1 < GameManager.Instance.dungeonHeight && GameManager.Instance.GetRoomData(h+1,w).hasDownDoor) TileSeen(h+1,w);
-        if (GameManager.Instance.GetCurrentRoomData().hasLeftDoor && w+1 < GameManager.Instance.dungeonWidth && GameManager.Instance.GetRoomData(h,w+1).hasRightDoor) TileSeen(h,w+1);
-        if (GameManager.Instance.GetCurrentRoomData().hasDownDoor && h > 0 && GameManager.Instance.GetRoomData(h-1,w).hasUpDoor) TileSeen(h-1,w);
-        if (GameManager.Instance.GetCurrentRoomData().hasRightDoor && w > 0 && GameManager.Instance.GetRoomData(h,w-1).hasLeftDoor) TileSeen(h,w-1);
+        if (GameManager.Instance.GetCurrentRoomData().hasUpDoor && h+1 < GameManager.Instance.dungeonHeight && GameManager.Instance.GetRoomData(h+1,w) != null && GameManager.Instance.GetRoomData(h+1,w).hasDownDoor) TileSeen(h+1,w);
+        if (GameManager.Instance.GetCurrentRoomData().hasLeftDoor && w+1 < GameManager.Instance.dungeonWidth && GameManager.Instance.GetRoomData(h,w+1) != null && GameManager.Instance.GetRoomData(h,w+1).hasRightDoor) TileSeen(h,w+1);
+        if (GameManager.Instance.GetCurrentRoomData().hasDownDoor && h > 0 && GameManager.Instance.GetRoomData(h-1,w) != null && GameManager.Instance.GetRoomData(h-1,w).hasUpDoor) TileSeen(h-1,w);
+        if (GameManager.Instance.GetCurrentRoomData().hasRightDoor && w > 0 && GameManager.Instance.GetRoomData(h,w-1) != null && GameManager.Instance.GetRoomData(h,w-1).hasLeftDoor) TileSeen(h,w-1);
     }
 
     public void EnterOrExitMenu()

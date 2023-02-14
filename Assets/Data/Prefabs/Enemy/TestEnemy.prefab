@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc82a2a0155eb034691efeeffa4f089d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 0
+  healthMax: 30
   curve:
     serializedVersion: 2
     m_Curve:
@@ -82,7 +84,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  healthMax: 30
+  isTest: 0
   navMeshAgent: {fileID: 0}
   portalFlag: 0
   attackFlag: 0
@@ -317,3 +319,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  trail: {fileID: 0}

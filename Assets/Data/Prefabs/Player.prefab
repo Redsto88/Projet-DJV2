@@ -215,8 +215,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632a02cf77b122e4fb4b16955569451c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthMax: 100
+  _health: 0
+  healthMax: 300
   healthBar: {fileID: 5498758815292042116}
+  keyCount: 0
 --- !u!1 &5498758815223860999
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,7 +682,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &5498758816088913630
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -697,7 +699,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &5498758816088913625
 MonoBehaviour:
   m_ObjectHideFlags: 0

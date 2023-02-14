@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   go: 0
   shotSpeed: 20
-  damage: 7
+  damage: 30
 --- !u!136 &5734003440138836479
 CapsuleCollider:
   m_ObjectHideFlags: 0

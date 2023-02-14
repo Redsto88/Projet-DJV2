@@ -101,6 +101,7 @@ public class BasicEnemyBehaviour : IDamageable
     {
         StartCoroutine(ColorCoroutine());
         base.ApplyDamaged(damage);
+        if (_health <= 0) RoomBehaviour.Instance.CountEnemyDeath();
     }
 
     IEnumerator ColorCoroutine()
