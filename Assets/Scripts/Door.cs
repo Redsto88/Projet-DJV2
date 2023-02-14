@@ -28,7 +28,6 @@ public class Door : MonoBehaviour
     void Update()
     {
         //openClose.SetActive(isOpen);
-        print(isOpen);
         if (isOpen && !_doorAnim)
         {
             _doorAnim = true;

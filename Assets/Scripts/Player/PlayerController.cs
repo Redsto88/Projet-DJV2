@@ -82,11 +82,11 @@ public class PlayerController : MonoBehaviour
             characterController.Move(direction * (speed * Time.deltaTime));
 
             // Rotation du joueur
+            direction.y = 0;
             if (direction == Vector3.zero)
             {
                 direction = playerPivot.transform.forward;
             }
-            direction.y = 0;
             Quaternion tr = Quaternion.LookRotation(direction);
             playerPivot.transform.rotation = Quaternion.Slerp(playerPivot.transform.rotation, tr, rotationSpeed * Time.deltaTime);
         }
