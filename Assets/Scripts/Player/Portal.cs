@@ -10,6 +10,16 @@ public class Portal : MonoBehaviour
     public Portal linkPortal;
     public PortalCursor portalCursor;
 
+    [Header("Use in destruction")] 
+    public Material fwdMaterial;
+    [SerializeField] private GameObject fwdPortal;
+    public ParticleSystem fwdParticules;
+    public ParticleSystem fwdBlackBeam;
+    public Material bwdMaterial;
+    [SerializeField] private GameObject bwdPortal;
+    public ParticleSystem bwdParticules;
+    public ParticleSystem bwdBlackBeam;
+
     public Transform transitionFwd;
     public Transform transitionBwd;
     private Transform _destinationTransition;
@@ -19,6 +29,8 @@ public class Portal : MonoBehaviour
     public bool IsSpawned => _isSpawned;
     private void OnEnable()
     {
+        fwdMaterial = fwdPortal.GetComponent<Renderer>().material;
+        bwdMaterial = bwdPortal.GetComponent<Renderer>().material;
         StartCoroutine(OrientationCoroutine());
     }
 

@@ -13,6 +13,13 @@ public class SpawnPortal : MonoBehaviour
     [SerializeField] private int nbMaxPortal;
     private int _nbPortal;
     private List<Portal> _portals = new List<Portal>();
+    
+    private ParticleSystem.EmissionModule _emissionModule1;
+    private ParticleSystem.EmissionModule _emissionModule2;
+    private ParticleSystem.EmissionModule _emissionModule3;
+    private ParticleSystem.EmissionModule _emissionModule4;
+    private static readonly int DissolveAmount = Shader.PropertyToID("_DissolveAmount");
+
 
     private void Update()
     {
@@ -44,7 +51,7 @@ public class SpawnPortal : MonoBehaviour
         // On supprime tous les portails et on vide la mémoire
         foreach (var portal in _portals)
         {
-            StartCoroutine(DestroyPortalCoroutine(portal.gameObject));
+            StartCoroutine(DestroyPortalCoroutine(portal));
         }
         _nbPortal = 0;
         _portals.Clear();
@@ -58,10 +65,33 @@ public class SpawnPortal : MonoBehaviour
         }
     }
 
-    IEnumerator DestroyPortalCoroutine(GameObject go)
+    IEnumerator DestroyPortalCoroutine(Portal portal)
     {
-        yield return new WaitForSeconds(0.2f);
-        Destroy(go);
+        _emissionModule1 = portal.fwdParticules.emission;
+        _emissionModule1.enabled = false;
+        _emissionModule2 = portal.fwdBlackBeam.emission;
+        _emissionModule2.enabled = false;
+        _emissionModule3 = portal.bwdParticules.emission;
+        _emissionModule3.enabled = false;
+        _emissionModule4 = portal.bwdBlackBeam.emission;
+        _emissionModule4.enabled = false;
+        
+        float timeElapsed = 0;
+        float lerpDuration = 1f;
+        while (timeElapsed < lerpDuration)
+        {
+            print("portal disparition");
+            portal.fwdMaterial.SetFloat(DissolveAmount,Mathf.Lerp(2, 17, timeElapsed / lerpDuration));
+            portal.bwdMaterial.SetFloat(DissolveAmount, Mathf.Lerp(2, 17, timeElapsed / lerpDuration));
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        portal.fwdMaterial.SetFloat(DissolveAmount,17);
+        portal.bwdMaterial.SetFloat(DissolveAmount,17);
+
+        
+        
+        Destroy(portal.gameObject);
     }
     
 }
