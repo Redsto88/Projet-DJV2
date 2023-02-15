@@ -349,6 +349,8 @@ MonoBehaviour:
   camera: {fileID: 0}
   canSpawnPortal: 0
   usingMouseInput: 1
+  enableMaterial: {fileID: 2100000, guid: 47e936c23e5218b4c8573dc904a6567b, type: 2}
+  disableMaterial: {fileID: 2100000, guid: ca111e42752f60b4fab05952a434d6a2, type: 2}
   cursorSpeed: 700
 --- !u!1 &2008821567
 GameObject:
@@ -477,7 +479,8 @@ MonoBehaviour:
   highControl: {fileID: 5498758815725154444}
   playerPivot: {fileID: 5498758815255444211}
   characterController: {fileID: 0}
-  portalFlag: 1
+  portalFlag: 0
+  respawnFlag: 0
 --- !u!114 &5498758814783280176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,8 +521,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 0
-  healthMax: 0
-  healthBar: {fileID: 0}
+  healthMax: 300
+  healthBar: {fileID: 5498758815292042116}
   keyCount: 0
 --- !u!1 &5498758815223860999
 GameObject:
@@ -1269,7 +1272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4053148590064684194, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4053148590064684195, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
       propertyPath: m_Pivot.x
@@ -1363,6 +1366,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4053148591388480091, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 193.92964
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053148591388480091, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -21.419945
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053148591388480091, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 96.96515
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053148591388480091, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 10.710029
+      objectReference: {fileID: 0}
     - target: {fileID: 4053148591887392864, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -1374,3 +1393,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4053148590064684195, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
   m_PrefabInstance: {fileID: 8390251362273884636}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5498758815292042116 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4053148591388480088, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+  m_PrefabInstance: {fileID: 8390251362273884636}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f031c05499c2c4da65857a903780c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
