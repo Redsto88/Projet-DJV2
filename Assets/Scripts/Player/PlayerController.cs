@@ -13,8 +13,10 @@ public class PlayerController : MonoBehaviour
     
     public  GameObject playerPivot;
     public CharacterController characterController;
+    
     public bool portalFlag;
-
+    public bool respawnFlag;
+    
     private float _highCheck;
     private bool _isGrounded;
     private float _gravity = 9.8f;
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
         }
 
         portalFlag = false;
+        respawnFlag = false;
     }
 
     // Start is called before the first frame update
@@ -44,7 +47,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!portalFlag)
+        if (!portalFlag && !respawnFlag)
         {
             // Déplacement du joueur
             Vector3 direction = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +8,16 @@ public class UIHealthBar : MonoBehaviour
 {
 
     [SerializeField] private Image _health;
-    
-    public float _max_health = 100;
 
+    private float _maxHealth;
+
+    private void Start()
+    {
+        _maxHealth = PlayerManager.Instance.GetHealthMax();
+    }
 
     public void SetHealth(float health)
     {
-        _health.rectTransform.anchorMax = new Vector2(health / _max_health, 1);
+        _health.rectTransform.anchorMax = new Vector2(health / _maxHealth, 1);
     }
 }
