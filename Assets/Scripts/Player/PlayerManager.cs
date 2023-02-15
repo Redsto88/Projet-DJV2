@@ -9,6 +9,8 @@ public class PlayerManager : IDamageable
 
     [SerializeField] private UIHealthBar healthBar;
 
+    [SerializeField] private float money = 0f;
+
     public int keyCount = 0;
 
     private void Awake()
@@ -29,5 +31,11 @@ public class PlayerManager : IDamageable
         base.ApplyDamaged(damage);
         healthBar.SetHealth(_health);
         //TODO fin de partie : défaite
+    }
+
+
+    public void AddMoney(float money)
+    {
+        this.money += money;
     }
 }
