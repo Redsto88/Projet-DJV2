@@ -115,6 +115,8 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _EmissionNoise: 1
+    - _EmissionNoiseSpeed: 1.7
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0.333
     - _Glossiness: 0.5
