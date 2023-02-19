@@ -44,8 +44,7 @@ public class VerticalMovement : MonoBehaviour
         }
 
         transform.position += movement * (_speed * Time.deltaTime);
-
-        print((transform.position.y - _positionTop.y > 0f) + "   //    " + (transform.position.y - _positionBottom.y < 0f));
+        
         if (transform.position.y - _positionTop.y > 0f)
         {
             _isGoingUp = false;
