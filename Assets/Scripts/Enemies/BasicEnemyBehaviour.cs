@@ -120,7 +120,7 @@ public class BasicEnemyBehaviour : IDamageable
             {
                 var material = _materials[i];
 
-                material.color = Color.Lerp(_initMaterialsColor[i], 10*Color.white, curve.Evaluate(duration - timeLeft));
+                material.color = Color.Lerp(_initMaterialsColor[i], 3*Color.white, curve.Evaluate(duration - timeLeft));
             }
 
             timeLeft -= Time.deltaTime;
