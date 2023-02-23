@@ -100,7 +100,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1023
 --- !u!1 &4053148590301073632
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 4053148591887392862}
-  _max_health: 100
 --- !u!1 &4053148591887392864
 GameObject:
   m_ObjectHideFlags: 0
