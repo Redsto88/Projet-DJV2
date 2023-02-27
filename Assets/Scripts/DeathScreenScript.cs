@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class DeathScreenScript : MonoBehaviour
 {
@@ -36,5 +37,22 @@ public class DeathScreenScript : MonoBehaviour
             yield return null;
         }
 
+    }
+
+
+    void Update()
+    {
+        Vector2 axis = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (axis.magnitude > 0 && EventSystem.current.currentSelectedGameObject == null)
+        {
+            SetSelected();
+        }
+    }
+
+    void SetSelected(){
+        List<Button> buttonList = new List<Button>(GetComponentsInChildren<Button>());
+        //get the first active button
+        Button firstButton = buttonList.Find(x => x.gameObject.activeInHierarchy);
+        EventSystem.current.SetSelectedGameObject(firstButton.gameObject);
     }
 }

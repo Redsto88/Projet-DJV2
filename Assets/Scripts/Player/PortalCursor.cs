@@ -5,7 +5,7 @@ using Cursor = UnityEngine.Cursor;
 
 public class PortalCursor : MonoBehaviour
 {
-    private Camera camera;
+    private new Camera camera;
     public bool canSpawnPortal;
     public bool usingMouseInput;
 
@@ -42,10 +42,10 @@ public class PortalCursor : MonoBehaviour
             _cursorPos.y = Mathf.Clamp(_cursorPos.y, 0, Screen.height - 1);
         }
         
+        if(camera == null) return;
         var ray = camera.ScreenPointToRay(_cursorPos);
 
         var layerInt = LayerMask.GetMask("Ground");
-        
         
         //TODO optimiser ça
         if (Physics.Raycast(ray, out var x, Mathf.Infinity, layerInt, QueryTriggerInteraction.UseGlobal))

@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
         //         MapManager.Instance.PlaceTile(dungeonData[i,j], i, j);
         //     }
         // }
+        heightPos = 0;
+        widthPos = 0;
         dungeonData[0,0] = possibleRooms[11].roomData;
         dungeonData[1,0] = possibleRooms[12].roomData;
         dungeonData[2,0] = possibleRooms[13].roomData;
@@ -207,6 +209,7 @@ public class GameManager : MonoBehaviour
     public void OnRestart()
     {
         //TODO CHANGE THIS
+        GenerateDungeon();
         Instantiate(playerPrefab);
         Cursor.lockState = CursorLockMode.Locked;
     }

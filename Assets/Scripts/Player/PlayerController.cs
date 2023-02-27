@@ -54,16 +54,24 @@ public class PlayerController : MonoBehaviour
             RaycastHit hit;
             
             var layerInt = LayerMask.GetMask("Ground");
-            
-            if (Physics.Raycast(highControl.position, highControl.up * -1, out hit, _highCheck+ 0.0001f))
-            {
-                Debug.DrawRay(highControl.position, highControl.up * (-1 * hit.distance), Color.green);
-                _isGrounded = true;
-            }
-            else
-            {
-                Debug.DrawRay(highControl.position, highControl.up * -2, Color.red);
-                _isGrounded = false;
+
+            //launch n raycast around the player to check if he is grounded
+            _isGrounded = false;
+            float rayon = 0.5f;
+            int n = 10;
+            for(int i=0; i<n; i++){
+                float angle = i * 2 * Mathf.PI / n;
+                Vector3 dir = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
+                dir *= rayon;
+                if (Physics.Raycast(highControl.position + dir, highControl.up * -1, out hit, _highCheck+ 0.0001f))
+                {
+                    Debug.DrawRay(highControl.position + dir, highControl.up * (-1 * hit.distance), Color.green);
+                    _isGrounded = true;
+                }
+                else
+                {
+                    Debug.DrawRay(highControl.position + dir, highControl.up * -2, Color.red);
+                }
             }
             
             if (_isGrounded)

@@ -45,6 +45,7 @@ public class MovingButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         move = StartCoroutine(hide());
         Debug.Log("exited");
     }
+    
 
     IEnumerator hide()
     {
