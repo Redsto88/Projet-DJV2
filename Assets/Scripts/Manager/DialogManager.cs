@@ -11,8 +11,11 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject baseImage;
     [SerializeField] private TextMeshProUGUI txt;
+    
+    [SerializeField] private TextMeshProUGUI charName;
     [SerializeField] private DialogData test;
-    private List<RectTransform> characters;
+    private List<RectTransform> characterHolders;
+    private List<DialogCharacter> characters;
     private CanvasGroup cg;
     private bool skipDialog;
 
@@ -30,7 +33,8 @@ public class DialogManager : MonoBehaviour
     void Start()
     {
         cg = canvas.GetComponent<CanvasGroup>();
-        characters = new List<RectTransform>();
+        characterHolders = new List<RectTransform>();
+        characters = new List<DialogCharacter>();
     }
 
     // Update is called once per frame
@@ -64,28 +68,28 @@ public class DialogManager : MonoBehaviour
             {
                 img.GetComponent<RectTransform>().eulerAngles = new Vector3(0,180,0);
             }
-            characters.Add(img.GetComponent<RectTransform>());
+            characterHolders.Add(img.GetComponent<RectTransform>());
+            characters.Add(dc.character);
         }
         foreach(DialogEvent ev in dd.events)
         {
-            Debug.Log("here");
             switch (ev.type)
             {
                 case DialogEventType.Fade :
                     var timeEllapsed = 0f;
-                    var basePos = characters[ev.characterIndex].anchorMin;
-                    var rend = characters[ev.characterIndex].GetComponent<Image>();
+                    var basePos = characterHolders[ev.characterIndex].anchorMin;
+                    var rend = characterHolders[ev.characterIndex].GetComponent<Image>();
                     while (timeEllapsed < ev.transitionTime)
                     {
                         if (basePos.x <= 0.5f)
                         {
-                            characters[ev.characterIndex].anchorMin = Vector2.Lerp(basePos, basePos - new Vector2(0.2f,0), timeEllapsed/ev.transitionTime);
-                            characters[ev.characterIndex].anchorMax = Vector2.Lerp(basePos, basePos - new Vector2(0.2f,0), timeEllapsed/ev.transitionTime);
+                            characterHolders[ev.characterIndex].anchorMin = Vector2.Lerp(basePos, basePos - new Vector2(0.2f,0), timeEllapsed/ev.transitionTime);
+                            characterHolders[ev.characterIndex].anchorMax = Vector2.Lerp(basePos, basePos - new Vector2(0.2f,0), timeEllapsed/ev.transitionTime);
                         }
                         else 
                         {
-                            characters[ev.characterIndex].anchorMin = Vector2.Lerp(basePos, basePos + new Vector2(0.2f,0), timeEllapsed/ev.transitionTime);
-                            characters[ev.characterIndex].anchorMax = Vector2.Lerp(basePos, basePos + new Vector2(0.2f,0), timeEllapsed/ev.transitionTime);
+                            characterHolders[ev.characterIndex].anchorMin = Vector2.Lerp(basePos, basePos + new Vector2(0.2f,0), timeEllapsed/ev.transitionTime);
+                            characterHolders[ev.characterIndex].anchorMax = Vector2.Lerp(basePos, basePos + new Vector2(0.2f,0), timeEllapsed/ev.transitionTime);
                         }
                         rend.color = new Color(1,1,1,1 - timeEllapsed/ev.transitionTime);
                         timeEllapsed += Time.deltaTime;
@@ -94,39 +98,59 @@ public class DialogManager : MonoBehaviour
                 break;
                 case DialogEventType.Appear :
                     var timeEllapsedAppear = 0f;
-                    var basePosAppear = characters[ev.characterIndex].anchorMin;
-                    var rendAppear = characters[ev.characterIndex].GetComponent<Image>();
+                    var basePosAppear = characterHolders[ev.characterIndex].anchorMin;
+                    var rendAppear = characterHolders[ev.characterIndex].GetComponent<Image>();
                     while (timeEllapsedAppear < ev.transitionTime)
                     {
                         if (basePosAppear.x <= 0.5f)
                         {
-                            characters[ev.characterIndex].anchorMin = Vector2.Lerp(basePosAppear, basePosAppear + new Vector2(0.2f,0), timeEllapsedAppear/ev.transitionTime);
-                            characters[ev.characterIndex].anchorMax = Vector2.Lerp(basePosAppear, basePosAppear + new Vector2(0.2f,0), timeEllapsedAppear/ev.transitionTime);
+                            characterHolders[ev.characterIndex].anchorMin = Vector2.Lerp(basePosAppear, basePosAppear + new Vector2(0.2f,0), timeEllapsedAppear/ev.transitionTime);
+                            characterHolders[ev.characterIndex].anchorMax = Vector2.Lerp(basePosAppear, basePosAppear + new Vector2(0.2f,0), timeEllapsedAppear/ev.transitionTime);
                         }
                         else 
                         {
-                            characters[ev.characterIndex].anchorMin = Vector2.Lerp(basePosAppear, basePosAppear - new Vector2(0.2f,0), timeEllapsedAppear/ev.transitionTime);
-                            characters[ev.characterIndex].anchorMax = Vector2.Lerp(basePosAppear, basePosAppear - new Vector2(0.2f,0), timeEllapsedAppear/ev.transitionTime);
+                            characterHolders[ev.characterIndex].anchorMin = Vector2.Lerp(basePosAppear, basePosAppear - new Vector2(0.2f,0), timeEllapsedAppear/ev.transitionTime);
+                            characterHolders[ev.characterIndex].anchorMax = Vector2.Lerp(basePosAppear, basePosAppear - new Vector2(0.2f,0), timeEllapsedAppear/ev.transitionTime);
                         }
                         rendAppear.color = new Color(1,1,1,timeEllapsedAppear/ev.transitionTime);
                         timeEllapsedAppear += Time.deltaTime;
                         yield return null;
                     }
                 break;
+                case DialogEventType.InLight :
+                    var timeEllapsedInLight = 0f;
+                    var rendInLight = characterHolders[ev.characterIndex].transform.GetChild(0).GetComponent<Image>();
+                    while (timeEllapsedInLight < ev.transitionTime)
+                    {
+                        rendInLight.color = new Color(0,0,0,Mathf.Lerp(0.5f,1,timeEllapsedInLight/ev.transitionTime));
+                        timeEllapsedInLight += Time.deltaTime;
+                        yield return null;
+                    }
+                break;
+                case DialogEventType.OutLight :
+                    var timeEllapsedOutLight = 0f;
+                    var rendOutLight = characterHolders[ev.characterIndex].transform.GetChild(0).GetComponent<Image>();
+                    while (timeEllapsedOutLight < ev.transitionTime)
+                    {
+                        rendOutLight.color = new Color(0,0,0,Mathf.Lerp(1,0.5f,timeEllapsedOutLight/ev.transitionTime));
+                        timeEllapsedOutLight += Time.deltaTime;
+                        yield return null;
+                    }
+                break;
                 case DialogEventType.Move :
-                    var cpos = characters[ev.characterIndex].anchorMin.x;
+                    var cpos = characterHolders[ev.characterIndex].anchorMin.x;
                     switch (ev.transitionType)
                     {
                         case TransitionType.None : 
-                            characters[ev.characterIndex].anchorMin = new Vector2(ev.position, 0.5f);
-                            characters[ev.characterIndex].anchorMax = new Vector2(ev.position, 0.5f);
+                            characterHolders[ev.characterIndex].anchorMin = new Vector2(ev.position, 0.5f);
+                            characterHolders[ev.characterIndex].anchorMax = new Vector2(ev.position, 0.5f);
                         break;
                         case TransitionType.Linear :
                             var timeEllapsedMoveLinear = 0f;
                             while (timeEllapsedMoveLinear < ev.transitionTime)
                             {
-                                characters[ev.characterIndex].anchorMin = new Vector2(Mathf.Lerp(cpos, ev.position, timeEllapsedMoveLinear/ev.transitionTime),0.5f);
-                                characters[ev.characterIndex].anchorMax = new Vector2(Mathf.Lerp(cpos, ev.position, timeEllapsedMoveLinear/ev.transitionTime),0.5f);
+                                characterHolders[ev.characterIndex].anchorMin = new Vector2(Mathf.Lerp(cpos, ev.position, timeEllapsedMoveLinear/ev.transitionTime),0.5f);
+                                characterHolders[ev.characterIndex].anchorMax = new Vector2(Mathf.Lerp(cpos, ev.position, timeEllapsedMoveLinear/ev.transitionTime),0.5f);
                                 timeEllapsedMoveLinear += Time.deltaTime;
                                 yield return null;
                             }
@@ -135,8 +159,8 @@ public class DialogManager : MonoBehaviour
                             var timeEllapsedMoveHyperbolic = 0f;
                             while (timeEllapsedMoveHyperbolic < ev.transitionTime)
                             {
-                                characters[ev.characterIndex].anchorMin = new Vector2(Mathf.Lerp(characters[ev.characterIndex].anchorMin.x, ev.position, 0.03f),0.5f);
-                                characters[ev.characterIndex].anchorMax = new Vector2(Mathf.Lerp(characters[ev.characterIndex].anchorMax.x, ev.position, 0.03f),0.5f);
+                                characterHolders[ev.characterIndex].anchorMin = new Vector2(Mathf.Lerp(characterHolders[ev.characterIndex].anchorMin.x, ev.position, 0.03f),0.5f);
+                                characterHolders[ev.characterIndex].anchorMax = new Vector2(Mathf.Lerp(characterHolders[ev.characterIndex].anchorMax.x, ev.position, 0.03f),0.5f);
                                 timeEllapsedMoveHyperbolic += Time.deltaTime;
                                 yield return null;
                             }
@@ -144,24 +168,24 @@ public class DialogManager : MonoBehaviour
                     }
                 break;
                 case DialogEventType.Swap :
-                    var c1pos = characters[ev.characterIndex].anchorMin.x;
-                    var c2pos = characters[ev.otherCharacterIndex].anchorMin.x;
+                    var c1pos = characterHolders[ev.characterIndex].anchorMin.x;
+                    var c2pos = characterHolders[ev.otherCharacterIndex].anchorMin.x;
                     switch (ev.transitionType)
                     {
                         case TransitionType.None : 
-                            characters[ev.characterIndex].anchorMin = new Vector2(c2pos, 0.5f);
-                            characters[ev.characterIndex].anchorMax = new Vector2(c2pos, 0.5f);
-                            characters[ev.otherCharacterIndex].anchorMin = new Vector2(c1pos, 0.5f);
-                            characters[ev.otherCharacterIndex].anchorMax = new Vector2(c1pos, 0.5f);
+                            characterHolders[ev.characterIndex].anchorMin = new Vector2(c2pos, 0.5f);
+                            characterHolders[ev.characterIndex].anchorMax = new Vector2(c2pos, 0.5f);
+                            characterHolders[ev.otherCharacterIndex].anchorMin = new Vector2(c1pos, 0.5f);
+                            characterHolders[ev.otherCharacterIndex].anchorMax = new Vector2(c1pos, 0.5f);
                         break;
                         case TransitionType.Linear :
                             var timeEllapsedSwapLinear = 0f;
                             while (timeEllapsedSwapLinear < ev.transitionTime)
                             {
-                                characters[ev.characterIndex].anchorMin = new Vector2(Mathf.Lerp(c1pos, c2pos, timeEllapsedSwapLinear/ev.transitionTime),0.5f);
-                                characters[ev.characterIndex].anchorMax = new Vector2(Mathf.Lerp(c1pos, c2pos, timeEllapsedSwapLinear/ev.transitionTime),0.5f);
-                                characters[ev.otherCharacterIndex].anchorMin = new Vector2(Mathf.Lerp(c2pos, c1pos, timeEllapsedSwapLinear/ev.transitionTime),0.5f);
-                                characters[ev.otherCharacterIndex].anchorMax = new Vector2(Mathf.Lerp(c2pos, c1pos, timeEllapsedSwapLinear/ev.transitionTime),0.5f);
+                                characterHolders[ev.characterIndex].anchorMin = new Vector2(Mathf.Lerp(c1pos, c2pos, timeEllapsedSwapLinear/ev.transitionTime),0.5f);
+                                characterHolders[ev.characterIndex].anchorMax = new Vector2(Mathf.Lerp(c1pos, c2pos, timeEllapsedSwapLinear/ev.transitionTime),0.5f);
+                                characterHolders[ev.otherCharacterIndex].anchorMin = new Vector2(Mathf.Lerp(c2pos, c1pos, timeEllapsedSwapLinear/ev.transitionTime),0.5f);
+                                characterHolders[ev.otherCharacterIndex].anchorMax = new Vector2(Mathf.Lerp(c2pos, c1pos, timeEllapsedSwapLinear/ev.transitionTime),0.5f);
                                 timeEllapsedSwapLinear += Time.deltaTime;
                                 yield return null;
                             }
@@ -170,10 +194,10 @@ public class DialogManager : MonoBehaviour
                             var timeEllapsedSwapHyperbolic = 0f;
                             while (timeEllapsedSwapHyperbolic < ev.transitionTime)
                             {
-                                characters[ev.characterIndex].anchorMin = new Vector2(Mathf.Lerp(characters[ev.characterIndex].anchorMin.x, c2pos, 0.03f),0.5f);
-                                characters[ev.characterIndex].anchorMax = new Vector2(Mathf.Lerp(characters[ev.characterIndex].anchorMax.x, c2pos, 0.03f),0.5f);
-                                characters[ev.otherCharacterIndex].anchorMin = new Vector2(Mathf.Lerp(characters[ev.otherCharacterIndex].anchorMin.x, c1pos, 0.03f),0.5f);
-                                characters[ev.otherCharacterIndex].anchorMax = new Vector2(Mathf.Lerp(characters[ev.otherCharacterIndex].anchorMax.x, c1pos, 0.03f),0.5f);
+                                characterHolders[ev.characterIndex].anchorMin = new Vector2(Mathf.Lerp(characterHolders[ev.characterIndex].anchorMin.x, c2pos, 0.03f),0.5f);
+                                characterHolders[ev.characterIndex].anchorMax = new Vector2(Mathf.Lerp(characterHolders[ev.characterIndex].anchorMax.x, c2pos, 0.03f),0.5f);
+                                characterHolders[ev.otherCharacterIndex].anchorMin = new Vector2(Mathf.Lerp(characterHolders[ev.otherCharacterIndex].anchorMin.x, c1pos, 0.03f),0.5f);
+                                characterHolders[ev.otherCharacterIndex].anchorMax = new Vector2(Mathf.Lerp(characterHolders[ev.otherCharacterIndex].anchorMax.x, c1pos, 0.03f),0.5f);
                                 timeEllapsedSwapHyperbolic += Time.deltaTime;
                                 yield return null;
                             }
@@ -182,7 +206,8 @@ public class DialogManager : MonoBehaviour
                 break;
                 case DialogEventType.Talk :
                     txt.text = "";
-                    characters[ev.characterIndex].GetComponent<Image>().sprite = dd.characters[ev.characterIndex].character.SpriteByEmotion(ev.emotion); //TODO add anim possibilities
+                    charName.text = characters[ev.characterIndex].characterName;
+                    characterHolders[ev.characterIndex].GetComponent<Image>().sprite = dd.characters[ev.characterIndex].character.SpriteByEmotion(ev.emotion); //TODO add anim possibilities
                     int k = 0;
                     while (k < ev.text.Length && !skipDialog) //TODO Change with custom InputManager
                     {
@@ -204,10 +229,11 @@ public class DialogManager : MonoBehaviour
                 break;
             }
         }
-        foreach (RectTransform rt in characters)
+        foreach (RectTransform rt in characterHolders)
         {
             Destroy(rt.gameObject);
         }
+        characterHolders.Clear();
         characters.Clear();
         yield return null;
     }

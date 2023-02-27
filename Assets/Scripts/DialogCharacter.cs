@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Dialog Character", menuName = "Game/Dialogs/Character")]
 public class DialogCharacter : ScriptableObject
 {
+    public string characterName;
     public List<EmotionSprite> sprites;
     public Sprite SpriteByEmotion(Emotion em)
     {
