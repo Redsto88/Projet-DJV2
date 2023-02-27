@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BasicEnemyBehaviour : IDamageable
+public class BasicEnemyBehaviour : ADamageable
 {
     private List<Material> _materials = new List<Material>();
     private List<Color> _initMaterialsColor = new List<Color>();

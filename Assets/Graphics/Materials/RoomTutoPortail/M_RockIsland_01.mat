@@ -136,7 +136,7 @@ Material:
     - _IsBlackAndWhite: 0
     - _Metallic: 0
     - _Mode: 0
-    - _NormalStrenght: -0.05
+    - _NormalStrenght: 0.1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueControl: 0

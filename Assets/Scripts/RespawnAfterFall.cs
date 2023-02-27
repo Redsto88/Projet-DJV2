@@ -9,7 +9,7 @@ public class RespawnAfterFall : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         print("trigger enter");
-        if (other.TryGetComponent(out IDamageable damageable))
+        if (other.TryGetComponent(out ADamageable damageable))
         {
             print("damageable");
             if (other == PlayerController.Instance.characterController)

@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public abstract class IDamageable : MonoBehaviour
+public abstract class ADamageable : MonoBehaviour
 { 
+    [Header("Stats")]
     [SerializeField] protected float _health;
     [SerializeField] protected float healthMax; 
 
@@ -17,10 +18,16 @@ public abstract class IDamageable : MonoBehaviour
             _health = healthMax;
         if (_health <= 0)
         {
+            //Death();
             Destroy(gameObject);
         }
     }
 
+    protected virtual void Death()
+    {
+        Destroy(gameObject);
+    }
+    
     public float GetHealth()
     {
         return _health;

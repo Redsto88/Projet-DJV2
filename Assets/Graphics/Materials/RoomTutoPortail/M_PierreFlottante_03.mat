@@ -133,6 +133,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Intensity: 3
+    - _IsBlackAndWhite: 0
     - _Metallic: 0
     - _Mode: 0
     - _NormalStrenght: 0.1

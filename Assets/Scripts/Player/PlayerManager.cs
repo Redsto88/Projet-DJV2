@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : IDamageable
+public class PlayerManager : ADamageable
 {
     public static PlayerManager Instance;
 

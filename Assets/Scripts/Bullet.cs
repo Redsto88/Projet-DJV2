@@ -31,7 +31,7 @@ public class Bullet : AProjectile
         print(other.gameObject.name);
         if (other.gameObject.TryGetComponent<PlayerController>(out var player))
         {
-            player.gameObject.GetComponent<IDamageable>().ApplyDamaged(10f);
+            player.gameObject.GetComponent<ADamageable>().ApplyDamaged(10f);
             Destroy(gameObject);
         }
         else if (other.gameObject.TryGetComponent<Portal>(out var portal))

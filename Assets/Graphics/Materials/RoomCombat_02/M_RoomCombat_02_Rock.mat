@@ -122,7 +122,7 @@ Material:
     - _Intensity: 5
     - _IsBlackAndWhite: 0
     - _Metallic: 0
-    - _NormalStrenght: -0.05
+    - _NormalStrenght: 0.05
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0

@@ -46,7 +46,7 @@ public class GaïardLeaf : AProjectile
     void OnCollisionEnter(Collision other)
     {
         if (!go) return;
-        if (other.gameObject.TryGetComponent<IDamageable>(out var id))
+        if (other.gameObject.TryGetComponent<ADamageable>(out var id))
         {
             id.ApplyDamaged(damage);
             Destroy(gameObject);
