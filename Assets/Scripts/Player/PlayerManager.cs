@@ -15,27 +15,35 @@ public class PlayerManager : IDamageable
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(this.gameObject);
-        }
-        else 
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
+        if(Instance != null) Destroy(Instance.gameObject);
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public override void ApplyDamaged(float damage)
     {
-        base.ApplyDamaged(damage);
+        _health -= damage;
         healthBar.SetHealth(_health);
-        //TODO fin de partie : défaite
+        if(_health <= 0)
+        {
+            GameManager.Instance.onPlayerDeath();
+            Destroy(gameObject);
+        }
+
+        
     }
 
 
     public void AddMoney(float money)
     {
         this.money += money;
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 }

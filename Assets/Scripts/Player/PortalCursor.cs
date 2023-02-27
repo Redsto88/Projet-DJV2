@@ -5,7 +5,7 @@ using Cursor = UnityEngine.Cursor;
 
 public class PortalCursor : MonoBehaviour
 {
-    [SerializeField] private new Camera camera;
+    private Camera camera;
     public bool canSpawnPortal;
     public bool usingMouseInput;
 
@@ -22,7 +22,7 @@ public class PortalCursor : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
-
+        camera = Camera.main;
         _renderer = GetComponent<Renderer>();
         _renderer.material.color = Color.cyan;
         _cursorPos = new Vector2(Screen.width / 2, Screen.height / 2);

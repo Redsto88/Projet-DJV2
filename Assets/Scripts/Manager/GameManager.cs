@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Cursor = UnityEngine.Cursor;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +27,12 @@ public class GameManager : MonoBehaviour
     public int heightPos = 0;
     public int widthPos = 0;
 
+    [Header("Death Manager")]
+    [SerializeField] private GameObject deathScreen;
+
+    [Header("Player")]
+    [SerializeField] private GameObject playerPrefab;
+
     public void Awake()
     {
         if (Instance != null)
@@ -44,6 +52,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Instantiate(playerPrefab);
         MapManager.Instance.Init();
         dungeonData = new RoomData[dungeonHeight,dungeonWidth];
         roomState = new RoomState[dungeonHeight,dungeonWidth];
@@ -177,5 +186,28 @@ public class GameManager : MonoBehaviour
     {
         roomState[heightPos,widthPos] = RoomState.Cleared;
         MapManager.Instance.TileCleared(heightPos,widthPos);
+    }
+
+    public void onPlayerDeath()
+    {
+        Cursor.visible = true;
+        deathScreen.SetActive(true);
+    }
+
+    public void OnQuit()
+    {
+        Application.Quit();
+    }
+
+    public void toMenuQuit()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void OnRestart()
+    {
+        //TODO CHANGE THIS
+        Instantiate(playerPrefab);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

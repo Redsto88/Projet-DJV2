@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4477062488808538569}
   - component: {fileID: 7727857391685542355}
   - component: {fileID: 8820539763072230256}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RespawnAfterFall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1626476502264214140}
-  m_Layer: 3
+  m_Layer: 2
   m_Name: RespawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}

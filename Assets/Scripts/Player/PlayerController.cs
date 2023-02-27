@@ -19,19 +19,13 @@ public class PlayerController : MonoBehaviour
     
     private float _highCheck;
     private bool _isGrounded;
-    private float _gravity = 9.8f;
+    [SerializeField] private float _gravity = 1f;
     private float _yVel;    
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(this.gameObject);
-        }
-        else 
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
+        if(Instance != null) Destroy(Instance.gameObject);
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
 
         portalFlag = false;
         respawnFlag = false;
@@ -61,7 +55,7 @@ public class PlayerController : MonoBehaviour
             
             var layerInt = LayerMask.GetMask("Ground");
             
-            if (Physics.Raycast(highControl.position, highControl.up * -1, out hit, _highCheck+ 0.0001f, layerInt))
+            if (Physics.Raycast(highControl.position, highControl.up * -1, out hit, _highCheck+ 0.0001f))
             {
                 Debug.DrawRay(highControl.position, highControl.up * (-1 * hit.distance), Color.green);
                 _isGrounded = true;
@@ -96,5 +90,13 @@ public class PlayerController : MonoBehaviour
         
         //Hauteur du joueur
         //transform.position = new Vector3(transform.position.x,0,transform.position.z);
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 }

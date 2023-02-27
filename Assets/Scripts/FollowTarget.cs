@@ -17,5 +17,8 @@ public class FollowTarget : MonoBehaviour
                 ref _currentVelocity,
                 0.2f);
         }
+        else{
+            target = PlayerManager.Instance?.transform;
+        }
     }
 }
