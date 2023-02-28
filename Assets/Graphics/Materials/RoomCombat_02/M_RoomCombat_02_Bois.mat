@@ -122,7 +122,7 @@ Material:
     - _Intensity: 1
     - _IsBlackAndWhite: 0
     - _Metallic: 0
-    - _NormalStrenght: 0.5
+    - _NormalStrenght: 0.05
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -134,6 +134,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _UseNormalFromHeight: 1
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
