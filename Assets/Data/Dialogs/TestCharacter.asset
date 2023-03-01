@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db9fbb35137f434e926f50d830a76f6, type: 3}
   m_Name: TestCharacter
   m_EditorClassIdentifier: 
+  characterName: Dialog
   sprites:
   - sprite: {fileID: 21300000, guid: c99604c5ca64cbd468f24662774e9180, type: 3}
     emotion: 0

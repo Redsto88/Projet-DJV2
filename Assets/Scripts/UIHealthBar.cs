@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UIHealthBar : MonoBehaviour
 {
 
-    [SerializeField] private Image _health;
+    [SerializeField] private Slider _health;
 
     private float _maxHealth;
 
@@ -18,6 +18,6 @@ public class UIHealthBar : MonoBehaviour
 
     public void SetHealth(float health)
     {
-        _health.rectTransform.anchorMax = new Vector2(health / _maxHealth, 1);
+        _health.value = health / _maxHealth;
     }
 }
