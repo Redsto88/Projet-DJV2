@@ -533,7 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canSpawnPortal: 0
-  usingMouseInput: 0
+  usingMouseInput: 1
   enableMaterial: {fileID: 2100000, guid: 47e936c23e5218b4c8573dc904a6567b, type: 2}
   disableMaterial: {fileID: 2100000, guid: ca111e42752f60b4fab05952a434d6a2, type: 2}
   cursorSpeed: 700
@@ -708,7 +708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 0
   healthMax: 300
-  healthBar: {fileID: 5498758815292042116}
+  healthBar: {fileID: 3614044016745385781}
   money: 0
   keyCount: 0
 --- !u!1 &5498758815223860999
@@ -1462,6 +1462,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5498758814783280173}
     m_Modifications:
+    - target: {fileID: 1643779065274397885, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4053148590064684190, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -1594,16 +1598,15 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7809980455249609588, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
---- !u!224 &5498758814506956159 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4053148590064684195, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
-  m_PrefabInstance: {fileID: 8390251362273884636}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5498758815292042116 stripped
+--- !u!114 &3614044016745385781 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4053148591388480088, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5068661517213136617, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
   m_PrefabInstance: {fileID: 8390251362273884636}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -1612,3 +1615,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f031c05499c2c4da65857a903780c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &5498758814506956159 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4053148590064684195, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+  m_PrefabInstance: {fileID: 8390251362273884636}
+  m_PrefabAsset: {fileID: 0}
