@@ -47,6 +47,8 @@ public class DialogManager : MonoBehaviour
     public void Dialog(DialogData dd)
     {
         cg.alpha = 0;
+        txt.text = "";
+        charName.text = "";
         canvas.SetActive(true);
         StartCoroutine(changeAlpha(false));
         StartCoroutine(dialogCor(dd));
@@ -68,6 +70,7 @@ public class DialogManager : MonoBehaviour
             {
                 img.GetComponent<RectTransform>().eulerAngles = new Vector3(0,180,0);
             }
+            img.transform.GetChild(0).GetComponent<Image>().color = new Color(0,0,0,dc.IsInLight ? 0 : 0.75f);
             characterHolders.Add(img.GetComponent<RectTransform>());
             characters.Add(dc.character);
         }
@@ -122,7 +125,7 @@ public class DialogManager : MonoBehaviour
                     var rendInLight = characterHolders[ev.characterIndex].transform.GetChild(0).GetComponent<Image>();
                     while (timeEllapsedInLight < ev.transitionTime)
                     {
-                        rendInLight.color = new Color(0,0,0,Mathf.Lerp(0.5f,1,timeEllapsedInLight/ev.transitionTime));
+                        rendInLight.color = new Color(0,0,0,Mathf.Lerp(0.75f,0f,timeEllapsedInLight/ev.transitionTime));
                         timeEllapsedInLight += Time.deltaTime;
                         yield return null;
                     }
@@ -132,13 +135,14 @@ public class DialogManager : MonoBehaviour
                     var rendOutLight = characterHolders[ev.characterIndex].transform.GetChild(0).GetComponent<Image>();
                     while (timeEllapsedOutLight < ev.transitionTime)
                     {
-                        rendOutLight.color = new Color(0,0,0,Mathf.Lerp(1,0.5f,timeEllapsedOutLight/ev.transitionTime));
+                        rendOutLight.color = new Color(0,0,0,Mathf.Lerp(0f,0.75f,timeEllapsedOutLight/ev.transitionTime));
                         timeEllapsedOutLight += Time.deltaTime;
                         yield return null;
                     }
                 break;
                 case DialogEventType.Move :
                     var cpos = characterHolders[ev.characterIndex].anchorMin.x;
+                    characterHolders[ev.characterIndex].eulerAngles = new Vector3(0,(ev.position <= 0.5f ? 0 : 180),0);
                     switch (ev.transitionType)
                     {
                         case TransitionType.None : 
@@ -170,6 +174,8 @@ public class DialogManager : MonoBehaviour
                 case DialogEventType.Swap :
                     var c1pos = characterHolders[ev.characterIndex].anchorMin.x;
                     var c2pos = characterHolders[ev.otherCharacterIndex].anchorMin.x;
+                    characterHolders[ev.characterIndex].eulerAngles = new Vector3(0,(c2pos <= 0.5f ? 0 : 180),0);
+                    characterHolders[ev.otherCharacterIndex].eulerAngles = new Vector3(0,(c1pos <= 0.5f ? 0 : 180),0);
                     switch (ev.transitionType)
                     {
                         case TransitionType.None : 
@@ -236,6 +242,7 @@ public class DialogManager : MonoBehaviour
         characterHolders.Clear();
         characters.Clear();
         yield return null;
+        StartCoroutine(changeAlpha(true));
     }
 
     IEnumerator changeAlpha(bool fade)
@@ -248,6 +255,7 @@ public class DialogManager : MonoBehaviour
             yield return null;
         }
         cg.alpha = (fade) ? 0 : 1;
+        if (fade) canvas.SetActive(false);
     }
 
 }
