@@ -91,12 +91,12 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Distance: 50
+    - _Distance: 31.65
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FoamAmount: 0.5
+    - _FoamAmount: 0.2
     - _FoamCutoff: 1
-    - _FoamScale: 121.3
+    - _FoamScale: 225.6
     - _FoamSpeed: 0.3
     - _GlossMapScale: 0
     - _Glossiness: 0
@@ -109,26 +109,26 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RefractionScale: 1
-    - _RefractionSpeed: 0.05
+    - _RefractionScale: 32.19
+    - _RefractionSpeed: 0.08
     - _RefractionStrength: 0.05
     - _Smoothness: 0.1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _WaveAmplitude: 0.5
-    - _WaveSpeed: 2
+    - _WaveAmplitude: 0.2
+    - _WaveSpeed: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DeepColor: {r: 0, g: 0.04151144, b: 1, a: 0.77254903}
+    - _DeepColor: {r: 0.01816273, g: 0, b: 0.6132076, a: 0.77254903}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 0.6862745}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _SurfaceColor: {r: 0.51605535, g: 0.7958823, b: 0.831, a: 0.49803922}
+    - _SurfaceColor: {r: 0.29622638, g: 0.8905783, b: 1, a: 0.49803922}
   m_BuildTextureStacks: []
 --- !u!114 &7695984610154586305
 MonoBehaviour:
