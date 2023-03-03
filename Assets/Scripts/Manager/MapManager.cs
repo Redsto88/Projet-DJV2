@@ -61,7 +61,8 @@ public class MapManager : MonoBehaviour
         List<Button> buttonList = new List<Button>(GetComponentsInChildren<Button>());
         //get the first active button
         Button firstButton = buttonList.Find(x => x.gameObject.activeInHierarchy);
-        EventSystem.current.SetSelectedGameObject(firstButton.gameObject);
+        if(firstButton != null) EventSystem.current.SetSelectedGameObject(firstButton.gameObject);
+        
     }
 
     public void PlaceTile(RoomData roomData, int h, int w)

@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(playerPrefab);
+        Instantiate(playerPrefab, transform.position, Quaternion.Euler(0,45,0));
         MapManager.Instance.Init();
         dungeonData = new RoomData[dungeonHeight,dungeonWidth];
         roomState = new RoomState[dungeonHeight,dungeonWidth];
@@ -210,7 +210,9 @@ public class GameManager : MonoBehaviour
     {
         //TODO CHANGE THIS
         GenerateDungeon();
-        Instantiate(playerPrefab);
+        Instantiate(dungeonData[0,0].roomPrefab);
+        MapManager.Instance.GoesOnTile(0,0);
+        Instantiate(playerPrefab, transform.position, Quaternion.Euler(0,45,0));
         Cursor.lockState = CursorLockMode.Locked;
     }
 }
