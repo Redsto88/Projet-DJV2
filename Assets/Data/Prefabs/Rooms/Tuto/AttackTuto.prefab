@@ -3415,11 +3415,11 @@ MonoBehaviour:
     - cells:
       - position: {x: 35, y: 0, z: -0.34}
         rotation: {x: 0, y: 0, z: 0, w: 0}
-        prefab: {fileID: 8829047242489717199}
+        prefab: {fileID: 5426563294728307534, guid: 1ea8ead484b6f7c4da5b3747aff3e4ba, type: 3}
       - position: {x: 14, y: 0, z: -0.34}
         rotation: {x: 0, y: 0, z: 0, w: 0}
-        prefab: {fileID: 1369303861715349632}
-  enemiesLeft: 2
+        prefab: {fileID: 5426563294728307534, guid: 1ea8ead484b6f7c4da5b3747aff3e4ba, type: 3}
+  enemiesLeft: 0
   waveNumber: 0
 --- !u!114 &8695088214496809364
 MonoBehaviour:
@@ -8333,11 +8333,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5426563294728307535, guid: 1ea8ead484b6f7c4da5b3747aff3e4ba, type: 3}
   m_PrefabInstance: {fileID: 3587140334356374145}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8829047242489717199 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5426563294728307534, guid: 1ea8ead484b6f7c4da5b3747aff3e4ba, type: 3}
-  m_PrefabInstance: {fileID: 3587140334356374145}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3644824399965003326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10108,11 +10103,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ea8ead484b6f7c4da5b3747aff3e4ba, type: 3}
---- !u!1 &1369303861715349632 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5426563294728307534, guid: 1ea8ead484b6f7c4da5b3747aff3e4ba, type: 3}
-  m_PrefabInstance: {fileID: 6363507159210750926}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1369303861715349633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5426563294728307535, guid: 1ea8ead484b6f7c4da5b3747aff3e4ba, type: 3}
