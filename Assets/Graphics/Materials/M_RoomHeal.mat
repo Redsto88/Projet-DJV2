@@ -113,12 +113,12 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmissionNoise: 1
-    - _EmissionNoiseSpeed: 2
+    - _EmissionNoiseSpeed: 1
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Intensity: 3
+    - _Intensity: 2
     - _IsBlackAndWhite: 0
     - _Metallic: 0
     - _NormalStrenght: 1

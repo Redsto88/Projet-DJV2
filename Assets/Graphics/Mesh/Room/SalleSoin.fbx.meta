@@ -19,6 +19,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: SalleSoin
     second: {fileID: 2100000, guid: f8337f932ecacb74bb6bb99817c6bb0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterFall
+    second: {fileID: 2100000, guid: ae906b9229c64a44585baf3f813f29e7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
