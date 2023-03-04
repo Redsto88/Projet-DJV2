@@ -173,7 +173,7 @@ public class Portal : MonoBehaviour
             }
             
             //Cas d'une bullet
-            else if(col.TryGetComponent<AProjectile>(out AProjectile projectile))
+            else if(col.TryGetComponent(out AProjectile projectile))
             {
                 projectile.gameObject.transform.position += linkPortal.transform.position - transform.position;
                 if(Vector3.Dot(col.transform.forward, transform.forward) > 0){
@@ -185,8 +185,33 @@ public class Portal : MonoBehaviour
                 }
                 yield return new WaitForEndOfFrame();
             }
+            
+            //Cas d'une sphere
+            else if (col.TryGetComponent(out SphereEnigme sphere))
+            {
+                print("sphere");
+                
+                float tmpSpeed = sphere.GetComponent<Rigidbody>().velocity.magnitude;
+                sphere.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+                sphere.transform.position += linkPortal.transform.position - transform.position;
+                
+                Vector3 orientation = new Vector3();
+                if(Vector3.Dot(col.transform.forward, transform.forward) > 0)
+                {
+                    orientation = -linkPortal.transform.forward;
+                }
+                else
+                {
+                    orientation = linkPortal.transform.forward;
+                }
+                sphere.GetComponent<Rigidbody>().AddForce(tmpSpeed * orientation.normalized,ForceMode.Impulse);
+                
+            }
+            //Cas par défaut
             else
             {
+                print("defaut");
                 projectile.gameObject.transform.position = linkPortal.transform.position;
                 projectile.gameObject.transform.rotation = linkPortal.transform.rotation;
                 yield return new WaitForEndOfFrame();

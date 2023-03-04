@@ -103,6 +103,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _AlphaThreshold: 0.5
     - _Blend: 0
     - _BumpScale: 1
     - _CastShadows: 0
