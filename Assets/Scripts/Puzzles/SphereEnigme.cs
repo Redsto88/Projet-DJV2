@@ -28,10 +28,6 @@ public class SphereEnigme : MonoBehaviour
     {
         //sphere roll
         sphere.Rotate(Vector3.right * (Time.deltaTime * 20 * _rb.velocity.magnitude));
-        if(transform.position.y < -10)
-        {
-            Destroy(gameObject);
-        }
     }
 
 

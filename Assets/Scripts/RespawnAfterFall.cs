@@ -28,6 +28,19 @@ public class RespawnAfterFall : MonoBehaviour
                 PlayerController.Instance.characterController.enabled = true;
                 print("end");
             }
+            else
+            {
+                Destroy(other.gameObject);
+            }
         }
+        
+        else if (other.TryGetComponent(out SphereEnigme sphereEnigme))
+        {
+            Destroy(sphereEnigme.gameObject);
+        }
+
+       
+        
+        
     }
 }

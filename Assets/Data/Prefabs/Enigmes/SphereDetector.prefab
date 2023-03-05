@@ -178,6 +178,7 @@ MonoBehaviour:
   isActivated: 0
   material: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  lightColor: {r: 0, g: 0, b: 0, a: 0}
   light: {fileID: 5722449941319041308}
 --- !u!1001 &6537837450374755551
 PrefabInstance:
@@ -237,6 +238,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3e0d566d7fcd3b34ca73155ea1d59e37, type: 3}
       propertyPath: m_Name
       value: Interrupteur
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3e0d566d7fcd3b34ca73155ea1d59e37, type: 3}
+      propertyPath: m_Layer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e0d566d7fcd3b34ca73155ea1d59e37, type: 3}
