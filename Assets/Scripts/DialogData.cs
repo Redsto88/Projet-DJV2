@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.Events;
 
 public enum Emotion //TODO maybe more
 {
@@ -17,13 +18,15 @@ public enum Emotion //TODO maybe more
 
 public enum DialogEventType
 {
+    Wait,
     Fade,
     Appear,
     InLight,
     OutLight,
     Move,
     Swap,
-    Talk
+    Talk,
+    Coroutine
 }
 
 public enum TransitionType
@@ -41,6 +44,11 @@ public class DialogEvent
     public bool IsSwap => type == DialogEventType.Swap;
     public bool IsTalk => type == DialogEventType.Talk;
     public bool IsntTalk => type != DialogEventType.Talk;
+    public bool IsntWait => type != DialogEventType.Wait;
+    [Tooltip("Must the next event wait the end of this one ?")]
+    public bool parallel;
+    [NaughtyAttributes.ShowIf("IsntWait")]
+    [NaughtyAttributes.AllowNesting]
     [Tooltip("The index of the character performing the action.")]
     public int characterIndex;
     
@@ -49,7 +57,7 @@ public class DialogEvent
     [NaughtyAttributes.ShowIf("type", DialogEventType.Move)]
     [NaughtyAttributes.AllowNesting]
     [Tooltip("The wanted position relative to the screen. This value is clamped between 0 and 1.")]
-    public float position;
+    public float position = 0.5f;
     [Tooltip("The index of the character with whom he will swap places.")]
     [NaughtyAttributes.ShowIf("type", DialogEventType.Swap)]
     [NaughtyAttributes.AllowNesting]
@@ -79,7 +87,7 @@ public class DialogEvent
     [NaughtyAttributes.AllowNesting]
     [Tooltip("The base sound each letter will produce.")]
     public AudioClip sound;
-    [Tooltip("The ")]
+    [Tooltip("The possible tone variation for each time the sound is played.")]
     [NaughtyAttributes.ShowIf("makesSound")]
     [NaughtyAttributes.MinMaxSlider(-2f,2f)]
     [NaughtyAttributes.AllowNesting]
@@ -88,8 +96,13 @@ public class DialogEvent
     [NaughtyAttributes.ShowIf("type", DialogEventType.Talk)]
     [NaughtyAttributes.AllowNesting]
     [Tooltip("The speed at which a new letter appears in milliseconds.")]
-    public float textSpeed;
+    public float textSpeed = 50;
     
+    [NaughtyAttributes.ShowIf("type", DialogEventType.Talk)]
+    [NaughtyAttributes.AllowNesting]
+    [Tooltip("Is this line a thought ?")]
+    public bool isThought;
+
     [NaughtyAttributes.ShowIf("type", DialogEventType.Talk)]
     [NaughtyAttributes.AllowNesting]
     [Tooltip("The emotion displayed by the character.")]
@@ -102,6 +115,8 @@ public class DialogData : ScriptableObject
 {
     [Tooltip("The characters interacting in the dialog.")]
     public List<InitCharacters> characters;
+    [Tooltip("Does the dialog start with a thought ?")]
+    public bool startInThought;
     [Tooltip("The list of events occuring in the dialog.")]
     public List<DialogEvent> events;
 }
@@ -113,10 +128,12 @@ public class InitCharacters
     [NaughtyAttributes.MinValue(0f)]
     [NaughtyAttributes.MaxValue(1f)]
     [Tooltip("The position where the character will appear. This value is clamped between 0 and 1.")]
-    public float basePosition;
+    public float basePosition = 0.5f;
     [Tooltip("The emotion displayed at first by the character.")]
     public Emotion baseEmotion;
     [Tooltip("Is the character in the light when he appears ?")]
     public bool IsInLight;
+    [Tooltip("Is the character visible at the beginning ?")]
+    public bool isVisible;
 
 }
