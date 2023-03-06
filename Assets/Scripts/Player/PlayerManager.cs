@@ -31,10 +31,13 @@ public class PlayerManager : ADamageable
             GameManager.Instance.onPlayerDeath();
             Destroy(gameObject);
         }
-        
-        _animator.CrossFade("Damage",0.1f);
 
-        
+        if (damage > 0)
+        {
+            _animator.CrossFade("Damage",0.1f);
+        }
+
+
     }
 
 
