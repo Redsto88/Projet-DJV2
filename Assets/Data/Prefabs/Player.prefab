@@ -643,7 +643,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
@@ -668,7 +668,9 @@ MonoBehaviour:
   respawnFlag: 0
   damageFlag: 0
   canMove: 0
+  _currentPlateform: {fileID: 0}
   _gravity: 5
+  _yVel: 0
 --- !u!114 &5498758814783280176
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ public class PortalCursor : MonoBehaviour
         if(camera == null) return;
         var ray = camera.ScreenPointToRay(_cursorPos);
 
-        var layerInt = LayerMask.GetMask("Ground");
+        var layerInt = LayerMask.GetMask("Ground","Plateform");
         
         //TODO optimiser ça
         if (Physics.Raycast(ray, out var x, Mathf.Infinity, layerInt, QueryTriggerInteraction.UseGlobal))

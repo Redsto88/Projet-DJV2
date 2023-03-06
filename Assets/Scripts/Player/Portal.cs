@@ -31,7 +31,30 @@ public class Portal : MonoBehaviour
     {
         fwdMaterial = fwdPortal.GetComponent<Renderer>().material;
         bwdMaterial = bwdPortal.GetComponent<Renderer>().material;
+        //raycast
+        RaycastHit hit;
+        var layerInt = LayerMask.GetMask("Plateform");
+        print("PORTAL RAYCAST BEFORE");
+        if (Physics.Raycast(transform.position+Vector3.up, Vector3.down, out hit, 100, layerInt))
+        {
+            print("PORTAL RAYCAST "+ hit.transform.gameObject.name);
+            transform.parent = hit.transform;
+        }
         StartCoroutine(OrientationCoroutine());
+    }
+
+    private void Update()
+    {
+        RaycastHit hit;
+        var layerInt = LayerMask.GetMask("Plateform");
+
+        if (Physics.Raycast(transform.position+Vector3.up, Vector3.down, out hit, 1000000, layerInt))
+        {
+            Debug.DrawRay(transform.position+Vector3.up, Vector3.down*100, Color.green);
+        }
+        else{
+            Debug.DrawRay(transform.position+Vector3.up, Vector3.down*100, Color.red);
+        }
     }
 
     IEnumerator OrientationCoroutine()
@@ -52,6 +75,7 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print(other.name);
         if (!linkPortal.IsUnityNull())
         {
            StartCoroutine(Teleport(other));
@@ -60,6 +84,7 @@ public class Portal : MonoBehaviour
     
     private IEnumerator Teleport(Collider col)
     {
+        print(col.gameObject.name);
         if (_isSpawned && linkPortal.IsSpawned) // On vérifie que les deux portails sont bien placés (plus dans le bullet time)
         {
             linkPortal.GetComponent<BoxCollider>().enabled = false;
