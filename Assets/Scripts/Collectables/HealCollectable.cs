@@ -10,7 +10,7 @@ public class HealCollectable : ACollectable
     protected override void OnCollect()
     {
         print("heal");
-        PlayerManager.Instance.ApplyDamaged(-healAmount);
+        PlayerManager.Instance.ApplyDamage(-healAmount);
         StartCoroutine(OnCollectCoroutine());
     }
 

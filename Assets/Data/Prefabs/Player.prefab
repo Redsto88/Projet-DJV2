@@ -666,6 +666,8 @@ MonoBehaviour:
   characterController: {fileID: 0}
   portalFlag: 0
   respawnFlag: 0
+  damageFlag: 0
+  canMove: 0
   _gravity: 5
 --- !u!114 &5498758814783280176
 MonoBehaviour:
@@ -736,7 +738,7 @@ Transform:
   m_GameObject: {fileID: 5498758815223860999}
   m_LocalRotation: {x: 0.50349027, y: -0.6303292, z: -0.37609524, w: 0.45577967}
   m_LocalPosition: {x: -0.000782, y: 0.001095, z: -0.000689}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6479725668773974527}
@@ -1220,6 +1222,22 @@ PrefabInstance:
       value: 129.85716
       objectReference: {fileID: 0}
     - target: {fileID: 4214066799482240208, guid: 7c5efd97707608c4aa6a7ebbace0ba23, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.30506554
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214066799482240208, guid: 7c5efd97707608c4aa6a7ebbace0ba23, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7942917
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214066799482240208, guid: 7c5efd97707608c4aa6a7ebbace0ba23, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.072149344
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214066799482240208, guid: 7c5efd97707608c4aa6a7ebbace0ba23, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5204136
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214066799482240208, guid: 7c5efd97707608c4aa6a7ebbace0ba23, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 42.583782
       objectReference: {fileID: 0}
@@ -1375,6 +1393,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPortal: {fileID: 5498758814783280176}
   actualWeapon: {fileID: 7474963251288048732}
+  canAttack: 0
+  _canCombo: 0
+  _canPreCombo: 0
+  _hasAttackBeforeCombo: 0
+  _lastAttack: 
 --- !u!114 &5498758816088913631
 MonoBehaviour:
   m_ObjectHideFlags: 0

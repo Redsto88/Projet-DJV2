@@ -33,7 +33,7 @@ public class PuzzleManager1 : MonoBehaviour
                 detector.light.color = Color.green;
             }
 
-            enemy.ApplyDamaged(1000);
+            enemy.ApplyDamage(1000);
         }
     }
 }

@@ -11,7 +11,7 @@ public abstract class ADamageable : MonoBehaviour
         _health = healthMax;
     }
 
-    public virtual void ApplyDamaged(float damage)
+    public virtual void ApplyDamage(float damage)
     {
         _health -= damage;
         if(_health > healthMax)

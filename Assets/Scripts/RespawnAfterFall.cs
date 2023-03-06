@@ -18,7 +18,7 @@ public class RespawnAfterFall : MonoBehaviour
                 PlayerController.Instance.respawnFlag = true;
                 PlayerController.Instance.characterController.enabled = false;
                 print("damage");
-                damageable.ApplyDamaged(10);
+                damageable.ApplyDamage(10);
                 print("position");
                 PlayerController.Instance.transform.position = respawnTransform.position;
                 print("rotation");

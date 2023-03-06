@@ -28,7 +28,7 @@ public class Weapon : MonoBehaviour
     {
         if (col.TryGetComponent(out ADamageable damageable))
         {
-            damageable.ApplyDamaged(damage);
+            damageable.ApplyDamage(damage);
         }
         
         

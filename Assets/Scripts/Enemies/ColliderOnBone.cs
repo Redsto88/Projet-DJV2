@@ -14,8 +14,8 @@ public class ColliderOnBone : ADamageable
         healthMax = Single.MaxValue;
     }
 
-    public override void ApplyDamaged(float damage)
+    public override void ApplyDamage(float damage)
     {
-        enemy.ApplyDamaged(damage);
+        enemy.ApplyDamage(damage);
     }
 }

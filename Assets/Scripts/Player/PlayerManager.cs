@@ -12,15 +12,17 @@ public class PlayerManager : ADamageable
     [SerializeField] private float money = 0f;
 
     public int keyCount = 0;
+    private Animator _animator;
 
     private void Awake()
     {
         if(Instance != null) Destroy(Instance.gameObject);
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
+        _animator = GetComponentInChildren<Animator>();
     }
 
-    public override void ApplyDamaged(float damage)
+    public override void ApplyDamage(float damage)
     {
         _health -= damage;
         healthBar.SetHealth(_health);
@@ -29,6 +31,8 @@ public class PlayerManager : ADamageable
             GameManager.Instance.onPlayerDeath();
             Destroy(gameObject);
         }
+        
+        _animator.CrossFade("Damage",0.1f);
 
         
     }

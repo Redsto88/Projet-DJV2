@@ -12,11 +12,13 @@ public class BasicEnemyBehaviour : ADamageable
     [SerializeField] private AnimationCurve curve;
 
     public bool isTest = false;
+
+    [Header("Stats")] [SerializeField] private float _coolDown = 3f;
     
-    [Header("Stats")]
 
     public NavMeshAgent navMeshAgent;
     protected Transform _target;
+    private float _timeSinceLastAttack;
     
     public bool portalFlag;
     public bool attackFlag;
@@ -43,6 +45,8 @@ public class BasicEnemyBehaviour : ADamageable
         _target = PlayerController.Instance.transform;
 
         _animator = GetComponentInChildren<Animator>();
+
+        _timeSinceLastAttack = 0;
         
         portalFlag = false;
         attackFlag = false;
@@ -84,23 +88,27 @@ public class BasicEnemyBehaviour : ADamageable
             _animator.SetBool(IsWalking, false);
             navMeshAgent.destination = transform.position;
         }
+
+        _timeSinceLastAttack += Time.deltaTime;
     }
 
     private void Attack()
     {
-        if (!attackFlag)
+        transform.LookAt(_target.transform);
+        if (!attackFlag && _timeSinceLastAttack>_coolDown)
         {
             attackFlag = true;
             _animator.CrossFade("Attack_01", 0.1f);
+            _timeSinceLastAttack = 0f;
         }
     }
 
 
     // IDamageable
-    public override void ApplyDamaged(float damage)
+    public override void ApplyDamage(float damage)
     {
         StartCoroutine(ColorCoroutine());
-        base.ApplyDamaged(damage);
+        base.ApplyDamage(damage);
         if (_health <= 0) RoomBehaviour.Instance.CountEnemyDeath();
     }
 
@@ -120,7 +128,7 @@ public class BasicEnemyBehaviour : ADamageable
             {
                 var material = _materials[i];
 
-                material.color = Color.Lerp(_initMaterialsColor[i], 3*Color.white, curve.Evaluate(duration - timeLeft));
+                material.color = Color.Lerp(_initMaterialsColor[i], 5*Color.white, curve.Evaluate(duration - timeLeft));
             }
 
             timeLeft -= Time.deltaTime;

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cb696324b14fac441b8d060408f5b1e3
+guid: 722470ba5461d1f4a85ab0309a056e84
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -36,8 +36,8 @@ ModelImporter:
       name: Armature.001|Armature.001Action.001
       takeName: Armature.001|Armature.001Action.001
       internalID: -5784005261616917065
-      firstFrame: 200
-      lastFrame: 230
+      firstFrame: 330
+      lastFrame: 350
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -62,11 +62,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature.001|Armature.001Action.001 (1)
-      takeName: Armature.001|Armature.001Action.001
-      internalID: -6799455399402299333
-      firstFrame: 240
-      lastFrame: 270
+      name: Armature.001|Armature.001Action.002
+      takeName: Armature.001|Armature.001Action.002
+      internalID: 6605718146475901733
+      firstFrame: 0
+      lastFrame: 320
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -91,10 +91,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature.001|Armature.001Action.001 (2)
-      takeName: Armature.001|Armature.001Action.001
-      internalID: -2670205821788153510
-      firstFrame: 280
+      name: Armature.001|Armature.001Action.003
+      takeName: Armature.001|Armature.001Action.003
+      internalID: 1634829878955289628
+      firstFrame: 0
       lastFrame: 320
       wrapMode: 0
       orientationOffsetY: 0

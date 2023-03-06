@@ -48,7 +48,7 @@ public class GaïardLeaf : AProjectile
         if (!go) return;
         if (other.gameObject.TryGetComponent<ADamageable>(out var id))
         {
-            id.ApplyDamaged(damage);
+            id.ApplyDamage(damage);
             Destroy(gameObject);
         }
         else if (other.gameObject.TryGetComponent<Portal>(out var portal))

@@ -179,7 +179,7 @@ public class Skeltos : BasicEnemyBehaviour
         {
             if (!hasHit)
             {
-                player.GetComponent<PlayerManager>().ApplyDamaged(damage);
+                player.GetComponent<PlayerManager>().ApplyDamage(damage);
                 hasHit = true;
             }
         }
