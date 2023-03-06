@@ -10,9 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2db9fbb35137f434e926f50d830a76f6, type: 3}
-  m_Name: TestCharacter
+  m_Name: Hero
   m_EditorClassIdentifier: 
-  characterName: Dialog
+  characterName: Hero
   sprites:
-  - sprite: {fileID: 21300000, guid: c99604c5ca64cbd468f24662774e9180, type: 3}
+  - sprite: {fileID: 21300000, guid: 43927799a9d993e4fa6b5e93b5164ca3, type: 3}
     emotion: 0
+  - sprite: {fileID: 21300000, guid: 1f8dd4c27ea2f494cb3747215e9fce0e, type: 3}
+    emotion: 2
+  - sprite: {fileID: 21300000, guid: 224f5fc6aa57df7419e8f36473f0734b, type: 3}
+    emotion: 5

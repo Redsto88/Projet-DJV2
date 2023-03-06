@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508055dc8b2969b48b44383003161da3, type: 3}
+  m_Name: IntroductionPart2
+  m_EditorClassIdentifier: 
+  characters:
+  - character: {fileID: 11400000, guid: 0b756710cbc37e14cbfc32f2cee6b78f, type: 2}
+    basePosition: 0.1
+    baseEmotion: 0
+    IsInLight: 1
+    isVisible: 0
+  startInThought: 1
+  events:
+  - type: 2
+    parallel: 0
+    characterIndex: 0
+    position: 0.5
+    otherCharacterIndex: 0
+    transitionType: 0
+    transitionTime: 1
+    text: 
+    makesSound: 0
+    sound: {fileID: 0}
+    toneVariation: {x: 0, y: 0}
+    textSpeed: 50
+    isThought: 0
+    emotion: 0
+  - type: 7
+    parallel: 0
+    characterIndex: 0
+    position: 0.5
+    otherCharacterIndex: 0
+    transitionType: 0
+    transitionTime: 0
+    text: "Et voil\xE0. Enfin debout. Cependant... je ne reconnais pas cet endroit."
+    makesSound: 0
+    sound: {fileID: 0}
+    toneVariation: {x: 0, y: 0}
+    textSpeed: 50
+    isThought: 1
+    emotion: 0
+  - type: 7
+    parallel: 0
+    characterIndex: 0
+    position: 0.5
+    otherCharacterIndex: 0
+    transitionType: 0
+    transitionTime: 0
+    text: "Tout ce que je sais, c'est que quelqu'un m'a amen\xE9 ici... pourquoi
+      ?"
+    makesSound: 0
+    sound: {fileID: 0}
+    toneVariation: {x: 0, y: 0}
+    textSpeed: 50
+    isThought: 1
+    emotion: 0
+  - type: 7
+    parallel: 0
+    characterIndex: 0
+    position: 0.5
+    otherCharacterIndex: 0
+    transitionType: 0
+    transitionTime: 0
+    text: "Et personne \xE0 l'horizon."
+    makesSound: 0
+    sound: {fileID: 0}
+    toneVariation: {x: 0, y: 0}
+    textSpeed: 50
+    isThought: 1
+    emotion: 5
+  - type: 7
+    parallel: 0
+    characterIndex: 0
+    position: 0.5
+    otherCharacterIndex: 0
+    transitionType: 0
+    transitionTime: 0
+    text: ...
+    makesSound: 0
+    sound: {fileID: 0}
+    toneVariation: {x: 0, y: 0}
+    textSpeed: 1000
+    isThought: 1
+    emotion: 0
+  - type: 5
+    parallel: 1
+    characterIndex: 0
+    position: 0.4
+    otherCharacterIndex: 0
+    transitionType: 1
+    transitionTime: 1
+    text: 
+    makesSound: 0
+    sound: {fileID: 0}
+    toneVariation: {x: 0, y: 0}
+    textSpeed: 50
+    isThought: 0
+    emotion: 0
+  - type: 7
+    parallel: 0
+    characterIndex: 0
+    position: 0.5
+    otherCharacterIndex: 0
+    transitionType: 0
+    transitionTime: 0
+    text: Bon ! Pour commencer, essayons de partir d'ici !
+    makesSound: 0
+    sound: {fileID: 0}
+    toneVariation: {x: 0, y: 0}
+    textSpeed: 50
+    isThought: 0
+    emotion: 2
+  - type: 7
+    parallel: 0
+    characterIndex: 0
+    position: 0.5
+    otherCharacterIndex: 0
+    transitionType: 0
+    transitionTime: 0
+    text: "J'ai l'impression de pouvoir le faire, malgr\xE9 ce foss\xE9..."
+    makesSound: 0
+    sound: {fileID: 0}
+    toneVariation: {x: 0, y: 0}
+    textSpeed: 50
+    isThought: 0
+    emotion: 0
