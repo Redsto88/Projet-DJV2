@@ -42,10 +42,13 @@ public class SphereEnigme : MonoBehaviour
     {
         if (!detector.IsUnityNull())
         {
-            if (detector.material.color == Color.green) return;
-            detector.material.color = detector.color;
-            detector.light.color = detector.lightColor;
-            detector.isActivated = false;
+            print(detector.light.color);
+            if (detector.light.color != Color.green)
+            {
+                detector.material.color = detector.color;
+                detector.light.color = detector.lightColor;
+                detector.isActivated = false;
+            }
         }
     }
 }

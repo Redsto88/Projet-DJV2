@@ -15,10 +15,6 @@ public class SphereDetector : MonoBehaviour
         material = GetComponentInChildren<Renderer>().material;
         color = material.color;
         lightColor = light.color;
-        if (!light.IsUnityNull())
-        {
-            light.color = color;
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,12 +34,13 @@ public class SphereDetector : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<SphereEnigme>(out var sphere))
         {
-            //change color to red
-            if (material.color == Color.green) return;
-            material.color = color * 5;
-            light.color = lightColor;
-            isActivated = false;
-
+            //change color to baseColor
+            if (light.color != Color.green)
+            { 
+                material.color = color * 5;
+                light.color = lightColor;
+                isActivated = false;
+            }
         }
     }
 }

@@ -22,7 +22,7 @@ public class PuzzleManager1 : MonoBehaviour
                 break;
             }
         }
-        if(Input.GetKey(KeyCode.Space)){
+        if(Input.GetKey(KeyCode.P)){
             isFinished = true;
         }
         if (isFinished)
