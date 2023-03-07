@@ -82,12 +82,6 @@ public class PlayerController : MonoBehaviour
                     direction = portalDirection;
                 }
 
-                print(direction);
-
-
-
-
-
                 direction *= speed*Time.deltaTime;
 
                 // Gravité + plateformes
