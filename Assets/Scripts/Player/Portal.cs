@@ -99,10 +99,12 @@ public class Portal : MonoBehaviour
                     _destinationTransition =
                         linkPortal
                             .transitionBwd; //On rentre par le côté "vert" du portail (Arrière), on doit ressortir du côté vert
+                            PlayerController.Instance.portalDirection = linkPortal.transform.forward*(-1);
                 }
                 else
                 {
                     _destinationTransition = linkPortal.transitionFwd; //Idem mais pour l'avant
+                    PlayerController.Instance.portalDirection = linkPortal.transform.forward;
                 }
 
                 //On désactive le character controller pour se téléporter. IL ne pourra pas prendre de dégats pendant ce temps
@@ -112,6 +114,7 @@ public class Portal : MonoBehaviour
                 //Téléportation
                 col.gameObject.transform.position = linkPortal.transform.position;
                 PlayerController.Instance.playerPivot.transform.LookAt(_destinationTransition.position);
+                
                 yield return new WaitForEndOfFrame();
 
                 //Animation portail
@@ -125,17 +128,16 @@ public class Portal : MonoBehaviour
                 }*/
 
                 //Transition
-                while ((PlayerController.Instance.transform.position - _destinationTransition.position).magnitude > 0.1)
-                {
-                    PlayerController.Instance.transform.position = Vector3.SmoothDamp(
-                        PlayerController.Instance.transform.position,
-                        _destinationTransition.position, ref _velocity, 0.2f);
-                    yield return null;
-                }
+                // while ((PlayerController.Instance.transform.position - _destinationTransition.position).magnitude > 0.1)
+                // {
+                //     PlayerController.Instance.transform.position = Vector3.SmoothDamp(
+                //         PlayerController.Instance.transform.position,
+                //         _destinationTransition.position, ref _velocity, 0.2f);
+                //     yield return null;
+                // }
 
                 //On rend le controle au joueur
                 col.enabled = true;
-                PlayerController.Instance.portalFlag = false;
             }
 
             //Cas d'un ennemi

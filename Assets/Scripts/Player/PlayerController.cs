@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     public CharacterController characterController;
     
     public bool portalFlag;
+    private bool stickDirectionStored = false;
+    private Vector3 stickDirection;
+    public Vector3 portalDirection;
+
     public bool respawnFlag;
     
     private float _highCheck;
@@ -24,7 +28,8 @@ public class PlayerController : MonoBehaviour
     public GameObject _currentPlateform; 
 
     [SerializeField] private float _gravity = 1f;
-    public float _yVel;    
+    public float _yVel;
+    
     private void Awake()
     {
         if(Instance != null) Destroy(Instance.gameObject);
@@ -51,7 +56,7 @@ public class PlayerController : MonoBehaviour
             characterController.Move((transform.forward + transform.right).normalized * (-5*Time.deltaTime));
         }
         else{
-            if (!portalFlag && !respawnFlag && canMove)
+            if (!respawnFlag && canMove)
             {
                 // Déplacement du joueur
                 Vector3 direction = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
@@ -59,6 +64,30 @@ public class PlayerController : MonoBehaviour
                 {
                     direction.Normalize();
                 }
+
+                //si la direction de déplacement du joueur est assez éloignée de celle stockée lors de la téléportation, on réinitialise le flag
+                if(portalFlag && stickDirectionStored && (Vector3.Distance(stickDirection, direction) > 0.3f || Vector3.Magnitude(direction) < 0.1f)){
+                    stickDirectionStored = false;
+                    portalFlag = false;
+                }
+
+
+                //gestion de la teleportation
+                if(portalFlag && !stickDirectionStored){
+                    stickDirectionStored = true;
+                    stickDirection = direction;
+                }
+
+                if(portalFlag){
+                    direction = portalDirection;
+                }
+
+                print(direction);
+
+
+
+
+
                 direction *= speed*Time.deltaTime;
 
                 // Gravité + plateformes
