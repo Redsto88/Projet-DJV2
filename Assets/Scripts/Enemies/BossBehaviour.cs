@@ -15,6 +15,9 @@ public class BossBehaviour : BasicEnemyBehaviour
 
     private bool isStunned = false;
 
+    public bool phase2 = false;
+    public List<PlateformeBoss> plateformeBoss;
+
     [Header("Attaques")]
     [SerializeField] private float leafAttackChance;
 
@@ -28,7 +31,7 @@ public class BossBehaviour : BasicEnemyBehaviour
     private float attackTimer = 0f;
     [SerializeField] private GameObject leafPrefab;
 
-    [SerializeField] private List<plateformeBoss> plateformes = new List<plateformeBoss>();
+    [SerializeField] private List<PlateformeBoss> plateformes = new List<PlateformeBoss>();
 
     [Header("Autres")]
 
@@ -133,6 +136,17 @@ public class BossBehaviour : BasicEnemyBehaviour
         if (canBeHit)
         {
             base.ApplyDamage(damage);
+            if (_health < healthMax && !phase2)
+            {
+                phase2 = true;
+                foreach (var plateforme in plateformeBoss)
+                {
+                    plateforme.ToUp();
+                    isStunned = false;
+                    transform.position = new Vector3(7, 0, 0);
+                    PlayerController.Instance.transform.position = Vector3.zero;
+                }
+            } ;
         }
     }
 

@@ -2,30 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class plateformeBoss : MonoBehaviour
+public class PlateformeBoss : MonoBehaviour
 {
 
     public float rotationSpeed = 20f;
-
+    public float height = 5;
     public bool isUp = false;
 
-    private void Start(){
-        toUp(Random.Range(2f, 8f));
-    }
+
 
     private void Update()
     {
         if(isUp){
-            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.up * (rotationSpeed * Time.deltaTime));
         }
     }
 
 
-    public void toUp(float height)
+    public void ToUp()
     {
-        StartCoroutine(Up(height));
+        StartCoroutine(Up());
 
-        IEnumerator Up(float height)
+        IEnumerator Up()
         {
             yield return new WaitForSeconds(1f);
             float time = 0;

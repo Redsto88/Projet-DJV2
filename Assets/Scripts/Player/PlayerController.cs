@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
                 }
                 if(isOnPlateform)
                 {
-                    plateformeBoss plateform = _currentPlateform.GetComponentInParent<plateformeBoss>();
+                    PlateformeBoss plateform = _currentPlateform.GetComponentInParent<PlateformeBoss>();
                     if(plateform.isUp){
                         rotationSpeed = plateform.rotationSpeed;
                         Vector3 rotationCenter = plateform.transform.position;
