@@ -136,7 +136,7 @@ public class BossBehaviour : BasicEnemyBehaviour
         if (canBeHit)
         {
             base.ApplyDamage(damage);
-            if (_health < healthMax && !phase2)
+            if (_health < healthMax/2 && !phase2)
             {
                 phase2 = true;
                 foreach (var plateforme in plateformeBoss)
