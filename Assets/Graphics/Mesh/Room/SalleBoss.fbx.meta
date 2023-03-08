@@ -3,7 +3,47 @@ guid: 7f2fb935da553db4c924f4c539e3a9db
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Arches
+    second: {fileID: 2100000, guid: 584c1aa345786214cbc5303987a05fbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Flambeau
+    second: {fileID: 2100000, guid: 9a73749091d167442bac987ce3e4f5d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MurBoss
+    second: {fileID: 2100000, guid: bc12534a6dac1044c9ef63144e85b32a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pilliers
+    second: {fileID: 2100000, guid: 905633fa40d395f49b491f976e7848a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RochePlateformeBoss
+    second: {fileID: 2100000, guid: c03a024d496c6ac45be1afec1f0fa30e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RockPlateforme_01
+    second: {fileID: 2100000, guid: 7c6e3ec6563bf904fbd56b83b9825230, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sol
+    second: {fileID: 2100000, guid: b85012201010c524bb151914f04e1d7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterFall
+    second: {fileID: 2100000, guid: 123d61deee792184ba969fc45e8c9ce3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

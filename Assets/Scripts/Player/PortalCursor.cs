@@ -46,27 +46,18 @@ public class PortalCursor : MonoBehaviour
         var ray = camera.ScreenPointToRay(_cursorPos);
 
         var layerInt = LayerMask.GetMask("Ground","Plateform");
+        //var layerInt2 = ~(layerInt<<2);
+        //print(layerInt + " // " + layerInt2);
         
-        //TODO optimiser ça
         if (Physics.Raycast(ray, out var x, Mathf.Infinity, layerInt, QueryTriggerInteraction.UseGlobal))
         {
-            // if (x.collider.gameObject.layer == 3)
-            // {
-                canSpawnPortal = true;
-                transform.position = x.point;
-                if (_renderer.material != enableMaterial)
-                {
-                    _renderer.material = enableMaterial;
-                }
-            // }
-            // else
-            // {
-            //     canSpawnPortal = false;
-            //     if(_renderer.enabled)
-            //     {
-            //         _renderer.enabled = false;
-            //     }
-            // }
+            canSpawnPortal = true;
+            transform.position = x.point; 
+            if (_renderer.material != enableMaterial)
+            {
+                _renderer.material = enableMaterial;
+            }
+
         }
         else if (Physics.Raycast(ray, out var y, Mathf.Infinity, ~layerInt, QueryTriggerInteraction.UseGlobal))
         {

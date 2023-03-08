@@ -124,8 +124,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4353451073995963077}
-  - component: {fileID: 2536021115648082251}
   - component: {fileID: 3103637960766987751}
+  - component: {fileID: 8003670202551057508}
   m_Layer: 0
   m_Name: SphereDetector
   m_TagString: Untagged
@@ -150,19 +150,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2536021115648082251
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6930067592201518477}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 13.5, y: 10, z: 13.5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3103637960766987751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +167,19 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 0}
   lightColor: {r: 0, g: 0, b: 0, a: 0}
   light: {fileID: 4418599364228966082}
+--- !u!135 &8003670202551057508
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6930067592201518477}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6.8258247
+  m_Center: {x: 0, y: 0, z: 0.020210939}
 --- !u!1001 &6537837450374755551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -232,6 +232,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 3e0d566d7fcd3b34ca73155ea1d59e37, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3e0d566d7fcd3b34ca73155ea1d59e37, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7133a81abceb10f45a8275b4b46e8da9, type: 2}
@@ -242,6 +246,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3e0d566d7fcd3b34ca73155ea1d59e37, type: 3}
       propertyPath: m_Layer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3e0d566d7fcd3b34ca73155ea1d59e37, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e0d566d7fcd3b34ca73155ea1d59e37, type: 3}

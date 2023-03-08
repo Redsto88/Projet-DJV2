@@ -33,9 +33,12 @@ public class BossBehaviour : BasicEnemyBehaviour
 
     [SerializeField] private List<PlateformeBoss> plateformes = new List<PlateformeBoss>();
 
-    [Header("Autres")]
-
+    [Header("Autres")] 
+    [SerializeField] private GameObject solP1;
+    [SerializeField] private GameObject solP2;
     [SerializeField] private GameObject sphereDetector;
+    [SerializeField] private Transform boosTransformStartP2;
+    [SerializeField] private Transform playerTransformStartP2;
     private SphereDetector sphereDetectorScript;
 
 
@@ -44,6 +47,7 @@ public class BossBehaviour : BasicEnemyBehaviour
     {
         sphereDetectorScript = sphereDetector.GetComponent<SphereDetector>();
         base.Start();
+        solP2.SetActive(false);
     }
 
 
@@ -138,13 +142,17 @@ public class BossBehaviour : BasicEnemyBehaviour
             base.ApplyDamage(damage);
             if (_health < healthMax/2 && !phase2)
             {
+                solP2.SetActive(false);
+                solP2.SetActive(true);
                 phase2 = true;
                 foreach (var plateforme in plateformeBoss)
                 {
                     plateforme.ToUp();
                     isStunned = false;
-                    transform.position = new Vector3(7, 0, 0);
-                    PlayerController.Instance.transform.position = Vector3.zero;
+                    transform.position = boosTransformStartP2.position;
+                    transform.rotation = boosTransformStartP2.rotation;
+                    PlayerController.Instance.transform.position = playerTransformStartP2.position;
+                    PlayerController.Instance.transform.rotation = playerTransformStartP2.rotation;
                 }
             } ;
         }
