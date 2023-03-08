@@ -22,8 +22,9 @@ public class GaïardLeaf : AProjectile
         }
     }
 
-    public void SetLeaf(float time, Vector3 initVel, bool aimed, Transform target, float angle)
+    public void SetLeaf(float time, Vector3 initVel, bool aimed, Transform target, float angle, float _damage)
     {
+        damage = _damage;
         StartCoroutine(stall(time,initVel,aimed,target,angle));
     }
 

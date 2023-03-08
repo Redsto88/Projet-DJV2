@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
                         Debug.DrawRay(highControl.position + dir, highControl.up * -2, Color.red);
                     }
                 }
-                if(_currentPlateform == null){
+                if(_currentPlateform.IsUnityNull()){
                     isOnPlateform = false;
                 }
                 if(isOnPlateform)

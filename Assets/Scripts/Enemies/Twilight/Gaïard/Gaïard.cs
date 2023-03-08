@@ -7,6 +7,8 @@ using UnityEngine.AI;
 public class Gaïard : BasicEnemyBehaviour
 {
     [SerializeField] private GameObject leafPrefab;
+    [SerializeField] private float damage = 10;
+    [SerializeField] private int leafNumber = 3;
     [SerializeField] private float idealDistance;
     [SerializeField] private float aimChance;
     [SerializeField] private float changeDirectionFrequency;
@@ -55,31 +57,27 @@ public class Gaïard : BasicEnemyBehaviour
         yield return new WaitForSeconds(attackFrequency);
         if (Random.Range(0f,1f) < aimChance)
         {
-            var l1 = Instantiate(leafPrefab, transform.position + Vector3.up, transform.rotation);
-            l1.transform.SetParent(transform);
-            l1.GetComponent<GaïardLeaf>().SetLeaf(3f, 1.5f * Vector3.up + Random.Range(-0.15f,0.15f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, true, _target, 0);
-            yield return new WaitForSeconds(0.1f);
-            var l2 = Instantiate(leafPrefab, transform.position + Vector3.up, transform.rotation);
-            l2.transform.SetParent(transform);
-            l2.GetComponent<GaïardLeaf>().SetLeaf(3.4f, 1.5f * Vector3.up + Random.Range(-0.15f,0.15f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, true, _target, 0);
-            yield return new WaitForSeconds(0.1f);
-            var l3 = Instantiate(leafPrefab, transform.position + Vector3.up, transform.rotation);
-            l3.transform.SetParent(transform);
-            l3.GetComponent<GaïardLeaf>().SetLeaf(3.8f, 1.5f * Vector3.up + Random.Range(-0.15f,0.15f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, true, _target, 0);
+            for(int i = 0;i<leafNumber;i++)
+            {
+                yield return new WaitForSeconds(0.1f);
+                var l = Instantiate(leafPrefab, transform.position + Vector3.up, transform.rotation);
+                l.transform.SetParent(transform);
+                l.GetComponent<GaïardLeaf>().SetLeaf(3f+0.4f*i, 1.5f * Vector3.up + Random.Range(-0.15f,0.15f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, true, _target, 0, damage);
+            }
+            yield return new WaitForSeconds(3 + 0.4f * (leafNumber - 1) + Random.Range(coolDown - 2, coolDown + 2));
+        
         } 
         else 
         {
-            var l1 = Instantiate(leafPrefab, transform.position + Vector3.up, transform.rotation);
-            l1.transform.SetParent(transform);
-            l1.GetComponent<GaïardLeaf>().SetLeaf(3f, 1.5f * Vector3.up + Random.Range(-0.35f,0.15f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, false, _target, -30);
-            yield return new WaitForSeconds(0.1f);
-            var l2 = Instantiate(leafPrefab, transform.position + Vector3.up, transform.rotation);
-            l2.transform.SetParent(transform);
-            l2.GetComponent<GaïardLeaf>().SetLeaf(2.9f, 1.5f * Vector3.up + Random.Range(-0.15f,0.15f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, false, _target, 0);
-            yield return new WaitForSeconds(0.1f);
-            var l3 = Instantiate(leafPrefab, transform.position + Vector3.up, transform.rotation);
-            l3.transform.SetParent(transform);
-            l3.GetComponent<GaïardLeaf>().SetLeaf(2.8f, 1.5f * Vector3.up + Random.Range(-0.15f,0.35f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, false, _target, 30);
+            for(int i=0;i<leafNumber;i++)
+            {
+                yield return new WaitForSeconds(0.1f);
+                var l = Instantiate(leafPrefab, transform.position + Vector3.up, transform.rotation);
+                l.transform.SetParent(transform);
+                l.GetComponent<GaïardLeaf>().SetLeaf(3f-0.1f*i, 1.5f * Vector3.up + Random.Range(-0.35f+i/leafNumber*0.7f,-0.35f+(i+1)/leafNumber*0.7f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, false, _target, -30+60*i/(leafNumber-1), damage);
+            }
+            yield return new WaitForSeconds(3 - 0.1f * (leafNumber - 1) + Random.Range(coolDown - 2, coolDown + 2));
+        
         }
         StartCoroutine(leafAttack());
     }

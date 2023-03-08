@@ -13,7 +13,8 @@ public class BasicEnemyBehaviour : ADamageable
 
     public bool isTest = false;
 
-    [Header("Stats")] [SerializeField] private float _coolDown = 3f;
+    [Header("Stats")] 
+    [SerializeField] protected float coolDown = 3f;
     
 
     public NavMeshAgent navMeshAgent;
@@ -95,7 +96,7 @@ public class BasicEnemyBehaviour : ADamageable
     private void Attack()
     {
         transform.LookAt(_target.transform);
-        if (!attackFlag && _timeSinceLastAttack>_coolDown)
+        if (!attackFlag && _timeSinceLastAttack>coolDown)
         {
             attackFlag = true;
             _animator.CrossFade("Attack_01", 0.1f);

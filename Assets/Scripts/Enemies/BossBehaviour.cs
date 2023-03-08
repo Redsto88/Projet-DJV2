@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
+using UnityEditor.Build.Pipeline;
 
 public class BossBehaviour : BasicEnemyBehaviour
 {
@@ -20,6 +21,8 @@ public class BossBehaviour : BasicEnemyBehaviour
 
     [Header("Attaques")]
     [SerializeField] private float leafAttackChance;
+    [SerializeField] private  int leafNumber = 5;
+    [SerializeField] private float leafDamage = 15f;
 
     [SerializeField] private float sphereForce;
     [SerializeField] private GameObject spherePrefab;
@@ -27,7 +30,6 @@ public class BossBehaviour : BasicEnemyBehaviour
     [SerializeField] private Transform sphereSpawnPoint;
     [SerializeField] private float aimChance;
     [SerializeField] private float changeDirectionFrequency;
-    [SerializeField] private float attackFrequency;
     private float attackTimer = 0f;
     [SerializeField] private GameObject leafPrefab;
 
@@ -41,6 +43,7 @@ public class BossBehaviour : BasicEnemyBehaviour
     [SerializeField] private Transform playerTransformStartP2;
     private SphereDetector sphereDetectorScript;
 
+    public bool _isAttacking;
 
     // Update is called once per frame
     protected override void Start()
@@ -48,6 +51,14 @@ public class BossBehaviour : BasicEnemyBehaviour
         sphereDetectorScript = sphereDetector.GetComponent<SphereDetector>();
         base.Start();
         solP2.SetActive(false);
+        _isAttacking = true;
+        StartCoroutine(FirstCoroutine());
+    }
+
+    IEnumerator FirstCoroutine()
+    {
+        yield return new WaitForSeconds(3f);
+        _isAttacking = false;
     }
 
 
@@ -69,12 +80,12 @@ public class BossBehaviour : BasicEnemyBehaviour
             Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
             transform.rotation = Quaternion.LookRotation(newDir);
 
-            if(attackTimer >= attackFrequency)
+            if(!_isAttacking)
             {
                 Attack();
-                attackTimer = 0f;
+                //attackTimer = 0f;
             }
-            else attackTimer += Time.deltaTime;
+            //else attackTimer += Time.deltaTime;
         }
 
         if(sphereDetectorScript.isActivated && !isStunned)
@@ -142,7 +153,7 @@ public class BossBehaviour : BasicEnemyBehaviour
             base.ApplyDamage(damage);
             if (_health < healthMax/2 && !phase2)
             {
-                solP2.SetActive(false);
+                solP1.SetActive(false);
                 solP2.SetActive(true);
                 phase2 = true;
                 foreach (var plateforme in plateformeBoss)
@@ -160,6 +171,7 @@ public class BossBehaviour : BasicEnemyBehaviour
 
     void Attack()
     {
+        //if (_isAttacking) return;
         if(Random.Range(0f,1f) < leafAttackChance)
         {
             StartCoroutine(LeafAttack());
@@ -170,8 +182,9 @@ public class BossBehaviour : BasicEnemyBehaviour
         }
     }
 
-    private IEnumerator LeafAttack(){
-        int leafNumber = 5;
+    private IEnumerator LeafAttack()
+    {
+        _isAttacking = true;
         if (Random.Range(0f,1f) < aimChance)
         {
             for(int i = 0;i<leafNumber;i++)
@@ -179,8 +192,9 @@ public class BossBehaviour : BasicEnemyBehaviour
                 yield return new WaitForSeconds(0.1f);
                 var l = Instantiate(leafPrefab, transform.position + Vector3.up, transform.rotation);
                 l.transform.SetParent(transform);
-                l.GetComponent<GaïardLeaf>().SetLeaf(3f+0.4f*i, 1.5f * Vector3.up + Random.Range(-0.15f,0.15f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, true, _target, 0);
+                l.GetComponent<GaïardLeaf>().SetLeaf(3f+0.4f*i, 1.5f * Vector3.up + Random.Range(-0.15f,0.15f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, true, _target, 0,leafDamage);
             }
+            yield return new WaitForSeconds(3 + 0.4f * (leafNumber - 1) + Random.Range(coolDown - 2, coolDown + 2));
         
         } 
         else 
@@ -190,13 +204,18 @@ public class BossBehaviour : BasicEnemyBehaviour
                 yield return new WaitForSeconds(0.1f);
                 var l = Instantiate(leafPrefab, transform.position + Vector3.up, transform.rotation);
                 l.transform.SetParent(transform);
-                l.GetComponent<GaïardLeaf>().SetLeaf(3f-0.1f*i, 1.5f * Vector3.up + Random.Range(-0.35f+i/leafNumber*0.7f,-0.35f+(i+1)/leafNumber*0.7f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, false, _target, -30+60*i/(leafNumber-1));
+                l.GetComponent<GaïardLeaf>().SetLeaf(3f-0.1f*i, 1.5f * Vector3.up + Random.Range(-0.35f+i/leafNumber*0.7f,-0.35f+(i+1)/leafNumber*0.7f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, false, _target, -30+60*i/(leafNumber-1),leafDamage);
             }
+            yield return new WaitForSeconds(3 - 0.1f * (leafNumber - 1) + Random.Range(coolDown - 2, coolDown + 2));
         
         }
+        
+        _isAttacking = false;
     }
 
-    private IEnumerator SphereAttack(){
+    private IEnumerator SphereAttack()
+    {
+        _isAttacking = true;
         float time = 0f;
         float growTime = 1f;
         animationSphere.SetActive(true);
@@ -210,5 +229,8 @@ public class BossBehaviour : BasicEnemyBehaviour
         GameObject sphere = Instantiate(spherePrefab, sphereSpawnPoint.position, transform.rotation);
         sphere.GetComponent<SphereEnigme>().speed = sphereForce;
         sphere.GetComponent<Rigidbody>().AddForce((_target.position-sphereSpawnPoint.position).normalized * sphereForce, ForceMode.Impulse);
+
+        yield return new WaitForSeconds(Random.Range(coolDown - 1, coolDown + 1));
+        _isAttacking = false;
     }
 }

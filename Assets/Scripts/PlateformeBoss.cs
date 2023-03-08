@@ -27,7 +27,7 @@ public class PlateformeBoss : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             float time = 0;
-            float speed = height/15;
+            float speed = height/45;
             float startHeight = transform.position.y;
             while (time < 1)
             {

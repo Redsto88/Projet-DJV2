@@ -117,27 +117,14 @@ public class Portal : MonoBehaviour
                 
                 yield return new WaitForEndOfFrame();
 
-                //Animation portail
-                /*foreach (var VARIABLE in  GetComponentsInChildren<Renderer>())
-                {
-                    VARIABLE.enabled = false;
-                }
-                foreach (var VARIABLE in  linkPortal.GetComponentsInChildren<Renderer>())
-                {
-                    VARIABLE.enabled = false;
-                }*/
-
-                //Transition
-                // while ((PlayerController.Instance.transform.position - _destinationTransition.position).magnitude > 0.1)
-                // {
-                //     PlayerController.Instance.transform.position = Vector3.SmoothDamp(
-                //         PlayerController.Instance.transform.position,
-                //         _destinationTransition.position, ref _velocity, 0.2f);
-                //     yield return null;
-                // }
-
                 //On rend le controle au joueur
                 col.enabled = true;
+            }
+            
+            // cas du boss
+            else if (col.TryGetComponent(out BossBehaviour boss))
+            {
+                //TODO Anim destruction portail
             }
 
             //Cas d'un ennemi
@@ -243,6 +230,7 @@ public class Portal : MonoBehaviour
                 projectile.gameObject.transform.rotation = linkPortal.transform.rotation;
                 yield return new WaitForEndOfFrame();
             }
+            
             PlayerController.Instance.gameObject.GetComponent<SpawnPortal>().DeletePortals();
         }
     }
