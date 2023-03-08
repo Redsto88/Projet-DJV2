@@ -21,7 +21,7 @@ MonoBehaviour:
   startInThought: 1
   events:
   - type: 2
-    parallel: 0
+    parallel: 1
     characterIndex: 0
     position: 0.5
     otherCharacterIndex: 0
@@ -96,8 +96,8 @@ MonoBehaviour:
     characterIndex: 0
     position: 0.4
     otherCharacterIndex: 0
-    transitionType: 1
-    transitionTime: 1
+    transitionType: 2
+    transitionTime: 0.5
     text: 
     makesSound: 0
     sound: {fileID: 0}

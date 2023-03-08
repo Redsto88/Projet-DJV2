@@ -1623,9 +1623,49 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4227113271456143341, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227113271456143341, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227113271456143341, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449055264587792683, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449055264587792683, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449055264587792683, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727470711220443309, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727470711220443309, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7809980455249609588, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8060073996713398293, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8060073996713398293, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}

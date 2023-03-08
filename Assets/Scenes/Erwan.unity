@@ -1314,10 +1314,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 399245719}
     m_Modifications:
-    - target: {fileID: 8349674347032606836, guid: e1128cea31738ce4d8a35b763e9ab635, type: 3}
-      propertyPath: test
-      value: 
-      objectReference: {fileID: 11400000, guid: ba3d0290aaa69454d85c3d7463f90b09, type: 2}
     - target: {fileID: 8349674347032606838, guid: e1128cea31738ce4d8a35b763e9ab635, type: 3}
       propertyPath: m_Name
       value: UIDialog
@@ -1364,10 +1360,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8349674347032606839, guid: e1128cea31738ce4d8a35b763e9ab635, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8349674347746422554, guid: e1128cea31738ce4d8a35b763e9ab635, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

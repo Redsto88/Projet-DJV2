@@ -22,6 +22,8 @@ public class DialogManager : MonoBehaviour
     private bool canSkipDialog;
     private Image textBox;
     private List<bool> isEventFinished;
+    private Coroutine dialogue;
+    public bool inDialog => dialogue != null;
     private int currentEventID = 0;
 
     void Awake()
@@ -40,7 +42,7 @@ public class DialogManager : MonoBehaviour
         cg = canvas.GetComponent<CanvasGroup>();
         characterHolders = new List<RectTransform>();
         characters = new List<DialogCharacter>();
-        textBox = canvas.transform.GetChild(1).GetComponent<Image>();
+        textBox = canvas.transform.GetChild(3).GetComponent<Image>();
         isEventFinished = new List<bool>();
     }
 
@@ -58,7 +60,7 @@ public class DialogManager : MonoBehaviour
         charName.text = "";
         canvas.SetActive(true);
         StartCoroutine(changeAlpha(false));
-        StartCoroutine(dialogCor(dd));
+        dialogue = StartCoroutine(dialogCor(dd));
     }
 
     IEnumerator dialogCor(DialogData dd)
@@ -118,6 +120,7 @@ public class DialogManager : MonoBehaviour
         characters.Clear();
         yield return null;
         StartCoroutine(changeAlpha(true));
+        dialogue = null;
     }
 
     bool previousFinished(int k)

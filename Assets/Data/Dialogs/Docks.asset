@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 508055dc8b2969b48b44383003161da3, type: 3}
-  m_Name: IntroductionPart1
+  m_Name: Docks
   m_EditorClassIdentifier: 
   characters:
   - character: {fileID: 11400000, guid: 0b756710cbc37e14cbfc32f2cee6b78f, type: 2}
@@ -18,29 +18,15 @@ MonoBehaviour:
     baseEmotion: 0
     IsInLight: 1
     isVisible: 0
-  startInThought: 1
+  startInThought: 0
   events:
-  - type: 7
-    parallel: 0
-    characterIndex: 0
-    position: 0
-    otherCharacterIndex: 0
-    transitionType: 0
-    transitionTime: 0
-    text: Ca fait combien de temps que je suis ici ...?
-    makesSound: 0
-    sound: {fileID: 0}
-    toneVariation: {x: 0, y: 0}
-    textSpeed: 50
-    isThought: 1
-    emotion: 0
-  - type: 0
+  - type: 2
     parallel: 0
     characterIndex: 0
     position: 0.5
     otherCharacterIndex: 0
     transitionType: 0
-    transitionTime: 4
+    transitionTime: 0.5
     text: 
     makesSound: 0
     sound: {fileID: 0}
@@ -55,10 +41,38 @@ MonoBehaviour:
     otherCharacterIndex: 0
     transitionType: 0
     transitionTime: 0
-    text: Je... je vais essayer de me lever.
+    text: "...je me suis plaint trop t\xF4t apparemment."
     makesSound: 0
     sound: {fileID: 0}
     toneVariation: {x: 0, y: 0}
     textSpeed: 50
-    isThought: 1
+    isThought: 0
     emotion: 0
+  - type: 7
+    parallel: 0
+    characterIndex: 0
+    position: 0.5
+    otherCharacterIndex: 0
+    transitionType: 0
+    transitionTime: 0
+    text: "Et les r\xE9sidents n'ont pas l'air de vouloir discuter..."
+    makesSound: 0
+    sound: {fileID: 0}
+    toneVariation: {x: 0, y: 0}
+    textSpeed: 50
+    isThought: 0
+    emotion: 0
+  - type: 7
+    parallel: 0
+    characterIndex: 0
+    position: 0.5
+    otherCharacterIndex: 0
+    transitionType: 0
+    transitionTime: 0
+    text: "Bah, suffit de les \xE9clater !"
+    makesSound: 0
+    sound: {fileID: 0}
+    toneVariation: {x: 0, y: 0}
+    textSpeed: 50
+    isThought: 0
+    emotion: 2
