@@ -32,8 +32,11 @@ public class PuzzleManager1 : MonoBehaviour
                 detector.material.color = Color.green * 5f;
                 detector.light.color = Color.green;
             }
-            if (enemy != null)
-            enemy.ApplyDamage(1000);
+
+            if (!enemy.IsUnityNull())
+            {
+                enemy.ApplyDamage(1000);
+            }
         }
     }
 }

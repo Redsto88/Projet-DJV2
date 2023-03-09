@@ -125,7 +125,10 @@ public class BasicEnemyBehaviour : ADamageable
     {
         StartCoroutine(ColorCoroutine());
         base.ApplyDamage(damage);
-        animator.CrossFade("Damage",0.2f);
+        if (!animator.IsUnityNull())
+        {
+            animator.CrossFade("Damage",0.2f);
+        }
         if (_health <= 0) RoomBehaviour.Instance.CountEnemyDeath();
     }
 

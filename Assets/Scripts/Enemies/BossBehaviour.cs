@@ -41,27 +41,39 @@ public class BossBehaviour : BasicEnemyBehaviour
     [SerializeField] private UIHealthBar healthBar;
     [SerializeField] private GameObject solP1;
     [SerializeField] private GameObject solP2;
-    [SerializeField] private GameObject sphereDetector;
+    [SerializeField] private SphereDetector sphereDetector;
     [SerializeField] private Transform boosTransformStartP2;
     [SerializeField] private Transform playerTransformStartP2;
     [SerializeField] private GameObject bouleAttaquePS;
-    private SphereDetector sphereDetectorScript;
+   
+    
+    [Header("Room")]
+    [SerializeField] private BasicEnemyBehaviour enemy;
 
+    [SerializeField] private RoomBehaviour room;
+    
+    
     private bool _isAttacking;
     private float _speed;
     private static readonly int IsStunned = Animator.StringToHash("isStunned");
-
-    //private Camera _camera = Camera.main;
+    
 
     // Update is called once per frame
     protected override void Start()
     {
-        sphereDetectorScript = sphereDetector.GetComponent<SphereDetector>();
-        base.Start();
-        solP2.SetActive(false);
-        _isAttacking = true;
-        _speed = navMeshAgent.speed;
-        StartCoroutine(FirstCoroutine());
+        if (room.ennemiesActiveAtStartup)
+        {
+
+            base.Start();
+            solP2.SetActive(false);
+            _isAttacking = true;
+            _speed = navMeshAgent.speed;
+            StartCoroutine(FirstCoroutine());
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator FirstCoroutine()
@@ -97,7 +109,7 @@ public class BossBehaviour : BasicEnemyBehaviour
             //else attackTimer += Time.deltaTime;
         }
 
-        if(sphereDetectorScript.isActivated && !isStunned)
+        if(sphereDetector.isActivated && !isStunned)
         {
             print("STUNNED");
             canBeHit = true;
@@ -109,7 +121,7 @@ public class BossBehaviour : BasicEnemyBehaviour
             StartCoroutine(Stun());
         }
 
-        if(!sphereDetectorScript.isActivated && isStunned)
+        if(!sphereDetector.isActivated && isStunned)
         {
             print("UNSTUNNED");
             canBeHit = false;
@@ -183,7 +195,6 @@ public class BossBehaviour : BasicEnemyBehaviour
 
     void Attack()
     {
-        navMeshAgent.speed = _speed/2;
         if(Random.Range(0f,1f) < leafAttackChance)
         {
             StartCoroutine(LeafAttack());
@@ -196,6 +207,7 @@ public class BossBehaviour : BasicEnemyBehaviour
 
     private IEnumerator LeafAttack()
     {
+        navMeshAgent.speed = _speed/2;
         _isAttacking = true;
         animator.CrossFade("PrepareAttack",0.2f);
         if (Random.Range(0f,1f) < aimChance)
@@ -246,6 +258,7 @@ public class BossBehaviour : BasicEnemyBehaviour
 
     private IEnumerator SphereAttack()
     {
+        navMeshAgent.speed = 0;
         _isAttacking = true;
         animator.CrossFade("Attack_Boule",0.1f);
         float time = 0f;
@@ -266,5 +279,10 @@ public class BossBehaviour : BasicEnemyBehaviour
         navMeshAgent.speed = _speed;
         yield return new WaitForSeconds(Random.Range(coolDown - 2, coolDown + 2));
         _isAttacking = false;
+    }
+
+    private void OnDestroy()
+    {
+        enemy.ApplyDamage(9999);
     }
 }

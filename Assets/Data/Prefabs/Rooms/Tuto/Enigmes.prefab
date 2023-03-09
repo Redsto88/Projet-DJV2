@@ -3645,6 +3645,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 0}
   portalFlag: 0
   attackFlag: 0
+  damageFlag: 0
 --- !u!1 &3302712975770568803
 GameObject:
   m_ObjectHideFlags: 0
@@ -7641,6 +7642,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6336138832283384125}
     m_Modifications:
+    - target: {fileID: 1626476502264214140, guid: 6852ad1bcf7a30441b22b467c1e9926e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626476502264214140, guid: 6852ad1bcf7a30441b22b467c1e9926e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.32
+      objectReference: {fileID: 0}
     - target: {fileID: 1756405948598334761, guid: 6852ad1bcf7a30441b22b467c1e9926e, type: 3}
       propertyPath: m_Name
       value: RespawnAfterFall

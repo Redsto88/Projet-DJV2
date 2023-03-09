@@ -13781,6 +13781,7 @@ MonoBehaviour:
     arrays: []
   enemiesLeft: 0
   waveNumber: 0
+  ennemiesActiveAtStartup: 1
 --- !u!114 &4268009622289759817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102546,7 +102547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1626476502264214140, guid: 6852ad1bcf7a30441b22b467c1e9926e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.23
+      value: 10.48
       objectReference: {fileID: 0}
     - target: {fileID: 1626476502264214140, guid: 6852ad1bcf7a30441b22b467c1e9926e, type: 3}
       propertyPath: m_LocalPosition.z

@@ -2788,6 +2788,7 @@ MonoBehaviour:
     arrays: []
   enemiesLeft: 0
   waveNumber: 0
+  ennemiesActiveAtStartup: 1
 --- !u!114 &1866260426889442739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9886,6 +9887,18 @@ PrefabInstance:
     - target: {fileID: 7455949730684695080, guid: 58440adbd09ee0240ac0838d09302a9a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456824336766149321, guid: 58440adbd09ee0240ac0838d09302a9a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456824336766149321, guid: 58440adbd09ee0240ac0838d09302a9a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456824336766149321, guid: 58440adbd09ee0240ac0838d09302a9a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7549738662100994560, guid: 58440adbd09ee0240ac0838d09302a9a, type: 3}
       propertyPath: m_StaticEditorFlags
