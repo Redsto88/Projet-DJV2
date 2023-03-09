@@ -12,7 +12,6 @@ public class Door : MonoBehaviour
         Right,
         Down
     }
-    [SerializeField] private GameObject openClose;
     [SerializeField] private Corner corner;
     [SerializeField] private Animator bariereAnimator;
     private bool _isNear;

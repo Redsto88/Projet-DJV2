@@ -1940,10 +1940,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3614044016745385781, guid: ff7a97b2ac735c8478ed72be9bca229b, type: 3}
-      propertyPath: parent
-      value: 
-      objectReference: {fileID: 1731006318}
     - target: {fileID: 5498758814783280172, guid: ff7a97b2ac735c8478ed72be9bca229b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2011,17 +2007,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5498758814783280173, guid: ff7a97b2ac735c8478ed72be9bca229b, type: 3}
   m_PrefabInstance: {fileID: 1731006315}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1731006318 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5498758814783280183, guid: ff7a97b2ac735c8478ed72be9bca229b, type: 3}
-  m_PrefabInstance: {fileID: 1731006315}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 632a02cf77b122e4fb4b16955569451c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2060196636
 GameObject:
   m_ObjectHideFlags: 0
