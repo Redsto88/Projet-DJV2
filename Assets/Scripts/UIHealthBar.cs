@@ -8,12 +8,13 @@ public class UIHealthBar : MonoBehaviour
 {
 
     [SerializeField] private Slider _health;
+    [SerializeField] private ADamageable parent;
 
     private float _maxHealth;
 
     private void Start()
     {
-        _maxHealth = PlayerManager.Instance.GetHealthMax();
+        _maxHealth = parent.GetHealthMax();
     }
 
     public void SetHealth(float health)

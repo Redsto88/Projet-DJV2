@@ -66,10 +66,13 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   isTest: 0
+  coolDown: 3
   navMeshAgent: {fileID: 0}
   portalFlag: 0
   attackFlag: 0
   leafPrefab: {fileID: 6317844836524128958, guid: a4b963c3a6dedc1418fb8b905f9e60b0, type: 3}
+  damage: 10
+  leafNumber: 3
   idealDistance: 8
   aimChance: 0.5
   changeDirectionFrequency: 3.5
@@ -192,6 +195,46 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1d4b21df665685a4185be39ad385462c, type: 3}
       propertyPath: m_Name
       value: Gaiard
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039038998525630279, guid: 1d4b21df665685a4185be39ad385462c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 160.09999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039038998525630279, guid: 1d4b21df665685a4185be39ad385462c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 160.09999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039038998525630279, guid: 1d4b21df665685a4185be39ad385462c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 160.09999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039038998525630279, guid: 1d4b21df665685a4185be39ad385462c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.00090386
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039038998525630279, guid: 1d4b21df665685a4185be39ad385462c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039038998525630279, guid: 1d4b21df665685a4185be39ad385462c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.14902101
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039038998525630279, guid: 1d4b21df665685a4185be39ad385462c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7465885
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039038998525630279, guid: 1d4b21df665685a4185be39ad385462c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6652862
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039038998525630279, guid: 1d4b21df665685a4185be39ad385462c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039038998525630279, guid: 1d4b21df665685a4185be39ad385462c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -83.409
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d4b21df665685a4185be39ad385462c, type: 3}

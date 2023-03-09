@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
 using UnityEditor.Build.Pipeline;
+using Random = UnityEngine.Random;
 
 public class BossBehaviour : BasicEnemyBehaviour
 {
-     [Header("Mouvements")]
+    [Header("Mouvements")]
     public float stoppingDistance = 12f;
     public float toCloseDistance = 5f;
 
@@ -36,6 +38,7 @@ public class BossBehaviour : BasicEnemyBehaviour
     [SerializeField] private List<PlateformeBoss> plateformes = new List<PlateformeBoss>();
 
     [Header("Autres")] 
+    [SerializeField] private UIHealthBar healthBar;
     [SerializeField] private GameObject solP1;
     [SerializeField] private GameObject solP2;
     [SerializeField] private GameObject sphereDetector;
@@ -43,7 +46,10 @@ public class BossBehaviour : BasicEnemyBehaviour
     [SerializeField] private Transform playerTransformStartP2;
     private SphereDetector sphereDetectorScript;
 
-    public bool _isAttacking;
+    private bool _isAttacking;
+    private float _speed;
+    
+    //private Camera _camera = Camera.main;
 
     // Update is called once per frame
     protected override void Start()
@@ -52,12 +58,13 @@ public class BossBehaviour : BasicEnemyBehaviour
         base.Start();
         solP2.SetActive(false);
         _isAttacking = true;
+        _speed = navMeshAgent.speed;
         StartCoroutine(FirstCoroutine());
     }
 
     IEnumerator FirstCoroutine()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         _isAttacking = false;
     }
 
@@ -151,6 +158,7 @@ public class BossBehaviour : BasicEnemyBehaviour
         if (canBeHit)
         {
             base.ApplyDamage(damage);
+            healthBar.SetHealth(_health);
             if (_health < healthMax/2 && !phase2)
             {
                 solP1.SetActive(false);
@@ -171,7 +179,7 @@ public class BossBehaviour : BasicEnemyBehaviour
 
     void Attack()
     {
-        //if (_isAttacking) return;
+        navMeshAgent.speed = _speed/2;
         if(Random.Range(0f,1f) < leafAttackChance)
         {
             StartCoroutine(LeafAttack());
@@ -194,7 +202,7 @@ public class BossBehaviour : BasicEnemyBehaviour
                 l.transform.SetParent(transform);
                 l.GetComponent<GaïardLeaf>().SetLeaf(3f+0.4f*i, 1.5f * Vector3.up + Random.Range(-0.15f,0.15f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, true, _target, 0,leafDamage);
             }
-            yield return new WaitForSeconds(3 + 0.4f * (leafNumber - 1) + Random.Range(coolDown - 2, coolDown + 2));
+            yield return new WaitForSeconds(3 + 0.4f * (leafNumber - 1));
         
         } 
         else 
@@ -206,10 +214,11 @@ public class BossBehaviour : BasicEnemyBehaviour
                 l.transform.SetParent(transform);
                 l.GetComponent<GaïardLeaf>().SetLeaf(3f-0.1f*i, 1.5f * Vector3.up + Random.Range(-0.35f+i/leafNumber*0.7f,-0.35f+(i+1)/leafNumber*0.7f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, false, _target, -30+60*i/(leafNumber-1),leafDamage);
             }
-            yield return new WaitForSeconds(3 - 0.1f * (leafNumber - 1) + Random.Range(coolDown - 2, coolDown + 2));
+            yield return new WaitForSeconds(3 - 0.1f * (leafNumber - 1));
         
         }
-        
+        navMeshAgent.speed = _speed;
+        yield return new WaitForSeconds(Random.Range(coolDown - 2, coolDown + 2));
         _isAttacking = false;
     }
 
@@ -230,7 +239,8 @@ public class BossBehaviour : BasicEnemyBehaviour
         sphere.GetComponent<SphereEnigme>().speed = sphereForce;
         sphere.GetComponent<Rigidbody>().AddForce((_target.position-sphereSpawnPoint.position).normalized * sphereForce, ForceMode.Impulse);
 
-        yield return new WaitForSeconds(Random.Range(coolDown - 1, coolDown + 1));
+        navMeshAgent.speed = _speed;
+        yield return new WaitForSeconds(Random.Range(coolDown - 2, coolDown + 2));
         _isAttacking = false;
     }
 }
