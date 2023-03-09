@@ -44,11 +44,13 @@ public class BossBehaviour : BasicEnemyBehaviour
     [SerializeField] private GameObject sphereDetector;
     [SerializeField] private Transform boosTransformStartP2;
     [SerializeField] private Transform playerTransformStartP2;
+    [SerializeField] private GameObject bouleAttaquePS;
     private SphereDetector sphereDetectorScript;
 
     private bool _isAttacking;
     private float _speed;
-    
+    private static readonly int IsStunned = Animator.StringToHash("isStunned");
+
     //private Camera _camera = Camera.main;
 
     // Update is called once per frame
@@ -100,6 +102,7 @@ public class BossBehaviour : BasicEnemyBehaviour
             print("STUNNED");
             canBeHit = true;
             isStunned = true;
+            animator.SetBool(IsStunned,true);
             navMeshAgent.enabled = false;
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.isKinematic = false;
@@ -111,6 +114,7 @@ public class BossBehaviour : BasicEnemyBehaviour
             print("UNSTUNNED");
             canBeHit = false;
             isStunned = false;
+            animator.SetBool(IsStunned,false);
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.isKinematic = true;
             navMeshAgent.enabled = true;
@@ -193,6 +197,7 @@ public class BossBehaviour : BasicEnemyBehaviour
     private IEnumerator LeafAttack()
     {
         _isAttacking = true;
+        animator.CrossFade("PrepareAttack",0.2f);
         if (Random.Range(0f,1f) < aimChance)
         {
             for(int i = 0;i<leafNumber;i++)
@@ -242,8 +247,10 @@ public class BossBehaviour : BasicEnemyBehaviour
     private IEnumerator SphereAttack()
     {
         _isAttacking = true;
+        animator.CrossFade("Attack_Boule",0.1f);
         float time = 0f;
         float growTime = 1f;
+        var ps = Instantiate(bouleAttaquePS, sphereSpawnPoint.position, Quaternion.identity);
         animationSphere.SetActive(true);
         while(time < growTime)
         {

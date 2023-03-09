@@ -41,7 +41,7 @@ public class GaïardLeaf : AProjectile
         transform.LookAt(target.position + Vector3.up);
         if (!aimed) transform.Rotate(angle * Vector3.up);
         transform.SetParent(null);
-        animator.CrossFade(stateName, 0.2f);
+        animator.CrossFade(stateName, 0.1f);
         go = true;
     }
 
