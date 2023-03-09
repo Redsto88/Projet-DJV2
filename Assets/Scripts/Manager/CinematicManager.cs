@@ -8,7 +8,7 @@ public class CinematicManager : MonoBehaviour
 {
     public int startingCinematic;
     public static CinematicManager Instance;
-    [SerializeField] private Transform camTarget;
+    public static List<int> seen = new List<int>();
     [SerializeField] private Image filter;
     void Awake()
     {
@@ -20,16 +20,32 @@ public class CinematicManager : MonoBehaviour
 
     void Start()
     {
+        if (seen.Contains(startingCinematic)) return;
         switch (startingCinematic)
         {
             case 0: break;
             case 1: StartCoroutine(PortalTuto()); break;
+            case 2: StartCoroutine(FirstAttackTuto()); break;
+            case 3: StartCoroutine(PuzzleTuto()); break;
+            case 4: StartCoroutine(DocksTuto()); break;
+        }
+    }
+
+    public void StartCinematic(int i)
+    {
+        if (seen.Contains(i)) return;
+        switch (i)
+        {
+            case 0: break;
+            case 1: StartCoroutine(PortalTuto()); break;
+            case 2: StartCoroutine(FirstAttackTuto()); break;
+            case 3: StartCoroutine(PuzzleTuto()); break;
+            case 4: StartCoroutine(DocksTuto()); break;
         }
     }
     
     public IEnumerator PortalTuto()
     {
-        camTarget.gameObject.SetActive(false);
         filter.color = Color.black;
         DialogData dd = Addressables.LoadAssetAsync<DialogData>("IntroductionDialog1").WaitForCompletion();
         DialogManager.Instance.Dialog(dd);
@@ -43,5 +59,49 @@ public class CinematicManager : MonoBehaviour
         }
         DialogData dd2 = Addressables.LoadAssetAsync<DialogData>("IntroductionDialog2").WaitForCompletion();
         DialogManager.Instance.Dialog(dd2);
+        yield return new WaitWhile(() => DialogManager.Instance.inDialog);
+        seen.Add(1);
+    }
+
+    public IEnumerator FirstAttackTuto()
+    {
+        MainCamera.Instance.followTarget.targetPoint = new Vector3(9,0,0) + RoomBehaviour.Instance.transform.position;
+        MainCamera.Instance.followTarget.aimPoint = true;
+        yield return new WaitForSeconds(1);
+        DialogData dd = Addressables.LoadAssetAsync<DialogData>("FirstAttackDialog").WaitForCompletion();
+        DialogManager.Instance.Dialog(dd);
+        yield return new WaitWhile(() => DialogManager.Instance.inDialog);
+        MainCamera.Instance.followTarget.aimPoint = false;
+        RoomBehaviour.Instance.ActivateEnnemies();
+        seen.Add(2);
+    }
+
+    public IEnumerator PuzzleTuto()
+    {
+        DialogData dd = Addressables.LoadAssetAsync<DialogData>("PuzzleTutoDialog").WaitForCompletion();
+        DialogManager.Instance.Dialog(dd);
+        yield return new WaitWhile(() => DialogManager.Instance.inDialog);
+        seen.Add(3);
+    }
+
+    public IEnumerator DocksTuto()
+    {
+        MainCamera.Instance.followTarget.targetPoint = new Vector3(11.4f,3f,10f) + RoomBehaviour.Instance.transform.position;
+        MainCamera.Instance.followTarget.aimPoint = true;
+        var timeEllapsed = 0f;
+        yield return new WaitForSeconds(0.5f);
+        while (timeEllapsed < 4f)
+        {
+            MainCamera.Instance.followTarget.targetPoint -= 4 * Time.deltaTime * Vector3.forward;
+            timeEllapsed += Time.deltaTime;
+            yield return null;
+        }
+        yield return new WaitForSeconds(1f);
+        MainCamera.Instance.followTarget.aimPoint = false;
+        DialogData dd = Addressables.LoadAssetAsync<DialogData>("DocksTutoDialog").WaitForCompletion();
+        DialogManager.Instance.Dialog(dd);
+        yield return new WaitWhile(() => DialogManager.Instance.inDialog);
+        RoomBehaviour.Instance.ActivateEnnemies();
+        seen.Add(4);
     }
 }

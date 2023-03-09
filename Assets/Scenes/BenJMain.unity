@@ -2952,11 +2952,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8349674347032606839, guid: e1128cea31738ce4d8a35b763e9ab635, type: 3}
   m_PrefabInstance: {fileID: 1414942931}
   m_PrefabAsset: {fileID: 0}
---- !u!20 &1414942933 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 8349674348933549320, guid: e1128cea31738ce4d8a35b763e9ab635, type: 3}
-  m_PrefabInstance: {fileID: 1414942931}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1449084191
 GameObject:
   m_ObjectHideFlags: 0
@@ -3579,8 +3574,7 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras:
-  - {fileID: 1414942933}
+  m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -4178,6 +4172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2034918838}
   - component: {fileID: 2034918839}
+  - component: {fileID: 2034918840}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -4215,6 +4210,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  aimPoint: 0
+  targetPoint: {x: 0, y: 0, z: 0}
+--- !u!114 &2034918840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034918837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8e8cce4b9d06a4eba58066936c54d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followTarget: {fileID: 2034918839}
 --- !u!1 &2095566429
 GameObject:
   m_ObjectHideFlags: 0

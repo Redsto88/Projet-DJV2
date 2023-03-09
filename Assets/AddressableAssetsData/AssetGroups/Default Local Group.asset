@@ -29,6 +29,18 @@ MonoBehaviour:
     m_Address: UIParticlePrefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: f3c4795af26d17b49905f5323bc8dfd8
+    m_Address: FirstAttackDialog
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 246beea43f2eb344eb65dffa8afeea39
+    m_Address: DocksTutoDialog
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ea8432211200c1c4382a584234204036
+    m_Address: PuzzleTutoDialog
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 892bd3c5fba8602448dcdb4512abc69b, type: 2}
   m_SchemaSet:

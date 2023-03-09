@@ -56,6 +56,7 @@ public class BasicEnemyBehaviour : ADamageable
     // Update is called once per frame
     void Update()
     {
+        if (navMeshAgent == null) return;
         print(navMeshAgent.path.status);
         for (int i = 0; i < navMeshAgent.path.corners.Length - 1; i++)
             Debug.DrawLine(navMeshAgent.path.corners[i], navMeshAgent.path.corners[i + 1], Color.red);

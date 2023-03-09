@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RoomBehaviour : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class RoomBehaviour : MonoBehaviour
     [SerializeField] private Array2D<ObjData> enemyWaves;
     public int enemiesLeft = 0;
     public int waveNumber = 0;
+    public bool ennemiesActiveAtStartup = true;
 
     void Awake()
     {
@@ -73,6 +75,10 @@ public class RoomBehaviour : MonoBehaviour
         foreach (ObjData obj in wave.cells)
         {
             var o = Instantiate(obj.prefab, obj.position + transform.position, obj.rotation);
+            var nma = o.GetComponent<NavMeshAgent>();
+            var beb = o.GetComponent<BasicEnemyBehaviour>();
+            if (nma != null) nma.enabled = ennemiesActiveAtStartup;
+            if (beb != null) {beb.navMeshAgent = nma; beb.enabled = ennemiesActiveAtStartup;}
             o.transform.SetParent(transform);
         }
         waveNumber++;
@@ -94,5 +100,18 @@ public class RoomBehaviour : MonoBehaviour
             }
             else NextEnemyWave();
         }
+    }
+
+    public void ActivateEnnemies()
+    {
+        var enemies = FindObjectsOfType<BasicEnemyBehaviour>();
+        foreach(BasicEnemyBehaviour beb in enemies)
+        {
+            Debug.Log(beb.gameObject.name);
+            if (beb.navMeshAgent != null)
+            beb.navMeshAgent.enabled = true;
+            beb.enabled = true;
+        }
+        ennemiesActiveAtStartup = true;
     }
 }
