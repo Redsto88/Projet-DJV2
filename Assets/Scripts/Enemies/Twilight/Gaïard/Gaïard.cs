@@ -64,8 +64,7 @@ public class Gaïard : BasicEnemyBehaviour
                 l.transform.SetParent(transform);
                 l.GetComponent<GaïardLeaf>().SetLeaf(3f+0.4f*i, 1.5f * Vector3.up + Random.Range(-0.15f,0.15f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, true, _target, 0, damage);
             }
-            yield return new WaitForSeconds(3 + 0.4f * (leafNumber - 1) + Random.Range(coolDown - 2, coolDown + 2));
-        
+
         } 
         else 
         {
@@ -76,8 +75,7 @@ public class Gaïard : BasicEnemyBehaviour
                 l.transform.SetParent(transform);
                 l.GetComponent<GaïardLeaf>().SetLeaf(3f-0.1f*i, 1.5f * Vector3.up + Random.Range(-0.35f+i/leafNumber*0.7f,-0.35f+(i+1)/leafNumber*0.7f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, false, _target, -30+60*i/(leafNumber-1), damage);
             }
-            yield return new WaitForSeconds(3 - 0.1f * (leafNumber - 1) + Random.Range(coolDown - 2, coolDown + 2));
-        
+
         }
         StartCoroutine(leafAttack());
     }
