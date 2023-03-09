@@ -20,7 +20,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         //TODO Centraliser les inputs dans un script à part pour faire plus propre avec le PlayerController
         Vector3 direction = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
-        float speedParam = Mathf.Clamp01(direction.magnitude);
+        float speedParam = CinematicManager.cinematicPause ? 0 : Mathf.Clamp01(direction.magnitude);
         _animator.SetFloat(Speed, speedParam);
     }
 }

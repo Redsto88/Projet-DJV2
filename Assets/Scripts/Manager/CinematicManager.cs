@@ -8,6 +8,7 @@ public class CinematicManager : MonoBehaviour
 {
     public int startingCinematic;
     public static CinematicManager Instance;
+    public static bool cinematicPause;
     public static List<int> seen = new List<int>();
     [SerializeField] private Image filter;
     void Awake()
@@ -46,6 +47,7 @@ public class CinematicManager : MonoBehaviour
     
     public IEnumerator PortalTuto()
     {
+        cinematicPause = true;
         filter.color = Color.black;
         DialogData dd = Addressables.LoadAssetAsync<DialogData>("IntroductionDialog1").WaitForCompletion();
         DialogManager.Instance.Dialog(dd);
@@ -61,10 +63,12 @@ public class CinematicManager : MonoBehaviour
         DialogManager.Instance.Dialog(dd2);
         yield return new WaitWhile(() => DialogManager.Instance.inDialog);
         seen.Add(1);
+        cinematicPause = false;
     }
 
     public IEnumerator FirstAttackTuto()
     {
+        cinematicPause = true;
         MainCamera.Instance.followTarget.targetPoint = new Vector3(9,0,0) + RoomBehaviour.Instance.transform.position;
         MainCamera.Instance.followTarget.aimPoint = true;
         yield return new WaitForSeconds(1);
@@ -74,18 +78,22 @@ public class CinematicManager : MonoBehaviour
         MainCamera.Instance.followTarget.aimPoint = false;
         RoomBehaviour.Instance.ActivateEnnemies();
         seen.Add(2);
+        cinematicPause = false;
     }
 
     public IEnumerator PuzzleTuto()
     {
+        cinematicPause = true;
         DialogData dd = Addressables.LoadAssetAsync<DialogData>("PuzzleTutoDialog").WaitForCompletion();
         DialogManager.Instance.Dialog(dd);
         yield return new WaitWhile(() => DialogManager.Instance.inDialog);
         seen.Add(3);
+        cinematicPause = false;
     }
 
     public IEnumerator DocksTuto()
     {
+        cinematicPause = true;
         MainCamera.Instance.followTarget.targetPoint = new Vector3(11.4f,3f,10f) + RoomBehaviour.Instance.transform.position;
         MainCamera.Instance.followTarget.aimPoint = true;
         var timeEllapsed = 0f;
@@ -103,5 +111,6 @@ public class CinematicManager : MonoBehaviour
         yield return new WaitWhile(() => DialogManager.Instance.inDialog);
         RoomBehaviour.Instance.ActivateEnnemies();
         seen.Add(4);
+        cinematicPause = false;
     }
 }

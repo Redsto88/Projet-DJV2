@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
             characterController.Move((transform.forward + transform.right).normalized * (-5*Time.deltaTime));
         }
         else{
-            if (!respawnFlag && canMove)
+            if (!respawnFlag && canMove && !CinematicManager.cinematicPause)
             {
                 // Déplacement du joueur
                 Vector3 direction = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;

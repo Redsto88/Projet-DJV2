@@ -665,6 +665,7 @@ MonoBehaviour:
   playerPivot: {fileID: 5498758815255444211}
   characterController: {fileID: 0}
   portalFlag: 0
+  portalDirection: {x: 0, y: 0, z: 0}
   respawnFlag: 0
   damageFlag: 0
   canMove: 0
@@ -1635,6 +1636,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5068661517213136617, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 5498758814783280183}
     - target: {fileID: 7449055264587792683, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
