@@ -27,7 +27,7 @@ public class BasicEnemyBehaviour : ADamageable
     public bool attackFlag;
     public bool damageFlag;
     
-    private Animator _animator;
+    protected Animator animator;
     private static readonly int IsWalking = Animator.StringToHash("isWalking");
     private static readonly int EmissionColor = Shader.PropertyToID("_EmissionColor");
     private static readonly int Color1 = Shader.PropertyToID("_Color");
@@ -51,7 +51,7 @@ public class BasicEnemyBehaviour : ADamageable
         navMeshAgent = GetComponent<NavMeshAgent>();
         _target = PlayerController.Instance.transform;
 
-        _animator = GetComponentInChildren<Animator>();
+        animator = GetComponentInChildren<Animator>();
 
         _timeSinceLastAttack = 0;
         
@@ -81,13 +81,13 @@ public class BasicEnemyBehaviour : ADamageable
                     if (navMeshAgent.path.status == NavMeshPathStatus.PathComplete && !portalFlag && !attackFlag)
                     {
                         print("avance");
-                        _animator.SetBool(IsWalking, true);
+                        animator.SetBool(IsWalking, true);
                         navMeshAgent.destination = _target.position;
                     }
                     else
                     {
                         print("idle");
-                        _animator.SetBool(IsWalking, false);
+                        animator.SetBool(IsWalking, false);
                         navMeshAgent.destination = transform.position;
                     }
                 }
@@ -100,7 +100,7 @@ public class BasicEnemyBehaviour : ADamageable
 
             else if (_target.IsUnityNull() || navMeshAgent.path.status != NavMeshPathStatus.PathComplete)
             {
-                _animator.SetBool(IsWalking, false);
+                animator.SetBool(IsWalking, false);
                 navMeshAgent.destination = transform.position;
             }
 
@@ -114,7 +114,7 @@ public class BasicEnemyBehaviour : ADamageable
         if (!attackFlag && _timeSinceLastAttack>coolDown)
         {
             attackFlag = true;
-            _animator.CrossFade("Attack_01", 0.1f);
+            animator.CrossFade("Attack_01", 0.1f);
             _timeSinceLastAttack = 0f;
         }
     }
@@ -125,7 +125,7 @@ public class BasicEnemyBehaviour : ADamageable
     {
         StartCoroutine(ColorCoroutine());
         base.ApplyDamage(damage);
-        _animator.CrossFade("Damage",0.2f);
+        animator.CrossFade("Damage",0.2f);
         if (_health <= 0) RoomBehaviour.Instance.CountEnemyDeath();
     }
 

@@ -55,6 +55,7 @@ public class Gaïard : BasicEnemyBehaviour
     IEnumerator leafAttack()
     {
         yield return new WaitForSeconds(attackFrequency);
+        animator.CrossFade("PrepareAttack",0.2f);
         if (Random.Range(0f,1f) < aimChance)
         {
             for(int i = 0;i<leafNumber;i++)
@@ -62,7 +63,15 @@ public class Gaïard : BasicEnemyBehaviour
                 yield return new WaitForSeconds(0.1f);
                 var l = Instantiate(leafPrefab, transform.position + Vector3.up, transform.rotation);
                 l.transform.SetParent(transform);
-                l.GetComponent<GaïardLeaf>().SetLeaf(3f+0.4f*i, 1.5f * Vector3.up + Random.Range(-0.15f,0.15f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, true, _target, 0, damage);
+                l.GetComponent<GaïardLeaf>().SetLeaf(3f + 0.4f * i,
+                    1.5f * Vector3.up + Random.Range(-0.15f, 0.15f) * Vector3.right +
+                    Random.Range(-0.1f, 0.1f) * Vector3.forward,
+                    true,
+                    _target,
+                    0,
+                    damage,
+                    animator,
+                    (i % 2 == 0) ? "Attack_R" : "Attack_L");
             }
 
         } 
@@ -73,7 +82,15 @@ public class Gaïard : BasicEnemyBehaviour
                 yield return new WaitForSeconds(0.1f);
                 var l = Instantiate(leafPrefab, transform.position + Vector3.up, transform.rotation);
                 l.transform.SetParent(transform);
-                l.GetComponent<GaïardLeaf>().SetLeaf(3f-0.1f*i, 1.5f * Vector3.up + Random.Range(-0.35f+i/leafNumber*0.7f,-0.35f+(i+1)/leafNumber*0.7f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, false, _target, -30+60*i/(leafNumber-1), damage);
+                l.GetComponent<GaïardLeaf>().SetLeaf(3f - 0.1f * i,
+                    1.5f * Vector3.up +
+                    Random.Range(-0.35f + i / leafNumber * 0.7f, -0.35f + (i + 1) / leafNumber * 0.7f) * Vector3.right +
+                    Random.Range(-0.1f, 0.1f) * Vector3.forward,
+                    false,
+                    _target,
+                    -30 + 60 * i / (leafNumber - 1),
+                    damage,
+                    animator, "Attack_B");
             }
 
         }

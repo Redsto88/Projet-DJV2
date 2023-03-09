@@ -200,7 +200,15 @@ public class BossBehaviour : BasicEnemyBehaviour
                 yield return new WaitForSeconds(0.1f);
                 var l = Instantiate(leafPrefab, transform.position + Vector3.up, transform.rotation);
                 l.transform.SetParent(transform);
-                l.GetComponent<GaïardLeaf>().SetLeaf(3f+0.4f*i, 1.5f * Vector3.up + Random.Range(-0.15f,0.15f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, true, _target, 0,leafDamage);
+                l.GetComponent<GaïardLeaf>().SetLeaf(3f + 0.4f * i,
+                    1.5f * Vector3.up + Random.Range(-0.15f, 0.15f) * Vector3.right +
+                    Random.Range(-0.1f, 0.1f) * Vector3.forward,
+                    true,
+                    _target,
+                    0,
+                    leafDamage,
+                    animator,
+                    (i % 2 == 0) ? "Attack_R" : "Attack_L");
             }
             yield return new WaitForSeconds(3 + 0.4f * (leafNumber - 1));
         
@@ -212,7 +220,16 @@ public class BossBehaviour : BasicEnemyBehaviour
                 yield return new WaitForSeconds(0.1f);
                 var l = Instantiate(leafPrefab, transform.position + Vector3.up, transform.rotation);
                 l.transform.SetParent(transform);
-                l.GetComponent<GaïardLeaf>().SetLeaf(3f-0.1f*i, 1.5f * Vector3.up + Random.Range(-0.35f+i/leafNumber*0.7f,-0.35f+(i+1)/leafNumber*0.7f) * Vector3.right + Random.Range(-0.1f,0.1f) * Vector3.forward, false, _target, -30+60*i/(leafNumber-1),leafDamage);
+                l.GetComponent<GaïardLeaf>().SetLeaf(3f - 0.1f * i,
+                    1.5f * Vector3.up +
+                    Random.Range(-0.35f + i / leafNumber * 0.7f, -0.35f + (i + 1) / leafNumber * 0.7f) * Vector3.right +
+                    Random.Range(-0.1f, 0.1f) * Vector3.forward,
+                    false,
+                    _target,
+                    -30 + 60 * i / (leafNumber - 1),
+                    leafDamage,
+                    animator,
+                    "Attack_B");
             }
             yield return new WaitForSeconds(3 - 0.1f * (leafNumber - 1));
         

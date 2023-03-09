@@ -22,13 +22,13 @@ public class GaïardLeaf : AProjectile
         }
     }
 
-    public void SetLeaf(float time, Vector3 initVel, bool aimed, Transform target, float angle, float _damage)
+    public void SetLeaf(float time, Vector3 initVel, bool aimed, Transform target, float angle, float _damage, Animator animator, string stateName)
     {
         damage = _damage;
-        StartCoroutine(stall(time,initVel,aimed,target,angle));
+        StartCoroutine(stall(time,initVel,aimed,target,angle,animator,stateName));
     }
 
-    IEnumerator stall(float time, Vector3 initVel, bool aimed, Transform target, float angle)
+    IEnumerator stall(float time, Vector3 initVel, bool aimed, Transform target, float angle, Animator animator, string stateName)
     {
         speed = initVel;
         var timeEllapsed = 0f;
@@ -41,6 +41,7 @@ public class GaïardLeaf : AProjectile
         transform.LookAt(target.position + Vector3.up);
         if (!aimed) transform.Rotate(angle * Vector3.up);
         transform.SetParent(null);
+        animator.CrossFade(stateName, 0.2f);
         go = true;
     }
 
