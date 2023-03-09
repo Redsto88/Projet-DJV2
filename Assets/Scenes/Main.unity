@@ -2608,7 +2608,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: ddcf35b0a1eacf245a6da8012461967c, type: 2}
+  sharedProfile: {fileID: 11400000, guid: e5fc9beb22685ee4d9f6c3edec218461, type: 2}
 --- !u!4 &1264933647
 Transform:
   m_ObjectHideFlags: 0
@@ -2950,11 +2950,6 @@ PrefabInstance:
 --- !u!4 &1414942932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8349674347032606839, guid: e1128cea31738ce4d8a35b763e9ab635, type: 3}
-  m_PrefabInstance: {fileID: 1414942931}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &1414942933 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 8349674348933549320, guid: e1128cea31738ce4d8a35b763e9ab635, type: 3}
   m_PrefabInstance: {fileID: 1414942931}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1449084191
@@ -3579,8 +3574,7 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras:
-  - {fileID: 1414942933}
+  m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -4215,6 +4209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  aimPoint: 0
+  targetPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &2095566429
 GameObject:
   m_ObjectHideFlags: 0

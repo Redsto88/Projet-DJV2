@@ -19,6 +19,7 @@ public class UIHealthBar : MonoBehaviour
 
     public void SetHealth(float health)
     {
+        print(health);
         _health.value = health / _maxHealth;
     }
 }
