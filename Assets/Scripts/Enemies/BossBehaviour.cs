@@ -69,6 +69,7 @@ public class BossBehaviour : BasicEnemyBehaviour
             _isAttacking = true;
             _speed = navMeshAgent.speed;
             StartCoroutine(FirstCoroutine());
+            AudioManager.Instance.PlayMusic("Boss_Intro");
         }
         else
         {
@@ -283,6 +284,7 @@ public class BossBehaviour : BasicEnemyBehaviour
 
     private void OnDestroy()
     {
+        AudioManager.Instance.PlayMusic("Boss_Fin");
         enemy.ApplyDamage(9999);
     }
 }

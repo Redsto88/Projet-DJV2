@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class Array<T>
 {
     public List<T> cells = new List<T>();
     public T this[int index] => cells[index];
+    
 }
 
 [System.Serializable]
