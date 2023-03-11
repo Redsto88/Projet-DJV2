@@ -39,19 +39,23 @@ public class AudioManager : MonoBehaviour
 
         else
         {
-            musicSource.clip = s.clip;
-            musicSource.Play();
-            musicSource.loop = loop;
-
-            if (loop) return;
-            switch (name)
+            Debug.Log(name + s.clip.name);
+            if(s.clip != musicSource.clip)
             {
-                case "Boss_Intro":
-                    StartCoroutine(NextMusic(s.clip, "Boss_Corps",true,0.85f));
-                    break;
-                default:
-                    StartCoroutine(NextMusic(s.clip, "Theme"));
-                    break;
+                musicSource.clip = s.clip;
+                musicSource.Play();
+                musicSource.loop = loop;
+
+                if (loop) return;
+                switch (name)
+                {
+                    case "Boss_Intro":
+                        StartCoroutine(NextMusic(s.clip, "Boss_Corps", true, 0.85f));
+                        break;
+                    default:
+                        StartCoroutine(NextMusic(s.clip, "Base", true));
+                        break;
+                }
             }
         }
     }

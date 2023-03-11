@@ -46,6 +46,7 @@ public class PlayerAttack : MonoBehaviour
                     if (_canCombo)
                     {
                         _animator.CrossFade("Attaque_02", 0.1f);
+                        AudioManager.Instance.PlaySFX("Player_Attack_02");
                         _lastAttack = "Attack_02";
                     }
                     else if (_canPreCombo)
@@ -63,6 +64,7 @@ public class PlayerAttack : MonoBehaviour
                     if (_canCombo)
                     {
                         _animator.CrossFade("Attaque_03", 0.1f);
+                        AudioManager.Instance.PlaySFX("Player_Attack_03");
                         _lastAttack = "Attack_03";
                     }
                     else if (_canPreCombo)
@@ -83,6 +85,7 @@ public class PlayerAttack : MonoBehaviour
                 {
 
                     _animator.CrossFade("Attaque_01", 0.1f);
+                    AudioManager.Instance.PlaySFX("Player_Attack_01");
                     _lastAttack = "Attack_01";
                     break;
                 }
@@ -131,11 +134,14 @@ public class PlayerAttack : MonoBehaviour
                 case "Attack_01" :
                     _hasAttackBeforeCombo = false;
                     _animator.CrossFade("Attaque_02", 0.1f);
+                    AudioManager.Instance.PlaySFX("Player_Attack_02");
                     _lastAttack = "Attack_02";
                     return;
                 case "Attack_02" :
                     _hasAttackBeforeCombo = false;
                     _animator.CrossFade("Attaque_03", 0.1f);
+                    AudioManager.Instance.PlaySFX("Player_Attack_03");
+                    AudioManager.Instance.PlaySFX("Player_Attack_03");
                     _lastAttack = "Attack_03";
                     return;
                 default:

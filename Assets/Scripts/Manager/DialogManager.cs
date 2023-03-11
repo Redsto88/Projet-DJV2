@@ -49,7 +49,11 @@ public class DialogManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && canSkipDialog) skipDialog = true;
+        if (Input.GetMouseButtonDown(0) && canSkipDialog)
+        {
+            skipDialog = true;
+            AudioManager.Instance.PlaySFX("NextDialogue");
+        }
         if (Input.GetKeyDown(KeyCode.G)) Dialog(test);
     }
 
@@ -244,7 +248,7 @@ public class DialogManager : MonoBehaviour
                     timeEllapsedMoveLinear += Time.deltaTime;
                     yield return null;
                 }
-            break;
+                break;
             case TransitionType.Hyperbolic :
                 var timeEllapsedMoveHyperbolic = 0f;
                 while (timeEllapsedMoveHyperbolic < ev.transitionTime)
@@ -254,7 +258,7 @@ public class DialogManager : MonoBehaviour
                     timeEllapsedMoveHyperbolic += Time.deltaTime;
                     yield return null;
                 }
-            break;
+                break;
         }
         isEventFinished[k] = true;
     }
@@ -284,7 +288,7 @@ public class DialogManager : MonoBehaviour
                     timeEllapsedSwapLinear += Time.deltaTime;
                     yield return null;
                 }
-            break;
+                break;
             case TransitionType.Hyperbolic :
                 var timeEllapsedSwapHyperbolic = 0f;
                 while (timeEllapsedSwapHyperbolic < ev.transitionTime)
@@ -296,7 +300,7 @@ public class DialogManager : MonoBehaviour
                     timeEllapsedSwapHyperbolic += Time.deltaTime;
                     yield return null;
                 }
-            break;
+                break;
         }
         isEventFinished[k] = true;
     }

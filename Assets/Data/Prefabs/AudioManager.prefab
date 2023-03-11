@@ -183,7 +183,29 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 409594c8dc6058346a06e62250fa57bc, type: 3}
   - name: Salle_Soin
     clip: {fileID: 8300000, guid: 4542fe83a3d36d3418ff6ac7dd414e18, type: 3}
-  sfx: []
+  - name: Base
+    clip: {fileID: 8300000, guid: 3e4d671583d1309418bf5a640cca71d4, type: 3}
+  sfx:
+  - name: Enigme_Success
+    clip: {fileID: 8300000, guid: 0340279cfe29ce349ae844a3c88af5b2, type: 3}
+  - name: RoomTransition
+    clip: {fileID: 8300000, guid: e76cb1ccf10516e459e939004c6eac5b, type: 3}
+  - name: PortalTransition
+    clip: {fileID: 8300000, guid: 4bd0141e939c98349b62282656efa816, type: 3}
+  - name: UIClick
+    clip: {fileID: 8300000, guid: d44e6794daeb8014aa1969efecd3b630, type: 3}
+  - name: NextDialogue
+    clip: {fileID: 8300000, guid: 7593f75d7d224954db8abdfbea0c8cd7, type: 3}
+  - name: Player_Attack_01
+    clip: {fileID: 8300000, guid: bb659be23d6705047a07033a12a99ac7, type: 3}
+  - name: Player_Attack_02
+    clip: {fileID: 8300000, guid: ea747fab0b920db4fa30b8f02a3a5b4f, type: 3}
+  - name: Player_Attack_03
+    clip: {fileID: 8300000, guid: 5205c2a14a1b3c3489704c35e8874c5e, type: 3}
+  - name: Player_Portal
+    clip: {fileID: 0}
+  - name: Player_Damage
+    clip: {fileID: 0}
   musicSource: {fileID: 2204762292630267015}
   sfxSource: {fileID: 2204762293352514838}
 --- !u!1 &2204762293352514837

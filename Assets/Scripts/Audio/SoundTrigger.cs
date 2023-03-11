@@ -8,12 +8,10 @@ public class SoundTrigger : MonoBehaviour
     [SerializeField] private string name;
     [SerializeField] private bool loop = false;
 
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if (other == PlayerController.Instance.characterController)
-        {
-            AudioManager.Instance.PlayMusic(name,loop);
-            Destroy(gameObject);
-        }
+        print("other");
+        AudioManager.Instance.PlayMusic(name,loop);
+        Destroy(gameObject);
     }
 }

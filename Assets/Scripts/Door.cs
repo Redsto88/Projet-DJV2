@@ -36,6 +36,7 @@ public class Door : MonoBehaviour
         {
             if (Input.GetButton("Interaction")) //TODO Show interaction button
             {
+                AudioManager.Instance.PlaySFX("RoomTransition");
                 StartCoroutine(RoomBehaviour.Instance.useDoor(corner));
             }
         }
