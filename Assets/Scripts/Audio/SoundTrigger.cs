@@ -12,8 +12,8 @@ public class SoundTrigger : MonoBehaviour
     {
         if (other == PlayerController.Instance.characterController)
         {
-            print("iqefgushfboilurgnvpieurngt");
             AudioManager.Instance.PlayMusic(name,loop);
+            Destroy(gameObject);
         }
     }
 }

@@ -80,13 +80,11 @@ public class BasicEnemyBehaviour : ADamageable
                 {
                     if (navMeshAgent.path.status == NavMeshPathStatus.PathComplete && !portalFlag && !attackFlag)
                     {
-                        print("avance");
                         animator.SetBool(IsWalking, true);
                         navMeshAgent.destination = _target.position;
                     }
                     else
                     {
-                        print("idle");
                         animator.SetBool(IsWalking, false);
                         navMeshAgent.destination = transform.position;
                     }
@@ -134,7 +132,6 @@ public class BasicEnemyBehaviour : ADamageable
 
     IEnumerator ColorCoroutine()
     {
-        print("color");
         const float duration = 0.5f;
         var timeLeft = duration;
 

@@ -92,8 +92,6 @@ public class PlayerAttack : MonoBehaviour
     
     public void OpenWeaponCollisions()
     {
-        print("open collider");
-        
         if (_lastAttack == "Attack_03")
         {
             actualWeapon.damage *= 1.5f;
@@ -109,8 +107,6 @@ public class PlayerAttack : MonoBehaviour
     
     public void CloseWeaponCollisions()
     {
-        print("close collider");
-        
         if (_lastAttack == "Attack_03")
         {
             actualWeapon.damage /= 1.5f;
