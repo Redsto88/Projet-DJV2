@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GaïardLeaf : AProjectile
 {
@@ -22,13 +24,13 @@ public class GaïardLeaf : AProjectile
         }
     }
 
-    public void SetLeaf(float time, Vector3 initVel, bool aimed, Transform target, float angle, float _damage, Animator animator, string stateName)
+    public void SetLeaf(float time, Vector3 initVel, bool aimed, Transform target, float angle, float _damage, Animator animator, string stateName, string audio)
     {
         damage = _damage;
-        StartCoroutine(stall(time,initVel,aimed,target,angle,animator,stateName));
+        StartCoroutine(stall(time,initVel,aimed,target,angle,animator,stateName, audio));
     }
 
-    IEnumerator stall(float time, Vector3 initVel, bool aimed, Transform target, float angle, Animator animator, string stateName)
+    IEnumerator stall(float time, Vector3 initVel, bool aimed, Transform target, float angle, Animator animator, string stateName, string audio)
     {
         speed = initVel;
         var timeEllapsed = 0f;
@@ -41,6 +43,7 @@ public class GaïardLeaf : AProjectile
         transform.LookAt(target.position + Vector3.up);
         if (!aimed) transform.Rotate(angle * Vector3.up);
         transform.SetParent(null);
+        AudioManager.Instance.PlaySFX(audio);
         animator.CrossFade(stateName, 0.1f);
         go = true;
     }
@@ -51,6 +54,7 @@ public class GaïardLeaf : AProjectile
         if (other.gameObject.TryGetComponent<PlayerManager>(out var id))
         {
             id.ApplyDamage(damage);
+            AudioManager.Instance.PlaySFX("LeafDestroy");
             Destroy(gameObject);
         }
         else if (other.gameObject.TryGetComponent<Portal>(out var portal))
@@ -58,8 +62,9 @@ public class GaïardLeaf : AProjectile
             //nothing
         }
         else {
+            AudioManager.Instance.PlaySFX("LeafDestroy");
             Destroy(gameObject);
         }
     }
-
+    
 }

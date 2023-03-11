@@ -210,6 +210,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 212c2f9637fb0a34ca6ae870f62ed1c0, type: 3}
   - name: Sphere_Roll
     clip: {fileID: 8300000, guid: 05e6deeca0b75bc4cb24b2b0f07024a1, type: 3}
+  - name: EnemyDamage_01
+    clip: {fileID: 8300000, guid: 2bc900324483eb042bbcf272c0905929, type: 3}
+  - name: EnemyDamage_02
+    clip: {fileID: 8300000, guid: f0f40927a43506a44bde887cd60eddfe, type: 3}
+  - name: LeafDestroy
+    clip: {fileID: 8300000, guid: 3aa7a31be544b5f45aaf4309f824ccb2, type: 3}
+  - name: Boss_LeafAttack
+    clip: {fileID: 8300000, guid: f324794f6cf729145897e0350e85b0b5, type: 3}
   musicSource: {fileID: 2204762292630267015}
   sfxSource: {fileID: 2204762293352514838}
 --- !u!1 &2204762293352514837

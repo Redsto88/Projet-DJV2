@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class BasicEnemyBehaviour : ADamageable
 {
@@ -121,6 +122,16 @@ public class BasicEnemyBehaviour : ADamageable
     // IDamageable
     public override void ApplyDamage(float damage)
     {
+        int r = Random.Range(0, 2);
+        if (r == 0)
+        {
+            AudioManager.Instance.PlaySFX("EnemyDamage_01");
+        }
+        else
+        {
+            AudioManager.Instance.PlaySFX("EnemyDamage_02");
+        }
+        
         StartCoroutine(ColorCoroutine());
         base.ApplyDamage(damage);
         if (!animator.IsUnityNull())

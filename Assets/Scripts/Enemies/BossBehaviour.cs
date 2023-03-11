@@ -226,7 +226,8 @@ public class BossBehaviour : BasicEnemyBehaviour
                     0,
                     leafDamage,
                     animator,
-                    (i % 2 == 0) ? "Attack_R" : "Attack_L");
+                    (i % 2 == 0) ? "Attack_R" : "Attack_L",
+                    "Boss_LeafAttack");
             }
             yield return new WaitForSeconds(3 + 0.4f * (leafNumber - 1));
         
@@ -247,7 +248,8 @@ public class BossBehaviour : BasicEnemyBehaviour
                     -30 + 60 * i / (leafNumber - 1),
                     leafDamage,
                     animator,
-                    "Attack_B");
+                    "Attack_B",
+                    "Boss_LeafAttack");
             }
             yield return new WaitForSeconds(3 - 0.1f * (leafNumber - 1));
         

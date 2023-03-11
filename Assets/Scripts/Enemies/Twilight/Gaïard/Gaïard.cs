@@ -71,7 +71,8 @@ public class Gaïard : BasicEnemyBehaviour
                     0,
                     damage,
                     animator,
-                    (i % 2 == 0) ? "Attack_R" : "Attack_L");
+                    (i % 2 == 0) ? "Attack_R" : "Attack_L",
+                    "");
             }
 
         } 
@@ -90,7 +91,8 @@ public class Gaïard : BasicEnemyBehaviour
                     _target,
                     -30 + 60 * i / (leafNumber - 1),
                     damage,
-                    animator, "Attack_B");
+                    animator, "Attack_B",
+                    "");
             }
 
         }
