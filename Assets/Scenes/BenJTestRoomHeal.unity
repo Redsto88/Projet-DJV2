@@ -2124,6 +2124,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1316761727}
   m_CullTransparentMesh: 1
+--- !u!1 &1381228920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5498758814783280172, guid: ff7a97b2ac735c8478ed72be9bca229b, type: 3}
+  m_PrefabInstance: {fileID: 1689295192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &1381228926
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381228920}
+  m_Enabled: 1
 --- !u!1 &1449084191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2590,7 +2603,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1623436762}
   - component: {fileID: 1623436760}
-  - component: {fileID: 1623436761}
   - component: {fileID: 1623436763}
   m_Layer: 0
   m_Name: Main Camera
@@ -2642,14 +2654,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1623436761
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623436759}
-  m_Enabled: 1
 --- !u!4 &1623436762
 Transform:
   m_ObjectHideFlags: 0

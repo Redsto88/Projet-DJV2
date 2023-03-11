@@ -16,11 +16,17 @@ public class SphereEnigme : MonoBehaviour
     public float time = 5f;
     public SphereDetector detector;
 
+    private AudioSource _audioSource;
+    private SphereCollider _sphereCollider;
+    
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
         StartCoroutine(DestroyCoroutine());
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.volume = 0;
+        _sphereCollider = GetComponent<SphereCollider>();
     }
 
     // Update is called once per frame
@@ -28,9 +34,18 @@ public class SphereEnigme : MonoBehaviour
     {
         //sphere roll
         sphere.Rotate(Vector3.right * (Time.deltaTime * 20 * _rb.velocity.magnitude));
+        
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, _sphereCollider.radius + 0.1f) &&
+            _rb.velocity.magnitude > 0.001f)
+        {
+            _audioSource.volume = 1;
+        }
+        else
+        {
+            _audioSource.volume = 0;
+        }
     }
-
-
 
     IEnumerator DestroyCoroutine()
     {
