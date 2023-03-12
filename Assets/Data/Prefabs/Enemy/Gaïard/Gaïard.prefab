@@ -104,7 +104,7 @@ MonoBehaviour:
   idealDistance: 8
   aimChance: 0.5
   changeDirectionFrequency: 3.5
-  attackFrequency: 10
+  attackFrequency: 5
 --- !u!195 &1195588170783362596
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -195,7 +195,7 @@ MonoBehaviour:
   - name: UIClick
     clip: {fileID: 8300000, guid: d44e6794daeb8014aa1969efecd3b630, type: 3}
   - name: NextDialogue
-    clip: {fileID: 8300000, guid: 7593f75d7d224954db8abdfbea0c8cd7, type: 3}
+    clip: {fileID: 8300000, guid: d3bac0d6b958869438999af3fa739a59, type: 3}
   - name: Player_Attack_01
     clip: {fileID: 8300000, guid: bb659be23d6705047a07033a12a99ac7, type: 3}
   - name: Player_Attack_02
@@ -218,6 +218,24 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 3aa7a31be544b5f45aaf4309f824ccb2, type: 3}
   - name: Boss_LeafAttack
     clip: {fileID: 8300000, guid: f324794f6cf729145897e0350e85b0b5, type: 3}
+  - name: UI_Select
+    clip: {fileID: 8300000, guid: 7593f75d7d224954db8abdfbea0c8cd7, type: 3}
+  - name: Leaf_Start
+    clip: {fileID: 8300000, guid: 522759d58c619664d9f258e045db220b, type: 3}
+  - name: Heal
+    clip: {fileID: 8300000, guid: c381374302582964983a92daa8b2f0d7, type: 3}
+  - name: LeafsCast
+    clip: {fileID: 8300000, guid: aea424bb677fd8b478aa993d5ecc6e25, type: 3}
+  - name: Enemy_01_Attack_01
+    clip: {fileID: 8300000, guid: 168dbc68bceae8e41944a352ffc16bc6, type: 3}
+  - name: Enemy_01_Attack_02
+    clip: {fileID: 8300000, guid: 68552a05b69c6864286f59c171eebc7a, type: 3}
+  - name: Enemy_01_Attack_03
+    clip: {fileID: 8300000, guid: 5e50b8e91fc649a4d9edd65fbf62087c, type: 3}
+  - name: Enemy_01_Death
+    clip: {fileID: 8300000, guid: 1121a40a345a97c479f35dc15ab124c1, type: 3}
+  - name: Gaiard_Death
+    clip: {fileID: 8300000, guid: 4557bcb023446b641a327edd5561d242, type: 3}
   musicSource: {fileID: 2204762292630267015}
   sfxSource: {fileID: 2204762293352514838}
 --- !u!1 &2204762293352514837

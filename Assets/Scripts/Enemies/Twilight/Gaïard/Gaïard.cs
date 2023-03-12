@@ -54,8 +54,9 @@ public class Gaïard : BasicEnemyBehaviour
 
     IEnumerator leafAttack()
     {
-        yield return new WaitForSeconds(attackFrequency);
+        yield return new WaitForSeconds(Random.Range(attackFrequency -1, attackFrequency +1));
         animator.CrossFade("PrepareAttack",0.2f);
+        AudioManager.Instance.PlaySFX("LeafsCast");
         if (Random.Range(0f,1f) < aimChance)
         {
             for(int i = 0;i<leafNumber;i++)
@@ -72,7 +73,7 @@ public class Gaïard : BasicEnemyBehaviour
                     damage,
                     animator,
                     (i % 2 == 0) ? "Attack_R" : "Attack_L",
-                    "");
+                    "Leaf_Start");
             }
 
         } 
@@ -92,10 +93,16 @@ public class Gaïard : BasicEnemyBehaviour
                     -30 + 60 * i / (leafNumber - 1),
                     damage,
                     animator, "Attack_B",
-                    "");
+                    "Leaf_Start");
             }
 
         }
         StartCoroutine(leafAttack());
     }
+
+    protected override void DeathSFX()
+    {
+        AudioManager.Instance.PlaySFX("Gaiard_Death");
+    }
+
 }

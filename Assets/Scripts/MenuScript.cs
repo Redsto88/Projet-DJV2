@@ -71,6 +71,7 @@ public class MenuScript : MonoBehaviour
         //get the first active button
         Button firstButton = buttonList.Find(x => x.gameObject.activeInHierarchy);
         EventSystem.current.SetSelectedGameObject(firstButton.gameObject);
+        //AudioManager.Instance.PlaySFX("UI_Select");
     }
 
 

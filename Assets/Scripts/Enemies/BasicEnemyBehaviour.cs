@@ -113,6 +113,19 @@ public class BasicEnemyBehaviour : ADamageable
         if (!attackFlag && _timeSinceLastAttack>coolDown)
         {
             attackFlag = true;
+            int r = Random.Range(0, 3);
+            switch (r)
+            {
+                case 0:
+                    AudioManager.Instance.PlaySFX("Enemy_01_Attack_01");
+                    break;
+                case 1:
+                    AudioManager.Instance.PlaySFX("Enemy_01_Attack_02");
+                    break;
+                default:
+                    AudioManager.Instance.PlaySFX("Enemy_01_Attack_01");
+                    break;
+            }
             animator.CrossFade("Attack_01", 0.1f);
             _timeSinceLastAttack = 0f;
         }
@@ -123,15 +136,8 @@ public class BasicEnemyBehaviour : ADamageable
     public override void ApplyDamage(float damage)
     {
         int r = Random.Range(0, 2);
-        if (r == 0)
-        {
-            AudioManager.Instance.PlaySFX("EnemyDamage_01");
-        }
-        else
-        {
-            AudioManager.Instance.PlaySFX("EnemyDamage_02");
-        }
-        
+        AudioManager.Instance.PlaySFX(r == 0 ? "EnemyDamage_01" : "EnemyDamage_02");
+
         StartCoroutine(ColorCoroutine());
         base.ApplyDamage(damage);
         if (!animator.IsUnityNull())
@@ -164,5 +170,15 @@ public class BasicEnemyBehaviour : ADamageable
             timeLeft -= Time.deltaTime;
             yield return null;
         }
+    }
+    
+    protected virtual void DeathSFX()
+    {
+        AudioManager.Instance.PlaySFX("Enemy_01_Death");
+    }
+
+    private void OnDestroy()
+    {
+        DeathSFX();
     }
 }

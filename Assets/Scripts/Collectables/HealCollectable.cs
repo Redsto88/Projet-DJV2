@@ -20,6 +20,7 @@ public class HealCollectable : ACollectable
     {
         print("heal");
         PlayerManager.Instance.ApplyDamage(-healAmount);
+        AudioManager.Instance.PlaySFX("Heal");
         StartCoroutine(OnCollectCoroutine());
     }
 
