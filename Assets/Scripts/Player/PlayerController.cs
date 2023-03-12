@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (CinematicManager.cinematicPause || MapManager.Instance.paused) return;
         if(damageFlag){
             characterController.Move((transform.forward + transform.right).normalized * (-5*Time.deltaTime));
         }

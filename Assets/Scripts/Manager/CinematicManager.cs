@@ -11,12 +11,14 @@ public class CinematicManager : MonoBehaviour
     public static bool cinematicPause;
     public static List<int> seen = new List<int>();
     [SerializeField] private Image filter;
+    private GameObject canvas;
     void Awake()
     {
         if (Instance != null) Destroy(Instance.gameObject);
         Instance = this;
         transform.SetParent(null);
         transform.SetSiblingIndex(1);
+        canvas = filter.transform.parent.gameObject;
     }
 
     void Start()
@@ -48,6 +50,7 @@ public class CinematicManager : MonoBehaviour
     public IEnumerator PortalTuto()
     {
         cinematicPause = true;
+        canvas.SetActive(true);
         filter.color = Color.black;
         DialogData dd = Addressables.LoadAssetAsync<DialogData>("IntroductionDialog1").WaitForCompletion();
         DialogManager.Instance.Dialog(dd);
@@ -59,6 +62,7 @@ public class CinematicManager : MonoBehaviour
             timeEllapsed += Time.deltaTime;
             yield return null;
         }
+        canvas.SetActive(false);
         DialogData dd2 = Addressables.LoadAssetAsync<DialogData>("IntroductionDialog2").WaitForCompletion();
         DialogManager.Instance.Dialog(dd2);
         yield return new WaitWhile(() => DialogManager.Instance.inDialog);

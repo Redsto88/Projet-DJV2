@@ -1374,6 +1374,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1769175344267361064, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843853634756919613, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4053148590064684190, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
