@@ -204,7 +204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &83891376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +232,8 @@ MonoBehaviour:
   attackFlag: 0
   stoppingDistance: 12
   toCloseDistance: 5
+  phase2: 0
+  plateformeBoss: []
   leafAttackChance: 0
   sphereForce: 20
   spherePrefab: {fileID: 5220449072533816806, guid: efab134e40bb45040aca82f3db880807, type: 3}
@@ -4108,6 +4110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 50
+  height: 5
   isUp: 0
 --- !u!4 &1490301903 stripped
 Transform:

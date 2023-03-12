@@ -188,7 +188,8 @@ public class BossBehaviour : BasicEnemyBehaviour
                     transform.position = boosTransformStartP2.position;
                     transform.rotation = boosTransformStartP2.rotation;
                     PlayerController.Instance.transform.position = playerTransformStartP2.position;
-                    PlayerController.Instance.transform.rotation = playerTransformStartP2.rotation;
+                    //PlayerController.Instance.transform.rotation = playerTransformStartP2.rotation;
+
                 }
             } ;
         }
