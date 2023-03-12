@@ -13,15 +13,8 @@ public class UITexts : MonoBehaviour
         textChangementSalle.enabled = false;
     }
 
-    public void ToggleInteractionText()
+    public void ToggleInteractionText(bool activate)
     {
-        if (textChangementSalle.enabled)
-        {
-            textChangementSalle.enabled = false;
-        }
-        else
-        {
-            textChangementSalle.enabled = true;
-        }
+        textChangementSalle.enabled = activate;
     }
 }

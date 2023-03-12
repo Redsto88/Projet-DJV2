@@ -11,10 +11,14 @@ public class MapManager : MonoBehaviour
     [SerializeField] private Sprite[] sprites;
     [SerializeField] private MapTile mapTilePrefab;
     [SerializeField] private Transform content;
+    [SerializeField] private RectTransform leftPanel;
+    [SerializeField] private RectTransform rightPanel;
     private MapTile[,] mapTiles;
 
+    [SerializeField] private GameObject map;
     public bool isInit = false;
     public bool paused = false;
+    private Coroutine movement;
 
     void Awake()
     {
@@ -39,16 +43,10 @@ public class MapManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !CinematicManager.cinematicPause)
         {
-            // content.GetComponent<RectTransform>().anchoredPosition = - new Vector2(GameManager.Instance.heightPos * content.GetComponent<RectTransform>().lossyScale.x * 3.75f, GameManager.Instance.widthPos * content.GetComponent<RectTransform>().lossyScale.y * 3.75f);
             content.GetComponent<RectTransform>().anchoredPosition = - 0.007f * new Vector2(GameManager.Instance.heightPos * content.GetComponent<RectTransform>().rect.height, GameManager.Instance.widthPos * content.GetComponent<RectTransform>().rect.width);
             EnterOrExitMenu();
-            // foreach (MapTile m in mapTiles)
-            // {
-            //     m.GetComponent<RectTransform>().offsetMin = Vector2.zero;
-            //     m.GetComponent<RectTransform>().offsetMax = Vector2.zero;
-            // }
         }
         Vector2 axis = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         if (axis.magnitude > 0 && EventSystem.current.currentSelectedGameObject == null)
@@ -113,10 +111,11 @@ public class MapManager : MonoBehaviour
 
     public void EnterOrExitMenu()
     {
+        if (movement != null) return;
         paused = !paused;
-        if (paused) TimeManager.Instance.Pause();
-        else TimeManager.Instance.Unpause();
-        transform.GetChild(0).gameObject.SetActive(paused);
+        if (paused) {TimeManager.Instance.Pause(); movement = StartCoroutine(showMenu());}
+        else {TimeManager.Instance.Unpause(); movement = StartCoroutine(hideMenu());}
+        map.SetActive(paused);
     }
 
     public void GoToMainMenu()
@@ -128,5 +127,43 @@ public class MapManager : MonoBehaviour
     public void ShowOptions()
     {
 
+    }
+
+    IEnumerator showMenu()
+    {
+        var timeEllapsed = 0f;
+        while (timeEllapsed < 1f/6f)
+        {
+            leftPanel.anchorMin = (timeEllapsed * 6 - 1) * Vector2.right;
+            leftPanel.anchorMax = timeEllapsed * 6 * Vector2.right + Vector2.up;
+            rightPanel.anchorMin = (-timeEllapsed * 6 + 1) * Vector2.right;
+            rightPanel.anchorMax = (-timeEllapsed * 6 + 2) * Vector2.right + Vector2.up;
+            timeEllapsed += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        leftPanel.anchorMin = Vector2.zero;
+        leftPanel.anchorMax = Vector2.one;
+        rightPanel.anchorMin = Vector2.zero;
+        rightPanel.anchorMax = Vector2.one;
+        movement = null;
+    }
+
+    IEnumerator hideMenu()
+    {
+        var timeEllapsed = 0f;
+        while (timeEllapsed < 1f/6f)
+        {
+            leftPanel.anchorMin = -timeEllapsed * 6 * Vector2.right;
+            leftPanel.anchorMax = (1 - timeEllapsed * 6) * Vector2.right + Vector2.up;
+            rightPanel.anchorMin = timeEllapsed * 6 * Vector2.right;
+            rightPanel.anchorMax = (1 + timeEllapsed * 6) * Vector2.right + Vector2.up;
+            timeEllapsed += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        leftPanel.anchorMin = -Vector2.right;
+        leftPanel.anchorMax = Vector2.up;
+        rightPanel.anchorMin = Vector2.right;
+        rightPanel.anchorMax = Vector2.one + Vector2.right;
+        movement = null;
     }
 }

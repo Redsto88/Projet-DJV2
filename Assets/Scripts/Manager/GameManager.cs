@@ -58,16 +58,17 @@ public class GameManager : MonoBehaviour
         roomState = new RoomState[dungeonHeight,dungeonWidth];
         GenerateDungeon();
         Instantiate(dungeonData[0,0].roomPrefab);
+        seenRoom();
         MapManager.Instance.GoesOnTile(0,0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            TPToRoom(0,0);
-        }
+        // if (Input.GetKeyDown(KeyCode.H))
+        // {
+        //     TPToRoom(0,0);
+        // }
     }
 
     void GenerateDungeon()

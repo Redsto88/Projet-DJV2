@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!canAttack || CinematicManager.cinematicPause) return;
+        if (!canAttack || CinematicManager.cinematicPause || MapManager.Instance.paused) return;
         if (Input.GetButtonDown("Portal"))
         {
             spawnPortal.CreatePortal();

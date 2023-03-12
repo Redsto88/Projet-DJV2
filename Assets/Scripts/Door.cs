@@ -37,6 +37,7 @@ public class Door : MonoBehaviour
             if (Input.GetButton("Interaction")) //TODO Show interaction button
             {
                 AudioManager.Instance.PlaySFX("RoomTransition");
+                PlayerController.Instance.GetComponentInChildren<UITexts>().ToggleInteractionText(false);
                 StartCoroutine(RoomBehaviour.Instance.useDoor(corner));
             }
         }
@@ -47,7 +48,7 @@ public class Door : MonoBehaviour
         if (col.gameObject.GetComponent<PlayerController>() == PlayerController.Instance) //TODO optim ?
         {
             _isNear = true;
-            PlayerController.Instance.GetComponentInChildren<UITexts>().ToggleInteractionText();
+            PlayerController.Instance.GetComponentInChildren<UITexts>().ToggleInteractionText(true);
         }
     }
 
@@ -56,7 +57,7 @@ public class Door : MonoBehaviour
         if (col.gameObject.GetComponent<PlayerController>() == PlayerController.Instance) //TODO optim ?
         {
             _isNear = false;
-            PlayerController.Instance.GetComponentInChildren<UITexts>().ToggleInteractionText();
+            PlayerController.Instance.GetComponentInChildren<UITexts>().ToggleInteractionText(false);
         }
     }
 }
