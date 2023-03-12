@@ -205,7 +205,7 @@ MonoBehaviour:
   - name: Player_Portal
     clip: {fileID: 0}
   - name: Player_Damage
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 3f0e7596710976d4a9f27f2f96b42c3e, type: 3}
   - name: Sphere_Start
     clip: {fileID: 8300000, guid: 212c2f9637fb0a34ca6ae870f62ed1c0, type: 3}
   - name: Sphere_Roll
@@ -223,7 +223,7 @@ MonoBehaviour:
   - name: Leaf_Start
     clip: {fileID: 8300000, guid: 522759d58c619664d9f258e045db220b, type: 3}
   - name: Heal
-    clip: {fileID: 8300000, guid: c381374302582964983a92daa8b2f0d7, type: 3}
+    clip: {fileID: 8300000, guid: 07a70e00b4b135a448aa2d19009a7b14, type: 3}
   - name: LeafsCast
     clip: {fileID: 8300000, guid: aea424bb677fd8b478aa993d5ecc6e25, type: 3}
   - name: Enemy_01_Attack_01
@@ -236,6 +236,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 1121a40a345a97c479f35dc15ab124c1, type: 3}
   - name: Gaiard_Death
     clip: {fileID: 8300000, guid: 4557bcb023446b641a327edd5561d242, type: 3}
+  - name: Enigme_Interrupteur
+    clip: {fileID: 8300000, guid: c381374302582964983a92daa8b2f0d7, type: 3}
+  - name: Enigme_Fail
+    clip: {fileID: 8300000, guid: c2b2ce3c408eb0744920874ca9c91029, type: 3}
+  - name: Boss_Death
+    clip: {fileID: 8300000, guid: 360e2008cb503cc4b828fcabc30bc87d, type: 3}
+  - name: Boss_Sphere_Attack
+    clip: {fileID: 8300000, guid: 5a0bc3e1f70edb9448178bc942d32d18, type: 3}
   musicSource: {fileID: 2204762292630267015}
   sfxSource: {fileID: 2204762293352514838}
 --- !u!1 &2204762293352514837

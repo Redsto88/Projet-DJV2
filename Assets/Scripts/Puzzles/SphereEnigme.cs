@@ -60,6 +60,7 @@ public class SphereEnigme : MonoBehaviour
             print(detector.light.color);
             if (detector.light.color != Color.green)
             {
+                AudioManager.Instance.PlaySFX("Enigme_Fail");
                 detector.material.color = detector.color;
                 detector.light.color = detector.lightColor;
                 detector.isActivated = false;

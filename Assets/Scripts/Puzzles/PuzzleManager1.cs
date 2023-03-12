@@ -31,7 +31,7 @@ public class PuzzleManager1 : MonoBehaviour
             {
                 detector.material.color = Color.green * 5f;
                 detector.light.color = Color.green;
-                AudioManager.Instance.PlaySFX("Enisgme_Success");
+                AudioManager.Instance.PlaySFX("Enigme_Success");
             }
 
             if (!enemy.IsUnityNull())

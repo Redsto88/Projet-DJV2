@@ -211,6 +211,7 @@ public class BossBehaviour : BasicEnemyBehaviour
         navMeshAgent.speed = _speed/2;
         _isAttacking = true;
         animator.CrossFade("PrepareAttack",0.2f);
+        AudioManager.Instance.PlaySFX("LeafsCast");
         if (Random.Range(0f,1f) < aimChance)
         {
             for(int i = 0;i<leafNumber;i++)
@@ -264,6 +265,7 @@ public class BossBehaviour : BasicEnemyBehaviour
         navMeshAgent.speed = 0;
         _isAttacking = true;
         animator.CrossFade("Attack_Boule",0.1f);
+        AudioManager.Instance.PlaySFX("Boss_Sphere_Attack");
         float time = 0f;
         float growTime = 1f;
         var ps = Instantiate(bouleAttaquePS, sphereSpawnPoint.position, Quaternion.identity);
@@ -288,5 +290,6 @@ public class BossBehaviour : BasicEnemyBehaviour
     {
         AudioManager.Instance.PlayMusic("Boss_Fin");
         enemy.ApplyDamage(9999);
+        AudioManager.Instance.PlaySFX("Boss_Death");
     }
 }

@@ -25,6 +25,7 @@ public class PlayerManager : ADamageable
     public override void ApplyDamage(float damage)
     {
         _health -= damage;
+        AudioManager.Instance.PlaySFX("Player_Damage");
         healthBar.SetHealth(_health);
         if(_health <= 0)
         {

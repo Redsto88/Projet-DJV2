@@ -84,13 +84,14 @@ public class Portal : MonoBehaviour
     
     private IEnumerator Teleport(Collider col)
     {
-        AudioManager.Instance.PlaySFX("PortalTransition");
         print(col.gameObject.name);
         if (_isSpawned && linkPortal.IsSpawned) // On vérifie que les deux portails sont bien placés (plus dans le bullet time)
         {
             linkPortal.GetComponent<BoxCollider>().enabled = false;
             GetComponent<BoxCollider>().enabled = false;
 
+            AudioManager.Instance.PlaySFX("PortalTransition");
+            
             //Cas du joueur
             if (col == PlayerController.Instance.characterController)
             {

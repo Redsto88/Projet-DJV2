@@ -23,6 +23,7 @@ public class SphereDetector : MonoBehaviour
         {
             sphere.detector = this;
             //change color to cyan
+            AudioManager.Instance.PlaySFX("Enigme_Interrupteur");
             material.color = Color.cyan * 5f;
             light.color = Color.cyan;
             
@@ -37,6 +38,7 @@ public class SphereDetector : MonoBehaviour
             //change color to baseColor
             if (light.color != Color.green)
             { 
+                AudioManager.Instance.PlaySFX("Enigme_Fail");
                 material.color = color * 5;
                 light.color = lightColor;
                 isActivated = false;
