@@ -122,6 +122,16 @@ public class MapManager : MonoBehaviour
     public void GoToMainMenu()
     {
         EnterOrExitMenu();
+        Destroy(MapManager.Instance.gameObject);
+        Destroy(GameManager.Instance.gameObject);
+        Destroy(PlayerController.Instance.gameObject);
+        Destroy(TimeManager.Instance.gameObject);
+        Destroy(DialogManager.Instance.gameObject);
+        Destroy(CinematicManager.Instance.gameObject);
+        Destroy(RoomBehaviour.Instance.gameObject);
+        CinematicManager.seen.Clear();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         SceneManager.LoadScene("Menu");
     }
 

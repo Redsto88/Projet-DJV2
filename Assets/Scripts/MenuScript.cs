@@ -15,7 +15,6 @@ public class MenuScript : MonoBehaviour
     [SerializeField] private GameObject _options_button;
     [SerializeField] private GameObject _credits_button;
 
-
     public void PlayGame()
     {
         GameManager.Instance?.OnRestart();

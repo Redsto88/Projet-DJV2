@@ -210,11 +210,11 @@ public class GameManager : MonoBehaviour
     public void OnRestart()
     {
         //TODO CHANGE THIS
-        GenerateDungeon();
-        Instantiate(dungeonData[0,0].roomPrefab);
-        MapManager.Instance.GoesOnTile(0,0);
-        Instantiate(playerPrefab, transform.position, Quaternion.Euler(0,45,0));
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
+        // GenerateDungeon();
+        // Instantiate(dungeonData[0,0].roomPrefab);
+        // MapManager.Instance.GoesOnTile(0,0);
+        // Instantiate(playerPrefab, transform.position, Quaternion.Euler(0,45,0));
+        // Cursor.lockState = CursorLockMode.Confined;
+        // Cursor.visible = false;
     }
 }
