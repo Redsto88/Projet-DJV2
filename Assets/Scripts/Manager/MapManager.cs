@@ -79,6 +79,7 @@ public class MapManager : MonoBehaviour
         tile.GetComponent<MapTile>().rightDoorIcn.SetActive(roomData.hasRightDoor);
         tile.GetComponent<MapTile>().downDoorIcn.SetActive(roomData.hasDownDoor);
         tile.icon.sprite = sprites[(int)roomData.mapType];
+        if (tile.icon.sprite == null) tile.icon.color = new Color(0,0,0,0);
         mapTiles[h,w] = tile;
         tile.gameObject.SetActive(false);
     }
