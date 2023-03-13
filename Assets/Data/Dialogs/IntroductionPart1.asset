@@ -27,7 +27,7 @@ MonoBehaviour:
     otherCharacterIndex: 0
     transitionType: 0
     transitionTime: 0
-    text: Ca fait combien de temps que je suis ici ...?
+    text: "Depuis combien de temps suis-je l\xE0 ?"
     makesSound: 0
     sound: {fileID: 0}
     toneVariation: {x: 0, y: 0}

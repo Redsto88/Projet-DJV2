@@ -41,7 +41,7 @@ MonoBehaviour:
     otherCharacterIndex: 0
     transitionType: 0
     transitionTime: 0
-    text: "Les d\xE9cors sont... vari\xE9s, c'est le moins qu'on puisse dire."
+    text: "Cette salle semble diff\xE9rente..."
     makesSound: 0
     sound: {fileID: 0}
     toneVariation: {x: 0, y: 0}
@@ -55,7 +55,7 @@ MonoBehaviour:
     otherCharacterIndex: 0
     transitionType: 0
     transitionTime: 0
-    text: "J'esp\xE8re rapidement trouver la sortie..."
+    text: "Ces sph\xE8res sont s\xFBrement utile."
     makesSound: 0
     sound: {fileID: 0}
     toneVariation: {x: 0, y: 0}

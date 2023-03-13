@@ -76,6 +76,10 @@ public class GaïardLeaf : AProjectile
     void OnCollisionEnter(Collision other)
     {
         if (!go) return;
+        if (other.gameObject.TryGetComponent(out BossBehaviour boss) || other.gameObject.TryGetComponent(out Weapon weapon))
+        {
+            return;
+        }
         if (other.gameObject.TryGetComponent<PlayerManager>(out var id))
         {
             id.ApplyDamage(damage);
@@ -90,6 +94,7 @@ public class GaïardLeaf : AProjectile
         {
             AudioManager.Instance.PlaySFX("LeafDestroy");
             g.ApplyDamage(10000);
+            Destroy(gameObject);
             
         }
         else {
