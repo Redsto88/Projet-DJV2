@@ -214,6 +214,7 @@ public class GameManager : MonoBehaviour
         Instantiate(dungeonData[0,0].roomPrefab);
         MapManager.Instance.GoesOnTile(0,0);
         Instantiate(playerPrefab, transform.position, Quaternion.Euler(0,45,0));
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
     }
 }
