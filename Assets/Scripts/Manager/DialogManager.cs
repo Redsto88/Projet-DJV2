@@ -85,6 +85,7 @@ public class DialogManager : MonoBehaviour
             img.GetComponent<Image>().sprite = dc.character.SpriteByEmotion(dc.baseEmotion);
             img.GetComponent<Image>().color = new Color(1,1,1,dc.isVisible ? 1 : 0);
             img.GetComponent<Image>().SetNativeSize();
+            img.transform.localScale = 0.5f * Vector3.one;
             if (dc.basePosition > 0.5f)
             {
                 img.GetComponent<RectTransform>().localEulerAngles = new Vector3(0,180,0);

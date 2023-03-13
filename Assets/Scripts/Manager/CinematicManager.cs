@@ -63,11 +63,13 @@ public class CinematicManager : MonoBehaviour
             yield return null;
         }
         canvas.SetActive(false);
-        DialogData dd2 = Addressables.LoadAssetAsync<DialogData>("IntroductionDialog2").WaitForCompletion();
-        DialogManager.Instance.Dialog(dd2);
-        yield return new WaitWhile(() => DialogManager.Instance.inDialog);
         seen.Add(1);
         cinematicPause = false;
+        // DialogData dd2 = Addressables.LoadAssetAsync<DialogData>("IntroductionDialog2").WaitForCompletion();
+        // DialogManager.Instance.Dialog(dd2);
+        // yield return new WaitWhile(() => DialogManager.Instance.inDialog);
+        // seen.Add(1);
+        // cinematicPause = false;
     }
 
     public IEnumerator FirstAttackTuto()
