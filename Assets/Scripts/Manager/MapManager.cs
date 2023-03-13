@@ -132,6 +132,8 @@ public class MapManager : MonoBehaviour
 
     IEnumerator showMenu()
     {
+        //show cursor
+        Cursor.lockState = CursorLockMode.None;
         var timeEllapsed = 0f;
         while (timeEllapsed < 1f/6f)
         {
@@ -151,6 +153,8 @@ public class MapManager : MonoBehaviour
 
     IEnumerator hideMenu()
     {
+        //hide cursor
+        Cursor.visible = false;
         var timeEllapsed = 0f;
         while (timeEllapsed < 1f/6f)
         {
