@@ -529,6 +529,11 @@ MonoBehaviour:
   healthMax: 300
   healthBar: {fileID: 3614044016745385781}
   money: 0
+  maxFocus: 10
+  focus: 0
+  focusGain: 0.5
+  focusCost: 1
+  isFocused: 0
   keyCount: 0
 --- !u!1 &5498758815223860999
 GameObject:
@@ -1920,3 +1925,32 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4053148590064684195, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
   m_PrefabInstance: {fileID: 8390251362273884636}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7853563837398450932 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1769175344267361064, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+  m_PrefabInstance: {fileID: 8390251362273884636}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8910642396384350342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &8910642396384350342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1141907858188937562, guid: 02bd55bc78ba1f94eb6389c49d7aa800, type: 3}
+  m_PrefabInstance: {fileID: 8390251362273884636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &426404345529135321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8910642396384350342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b2eebc3023d3e4e8bf22b6decb4b0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _focus: {fileID: 7853563837398450932}

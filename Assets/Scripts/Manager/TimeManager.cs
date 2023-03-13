@@ -30,6 +30,7 @@ public class TimeManager : MonoBehaviour
     public void StopSlowMotion()
     {
         StartCoroutine(StopSlowMotionCoroutine());
+        PlayerManager.Instance.isFocused = false;
         Time.timeScale = 1;
         Time.fixedDeltaTime = 0.02f;
     }

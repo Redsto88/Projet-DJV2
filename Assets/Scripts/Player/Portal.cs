@@ -40,6 +40,7 @@ public class Portal : MonoBehaviour
             print("PORTAL RAYCAST "+ hit.transform.gameObject.name);
             transform.parent = hit.transform;
         }
+        PlayerManager.Instance.isFocused = true;
         StartCoroutine(OrientationCoroutine());
     }
 
@@ -65,6 +66,7 @@ public class Portal : MonoBehaviour
         portalCursor.cursorSpeed *= 5;
         while (Input.GetButton("Portal"))
         {
+            if (PlayerManager.Instance.focus <= 0) TimeManager.Instance.StopSlowMotion();
             transform.LookAt(new Vector3(portalCursor.transform.position.x, transform.position.y, portalCursor.transform.position.z));
             yield return null;
         }

@@ -11,6 +11,12 @@ public class PlayerManager : ADamageable
 
     [SerializeField] private float money = 0f;
 
+    public float maxFocus;
+    public float focus;
+    public float focusGain;
+    public float focusCost;
+    public bool isFocused;
+
     public int keyCount = 0;
     private Animator _animator;
 
@@ -18,8 +24,15 @@ public class PlayerManager : ADamageable
     {
         if(Instance != null) Destroy(Instance.gameObject);
         Instance = this;
+        focus = maxFocus;
         DontDestroyOnLoad(this.gameObject);
         _animator = GetComponentInChildren<Animator>();
+    }
+
+    void Update()
+    {
+        if (isFocused) focus -= Time.unscaledDeltaTime * focusCost;
+        else focus = Mathf.Min(maxFocus, focus + Time.unscaledDeltaTime * focusGain);
     }
 
     public override void ApplyDamage(float damage)

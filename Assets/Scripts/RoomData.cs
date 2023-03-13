@@ -9,7 +9,7 @@ public class RoomData : ScriptableObject
     {
         Empty,
         Fight,
-        Treasure,
+        Heal,
         Boss
     }
     public GameObject roomPrefab;
