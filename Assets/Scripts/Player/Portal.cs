@@ -201,6 +201,10 @@ public class Portal : MonoBehaviour
                 {
                     projectile.gameObject.transform.rotation = linkPortal.transform.rotation;
                 }
+                if (projectile.TryGetComponent(out GaïardLeaf leaf))
+                {
+                    leaf.portalFlag = true;
+                }
                 yield return new WaitForEndOfFrame();
             }
             

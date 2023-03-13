@@ -11,6 +11,18 @@ public class GaïardLeaf : AProjectile
     public float damage;
     private Vector3 speed;
 
+    private bool collisionActivated = false;
+
+    public bool portalFlag;
+
+
+    void Start()
+    {
+        GetComponent<Collider>().enabled = false;
+    }
+
+
+
     // Update is called once per frame
     void Update()
     {
@@ -21,6 +33,19 @@ public class GaïardLeaf : AProjectile
         else 
         {
             transform.position += shotSpeed * Time.deltaTime * transform.forward;
+
+            if(!collisionActivated)
+            {
+                collisionActivated = true;
+                StartCoroutine(activateCollision(0.1f));
+
+
+                IEnumerator activateCollision(float time)
+                {
+                    yield return new WaitForSeconds(time);
+                    GetComponent<Collider>().enabled = true;
+                }
+            }
         }
     }
 
@@ -60,6 +85,11 @@ public class GaïardLeaf : AProjectile
         else if (other.gameObject.TryGetComponent<Portal>(out var portal))
         {
             //nothing
+        }
+        else if(other.gameObject.TryGetComponent<Gaïard>(out var g) && portalFlag)
+        {
+            AudioManager.Instance.PlaySFX("LeafDestroy");
+            g.ApplyDamage(10000);
         }
         else {
             AudioManager.Instance.PlaySFX("LeafDestroy");
