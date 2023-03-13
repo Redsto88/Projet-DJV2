@@ -3317,10 +3317,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 949060088738306634, guid: 3ccac1c15e94cb7458d4bb7a5480b1e9, type: 3}
-      propertyPath: m_RenderAlignment
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 964571059439611988, guid: 3ccac1c15e94cb7458d4bb7a5480b1e9, type: 3}
       propertyPath: m_Mesh
       value: 
