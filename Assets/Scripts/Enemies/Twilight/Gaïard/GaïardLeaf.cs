@@ -90,6 +90,7 @@ public class GaïardLeaf : AProjectile
         {
             AudioManager.Instance.PlaySFX("LeafDestroy");
             g.ApplyDamage(10000);
+            
         }
         else {
             AudioManager.Instance.PlaySFX("LeafDestroy");
