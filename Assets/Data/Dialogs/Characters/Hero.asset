@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db9fbb35137f434e926f50d830a76f6, type: 3}
   m_Name: Hero
   m_EditorClassIdentifier: 
-  characterName: Hero
+  characterName: Heros
   sprites:
   - sprite: {fileID: 21300000, guid: 43927799a9d993e4fa6b5e93b5164ca3, type: 3}
     emotion: 0
