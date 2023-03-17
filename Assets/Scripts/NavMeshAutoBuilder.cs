@@ -4,8 +4,13 @@ using UnityEngine.AI;
 
 public class NavMeshAutoBuilder : MonoBehaviour
 {
+    public NavMeshSurface[] surfaces;
+
     protected void Awake()
     {
+        Debug.Log("buildNavMesh");
+        NavMesh.RemoveAllNavMeshData();
+        
         var markups = new List<NavMeshBuildMarkup>();
         var sources = new List<NavMeshBuildSource>();
 
@@ -36,10 +41,18 @@ public class NavMeshAutoBuilder : MonoBehaviour
             sources,
             new Bounds(
                 Vector3.zero,
-                new Vector3(50f, 50f, 50f)),
+                new Vector3(5000f, 5000f, 5000f)),
             transform.position,
             Quaternion.identity);
 
         NavMesh.AddNavMeshData(data);
+        Debug.Log("data added");
+        
+      /* foreach (var surface in surfaces)
+       {
+            surface.BuildNavMesh();
+       }*/
     }
+        
+        
 }

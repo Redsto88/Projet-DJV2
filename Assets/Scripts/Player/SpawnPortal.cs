@@ -80,7 +80,6 @@ public class SpawnPortal : MonoBehaviour
         float lerpDuration = 1f;
         while (timeElapsed < lerpDuration)
         {
-            print("portal disparition");
             portal.fwdMaterial.SetFloat(DissolveAmount,Mathf.Lerp(2, 17, timeElapsed / lerpDuration));
             portal.bwdMaterial.SetFloat(DissolveAmount, Mathf.Lerp(2, 17, timeElapsed / lerpDuration));
             timeElapsed += Time.deltaTime;

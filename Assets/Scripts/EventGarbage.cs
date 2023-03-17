@@ -24,7 +24,7 @@ public class EventGarbage : MonoBehaviour
     {
         if (!one && transform.childCount <= baseChildCount - 4) StartCoroutine(oneCor());
         if (!two && GameManager.Instance.heightPos == 1) {transform.GetChild(0).GetComponent<InfoBar>().ValidateTask(); two = true;}
-        if (!three && GameManager.Instance.heightPos == 2) {while (transform.GetChild(0).TryGetComponent<InfoBar>(out var bar)) {Destroy(transform.GetChild(0).gameObject);}; Destroy(transform.GetChild(0).gameObject); three = true;}
+        if (!three && GameManager.Instance.heightPos == 2) {Destroy(transform.GetChild(0).gameObject); three = true;}
         if (!four && GameManager.Instance.heightPos == 3) {transform.GetChild(0).GetComponent<InfoBar>().ValidateTask(); four = true;}
         if (!five && GameManager.Instance.heightPos == 4) {transform.GetChild(0).GetComponent<InfoBar>().ValidateTask(); five = true;}
         if (!six && GameManager.Instance.heightPos == 5) {transform.GetChild(0).GetComponent<InfoBar>().ValidateTask(); six = true;}
