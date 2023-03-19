@@ -13,7 +13,7 @@ public class Door : MonoBehaviour
         Down
     }
     [SerializeField] private Corner corner;
-    //[SerializeField] private Animator bariereAnimator;
+    [SerializeField] private Animator bariereAnimator;
     private bool _isNear;
     private bool _doorAnim = false;
     public bool isOpen = false;
@@ -30,7 +30,7 @@ public class Door : MonoBehaviour
         if (isOpen && !_doorAnim)
         {
             _doorAnim = true;
-           // bariereAnimator.CrossFade("Open", 0.01f);
+           bariereAnimator.CrossFade("Open", 0.01f);
         }
         if (_isNear && isOpen)
         {

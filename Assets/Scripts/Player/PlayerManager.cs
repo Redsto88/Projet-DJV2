@@ -38,26 +38,25 @@ public class PlayerManager : ADamageable
     public override void ApplyDamage(float damage)
     {
         _health -= damage;
-        AudioManager.Instance.PlaySFX("Player_Damage");
-        healthBar.SetHealth(_health);
-        if(_health <= 0)
-        {
-            GameManager.Instance.onPlayerDeath();
-            Destroy(gameObject);
-        }
-
         if (damage > 0)
         {
+            AudioManager.Instance.PlaySFX("Player_Damage");
             _animator.CrossFade("Damage",0.1f);
         }
+        healthBar.SetHealth(_health);
+        
+        if (!(_health <= 0)) return;
+        
+        GameManager.Instance.onPlayerDeath();
+        Destroy(gameObject);
 
 
     }
 
 
-    public void AddMoney(float money)
+    public void AddMoney(float _money)
     {
-        this.money += money;
+        this.money += _money;
     }
 
     private void OnDestroy()

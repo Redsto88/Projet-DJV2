@@ -75,6 +75,7 @@ public class GaïardLeaf : AProjectile
 
     void OnCollisionEnter(Collision other)
     {
+        Debug.Log(other.gameObject.name);
         if (!go) return;
         if (other.gameObject.TryGetComponent(out BossBehaviour boss) || other.gameObject.TryGetComponent(out Weapon weapon))
         {

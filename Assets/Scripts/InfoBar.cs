@@ -41,14 +41,16 @@ public class InfoBar : MonoBehaviour
         else 
         {
             if (isMouseButton)
-            switch (buttonInt)
-            {
-                case 0: keyText.text = "Clic gauche"; break;
-                case 1: keyText.text = "Clic droit"; break;
-                case 2: keyText.text = "Clic molette"; break;
-            }
+                switch (buttonInt)
+                {
+                    case 0: keyText.text = "Clic gauche"; break;
+                    case 1: keyText.text = "Clic droit"; break;
+                    case 2: keyText.text = "Clic molette"; break;
+                }
             else
-            keyText.text = key.ToString();
+            {
+                keyText.text = key.ToString();
+            }
         }
         actionDescText.text = actionDesc;
         baseHeight = rt.rect.height;
@@ -93,7 +95,7 @@ public class InfoBar : MonoBehaviour
             timeEllapsed += Time.unscaledDeltaTime;
             yield return null;
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.3f);
         // timeEllapsed = 0f;
         // while (timeEllapsed < 1f)
         // {
@@ -103,7 +105,7 @@ public class InfoBar : MonoBehaviour
         //     yield return null;
         // }
         timeEllapsed = 0;
-        while (timeEllapsed < 1f)
+        while (timeEllapsed < 0.5f)
         {
             cg.alpha = 1 - timeEllapsed;
             timeEllapsed += Time.unscaledDeltaTime;
@@ -114,10 +116,10 @@ public class InfoBar : MonoBehaviour
 
     public void ShowNewTask()
     {
-        cor = StartCoroutine(appear());
+        cor = StartCoroutine(Appear());
     }
 
-    IEnumerator appear()
+    IEnumerator Appear()
     {
         var timeEllapsed = 0f;
         while (timeEllapsed < 0.9f)

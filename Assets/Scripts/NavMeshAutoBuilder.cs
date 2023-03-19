@@ -4,11 +4,8 @@ using UnityEngine.AI;
 
 public class NavMeshAutoBuilder : MonoBehaviour
 {
-    public NavMeshSurface[] surfaces;
-
     protected void Awake()
     {
-        Debug.Log("buildNavMesh");
         NavMesh.RemoveAllNavMeshData();
         
         var markups = new List<NavMeshBuildMarkup>();
@@ -46,12 +43,6 @@ public class NavMeshAutoBuilder : MonoBehaviour
             Quaternion.identity);
 
         NavMesh.AddNavMeshData(data);
-        Debug.Log("data added");
-        
-      /* foreach (var surface in surfaces)
-       {
-            surface.BuildNavMesh();
-       }*/
     }
         
         

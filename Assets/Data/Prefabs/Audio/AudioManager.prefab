@@ -245,7 +245,7 @@ MonoBehaviour:
   - name: Boss_Sphere_Attack
     clip: {fileID: 8300000, guid: 5a0bc3e1f70edb9448178bc942d32d18, type: 3}
   - name: Task_Success
-    clip: {fileID: 8300000, guid: 6025082c34001944fb707c42a2fa48f6, type: 3}
+    clip: {fileID: 8300000, guid: 95383e145bd2ee248ac3783df0b72075, type: 3}
   musicSource: {fileID: 2204762292630267015}
   sfxSource: {fileID: 2204762293352514838}
 --- !u!1 &2204762293352514837

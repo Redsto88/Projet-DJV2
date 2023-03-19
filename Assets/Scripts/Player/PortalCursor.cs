@@ -31,7 +31,7 @@ public class PortalCursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MapManager.Instance.paused || CinematicManager.cinematicPause) return;
+       // if (MapManager.Instance.paused || CinematicManager.cinematicPause) return;
         if(usingMouseInput)
         {
             _cursorPos = Input.mousePosition;

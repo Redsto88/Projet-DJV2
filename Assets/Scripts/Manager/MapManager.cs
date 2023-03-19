@@ -114,8 +114,17 @@ public class MapManager : MonoBehaviour
     {
         if (movement != null) return;
         paused = !paused;
-        if (paused) {TimeManager.Instance.Pause(); movement = StartCoroutine(showMenu());}
-        else {TimeManager.Instance.Unpause(); movement = StartCoroutine(hideMenu());}
+        if (paused) 
+        {TimeManager.Instance.Pause();
+            Cursor.visible = true;
+            movement = StartCoroutine(showMenu());
+        }
+        else
+        {
+            TimeManager.Instance.Unpause(); 
+            Cursor.visible = false;
+            movement = StartCoroutine(hideMenu());
+        }
         map.SetActive(paused);
     }
 
