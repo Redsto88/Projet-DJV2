@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -45,13 +46,15 @@ public class MapManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !CinematicManager.cinematicPause)
         {
+            Debug.Log("escape");
             content.GetComponent<RectTransform>().anchoredPosition = - 0.007f * new Vector2(GameManager.Instance.heightPos * content.GetComponent<RectTransform>().rect.height, GameManager.Instance.widthPos * content.GetComponent<RectTransform>().rect.width);
             EnterOrExitMenu();
         }
         Vector2 axis = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        if (axis.magnitude > 0 && EventSystem.current.currentSelectedGameObject == null)
+        if (axis.magnitude > 0 && EventSystem.current.currentSelectedGameObject.IsUnityNull())
         {
             SetSelected();
+            Debug.Log("set selected");
         }
     }
 
@@ -117,19 +120,20 @@ public class MapManager : MonoBehaviour
         if (paused) 
         {TimeManager.Instance.Pause();
             Cursor.visible = true;
-            movement = StartCoroutine(showMenu());
+            movement = StartCoroutine(ShowMenu());
         }
         else
         {
             TimeManager.Instance.Unpause(); 
             Cursor.visible = false;
-            movement = StartCoroutine(hideMenu());
+            movement = StartCoroutine(HideMenu());
         }
         map.SetActive(paused);
     }
 
     public void GoToMainMenu()
     {
+        Debug.Log("return to menu");
         EnterOrExitMenu();
         Destroy(MapManager.Instance.gameObject);
         Destroy(GameManager.Instance.gameObject);
@@ -149,7 +153,7 @@ public class MapManager : MonoBehaviour
 
     }
 
-    IEnumerator showMenu()
+    IEnumerator ShowMenu()
     {
         //show cursor
         Cursor.lockState = CursorLockMode.None;
@@ -170,7 +174,7 @@ public class MapManager : MonoBehaviour
         movement = null;
     }
 
-    IEnumerator hideMenu()
+    IEnumerator HideMenu()
     {
         //hide cursor
         Cursor.visible = false;

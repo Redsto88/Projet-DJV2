@@ -416,6 +416,7 @@ GameObject:
   - component: {fileID: 5498758814783280179}
   - component: {fileID: 5498758814783280182}
   - component: {fileID: 5498758814783280176}
+  - component: {fileID: 2566734448359616061}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -535,6 +536,14 @@ MonoBehaviour:
   portalCursor: {fileID: 1573601051}
   portalPrefab: {fileID: 7994966034395795619, guid: 7ea57d45f3cb0174a8226e732d88799b, type: 3}
   nbMaxPortal: 2
+--- !u!81 &2566734448359616061
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498758814783280172}
+  m_Enabled: 1
 --- !u!1 &5498758815223860999
 GameObject:
   m_ObjectHideFlags: 0

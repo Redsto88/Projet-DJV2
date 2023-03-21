@@ -34,7 +34,7 @@ public class Door : MonoBehaviour
         }
         if (_isNear && isOpen)
         {
-            if (Input.GetButton("Interaction")) //TODO Show interaction button
+            if (Input.GetButton("Interaction")) 
             {
                 AudioManager.Instance.PlaySFX("RoomTransition");
                 PlayerController.Instance.GetComponentInChildren<UITexts>().ToggleInteractionText(false);
@@ -45,7 +45,7 @@ public class Door : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.GetComponent<PlayerController>() == PlayerController.Instance) //TODO optim ?
+        if (col.gameObject.GetComponent<PlayerController>() == PlayerController.Instance) 
         {
             _isNear = true;
             PlayerController.Instance.GetComponentInChildren<UITexts>().ToggleInteractionText(true);
@@ -54,7 +54,7 @@ public class Door : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
-        if (col.gameObject.GetComponent<PlayerController>() == PlayerController.Instance) //TODO optim ?
+        if (col.gameObject.GetComponent<PlayerController>() == PlayerController.Instance) 
         {
             _isNear = false;
             PlayerController.Instance.GetComponentInChildren<UITexts>().ToggleInteractionText(false);

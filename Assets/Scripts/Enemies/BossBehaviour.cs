@@ -31,7 +31,7 @@ public class BossBehaviour : BasicEnemyBehaviour
     [SerializeField] private Transform sphereSpawnPoint;
     [SerializeField] private float aimChance;
     [SerializeField] private float changeDirectionFrequency;
-    private float attackTimer = 0f;
+   // private float attackTimer = 0f;
     [SerializeField] private GameObject leafPrefab;
 
     [SerializeField] private List<PlateformeBoss> plateformes = new List<PlateformeBoss>();
@@ -44,6 +44,7 @@ public class BossBehaviour : BasicEnemyBehaviour
     [SerializeField] private Transform boosTransformStartP2;
     [SerializeField] private Transform playerTransformStartP2;
     [SerializeField] private GameObject bouleAttaquePS;
+    [SerializeField] private Canvas endCanva;
    
     
     [Header("Room")]
@@ -85,7 +86,6 @@ public class BossBehaviour : BasicEnemyBehaviour
 
     void Update()
     {
-
         if (!portalFlag && !_target.IsUnityNull() && !isStunned)
         {
             Vector3 targetDir = _target.position - transform.position;
@@ -171,8 +171,8 @@ public class BossBehaviour : BasicEnemyBehaviour
 
     public override void ApplyDamage(float damage)
     {
-        if (canBeHit)
-        {
+       if (canBeHit)
+       {
             base.ApplyDamage(damage);
             healthBar.SetHealth(_health);
             if (_health < healthMax/2 && !phase2)
@@ -191,7 +191,7 @@ public class BossBehaviour : BasicEnemyBehaviour
 
                 }
             } ;
-        }
+       }
     }
 
     void Attack()
@@ -288,7 +288,11 @@ public class BossBehaviour : BasicEnemyBehaviour
 
     private void OnDestroy()
     {
-        AudioManager.Instance.PlayMusic("Boss_Fin");
+        endCanva.gameObject.SetActive(true);
+        if (_health <= 0)
+        {
+            AudioManager.Instance.PlayMusic("Boss_Fin");
+        }
         enemy.ApplyDamage(9999);
         AudioManager.Instance.PlaySFX("Boss_Death");
     }

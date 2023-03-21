@@ -1055,30 +1055,8 @@ MonoBehaviour:
   dungeonWidth: 6
   dungeonHeight: 6
   possibleRooms:
-  - roomData: {fileID: 11400000, guid: 7d5e92933fb884340a0d08f2e9ac6bdc, type: 2}
-    weight: 4
-  - roomData: {fileID: 11400000, guid: 3c5c3daa3edd9d745973d745dd4f01d3, type: 2}
-    weight: 1
-  - roomData: {fileID: 11400000, guid: 7d5e92933fb884340a0d08f2e9ac6bdc, type: 2}
-    weight: 1
-  - roomData: {fileID: 11400000, guid: 1e07683aa1dead647ad635f5f3d68da3, type: 2}
-    weight: 1
-  - roomData: {fileID: 11400000, guid: bb476088d6509fa4fa975c136b5a04ee, type: 2}
-    weight: 1
-  - roomData: {fileID: 11400000, guid: f17a594dea8f82d49b0263385c505799, type: 2}
-    weight: 1
-  - roomData: {fileID: 11400000, guid: 38d315b7fddb2e4498d5c423d90fd3d8, type: 2}
-    weight: 1
-  - roomData: {fileID: 11400000, guid: c09f1b7c89fcbe545bfc45fd5ed8b99f, type: 2}
-    weight: 2
-  - roomData: {fileID: 11400000, guid: a113d057407d36247bdeef2e477499cd, type: 2}
-    weight: 2
-  - roomData: {fileID: 11400000, guid: f2765c030a0f5094f88787d8bdadd25a, type: 2}
-    weight: 2
-  - roomData: {fileID: 11400000, guid: 82335c5ada82cfe48ba3731aa1901764, type: 2}
-    weight: 2
   - roomData: {fileID: 11400000, guid: a08ed7adf55de764b9d63b06870ef556, type: 2}
-    weight: 5000
+    weight: 1
   - roomData: {fileID: 11400000, guid: 130bb40350bad1a4695bb5bbacb5b18c, type: 2}
     weight: 1
   - roomData: {fileID: 11400000, guid: be48aa955c0f35b4e9fa48e25d7b9664, type: 2}
@@ -1090,6 +1068,8 @@ MonoBehaviour:
   - roomData: {fileID: 11400000, guid: 0a06eb352fe91fc4389cc92921646850, type: 2}
     weight: 1
   - roomData: {fileID: 11400000, guid: 2c0494ae1cd91324a9fac55476978cd8, type: 2}
+    weight: 1
+  - roomData: {fileID: 0}
     weight: 1
   heightPos: 0
   widthPos: 0
@@ -1497,7 +1477,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1623436762}
   - component: {fileID: 1623436760}
-  - component: {fileID: 1623436761}
   - component: {fileID: 1623436763}
   m_Layer: 0
   m_Name: Main Camera
@@ -1549,14 +1528,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1623436761
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623436759}
-  m_Enabled: 1
 --- !u!4 &1623436762
 Transform:
   m_ObjectHideFlags: 0

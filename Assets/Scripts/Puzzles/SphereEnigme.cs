@@ -35,7 +35,6 @@ public class SphereEnigme : MonoBehaviour
         //sphere roll
         sphere.Rotate(Vector3.right * (Time.deltaTime * 20 * _rb.velocity.magnitude));
         
-        RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, _sphereCollider.radius + 0.1f) &&
             _rb.velocity.magnitude > 0.001f)
         {

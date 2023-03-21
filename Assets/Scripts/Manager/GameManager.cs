@@ -84,13 +84,13 @@ public class GameManager : MonoBehaviour
         // }
         heightPos = 0;
         widthPos = 0;
-        dungeonData[0,0] = possibleRooms[11].roomData;
-        dungeonData[1,0] = possibleRooms[12].roomData;
-        dungeonData[2,0] = possibleRooms[13].roomData;
-        dungeonData[3,0] = possibleRooms[14].roomData;
-        dungeonData[4,0] = possibleRooms[15].roomData;
-        dungeonData[4,1] = possibleRooms[17].roomData;
-        dungeonData[5,0] = possibleRooms[16].roomData;
+        dungeonData[0,0] = possibleRooms[0].roomData;
+        dungeonData[1,0] = possibleRooms[1].roomData;
+        dungeonData[2,0] = possibleRooms[2].roomData;
+        dungeonData[3,0] = possibleRooms[3].roomData;
+        dungeonData[4,0] = possibleRooms[4].roomData;
+        dungeonData[4,1] = possibleRooms[6].roomData;
+        dungeonData[5,0] = possibleRooms[5].roomData;
         roomState[0,0] = RoomState.Seen; roomState[1,0] = RoomState.NotSeen;
         roomState[2,0] = RoomState.NotSeen; roomState[3,0] = RoomState.NotSeen;
         roomState[4,0] = RoomState.NotSeen; roomState[4,1] = RoomState.NotSeen; roomState[5,0] = RoomState.NotSeen;

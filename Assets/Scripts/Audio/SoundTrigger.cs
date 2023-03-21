@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class SoundTrigger : MonoBehaviour
 {
-    [SerializeField] private string name;
+    [SerializeField] private string _name;
     [SerializeField] private bool loop = false;
 
     private void Start()
     {
-        print("other");
-        AudioManager.Instance.PlayMusic(name,loop);
+        AudioManager.Instance.PlayMusic(_name, loop); 
         Destroy(gameObject);
     }
 }

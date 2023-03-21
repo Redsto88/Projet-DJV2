@@ -50,21 +50,24 @@ public class AudioManager : MonoBehaviour
                 switch (name)
                 {
                     case "Boss_Intro":
-                        StartCoroutine(NextMusic(s.clip, "Boss_Corps", true, 0.85f));
+                        StartCoroutine(NextMusic(s.clip, name,"Boss_Corps", true, 0.85f));
                         break;
                     default:
-                        StartCoroutine(NextMusic(s.clip, "Base", true));
+                        StartCoroutine(NextMusic(s.clip, name,"Base", true));
                         break;
                 }
             }
         }
     }
 
-    IEnumerator NextMusic(AudioClip clip, string name, bool loop = false, float control = 0)
+    IEnumerator NextMusic(AudioClip clip, string nameCur, string nameNext, bool loop = false, float control = 0)
     {
-        yield return new WaitForSeconds(clip.length-control);
-        print(clip.length);
-        PlayMusic(name,loop);
+        yield return new WaitForSeconds(clip.length-control*Time.unscaledDeltaTime);
+        Sound s = Array.Find(musics, x => x.name == nameCur);
+        if (s.clip == musicSource.clip)
+        {
+            PlayMusic(nameNext,loop);
+        }
     }
 
     public void PlaySFX(string name)

@@ -8,7 +8,7 @@ public class SphereDetector : MonoBehaviour
     public Color color;
     public Color lightColor;
 
-    public Light light;
+    public new Light light;
 
     private void Start()
     {

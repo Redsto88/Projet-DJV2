@@ -187,7 +187,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 3e4d671583d1309418bf5a640cca71d4, type: 3}
   sfx:
   - name: Enigme_Success
-    clip: {fileID: 8300000, guid: 0340279cfe29ce349ae844a3c88af5b2, type: 3}
+    clip: {fileID: 8300000, guid: d20db24c7f27df44fb5b0586b848e767, type: 3}
   - name: RoomTransition
     clip: {fileID: 8300000, guid: e76cb1ccf10516e459e939004c6eac5b, type: 3}
   - name: PortalTransition
